@@ -13,4 +13,7 @@ const drawRect = (
   ctx.fillRect(x, y, width, height)
 }
 
+export const drawSquare = (x: number, y: number, side: number, color?: string) =>
+  drawRect(x, y, side, side, color)
+
 export default drawRect
