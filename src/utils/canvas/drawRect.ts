@@ -1,4 +1,4 @@
-import Canvas from "./canvas";
+import Canvas from './canvas'
 
 const drawRect = (
   x: number,
@@ -7,10 +7,10 @@ const drawRect = (
   height: number,
   color?: string
 ) => {
-  const canvas = Canvas.getInstance();
-  const ctx = canvas.getContext();
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, width, height);
-};
+  const canvas = Canvas.getInstance()
+  const ctx = canvas.getContext()
+  ctx.fillStyle = color
+  ctx.fillRect(x, y, width, height)
+}
 
-export default drawRect;
+export default drawRect
