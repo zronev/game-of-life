@@ -25,27 +25,12 @@ class Drawer {
 
         if (!cell) continue
 
-        this.drawCell({
-          x: x * rectSize,
-          y: y * rectSize,
-          side: rectSize,
-          color: ALIVE_CELL_COLOR,
-        })
+        this.drawCell(x * rectSize, y * rectSize, rectSize, ALIVE_CELL_COLOR)
       }
     }
   }
 
-  private drawCell({
-    x,
-    y,
-    side,
-    color,
-  }: {
-    x: number
-    y: number
-    side: number
-    color?: string
-  }) {
+  private drawCell(x: number, y: number, side: number, color?: string) {
     const ctx = this.canvas.getContext()
     ctx.fillStyle = color || ''
     ctx.fillRect(x, y, side, side)
