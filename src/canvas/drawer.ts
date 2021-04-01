@@ -25,7 +25,7 @@ class Drawer {
 
         if (!cell) continue
 
-        this.drawSquare({
+        this.drawCell({
           x: x * rectSize,
           y: y * rectSize,
           side: rectSize,
@@ -35,25 +35,7 @@ class Drawer {
     }
   }
 
-  private drawRect({
-    x,
-    y,
-    width,
-    height,
-    color,
-  }: {
-    x: number
-    y: number
-    width: number
-    height: number
-    color?: string
-  }) {
-    const ctx = this.canvas.getContext()
-    ctx.fillStyle = color || ''
-    ctx.fillRect(x, y, width, height)
-  }
-
-  private drawSquare({
+  private drawCell({
     x,
     y,
     side,
@@ -64,7 +46,9 @@ class Drawer {
     side: number
     color?: string
   }) {
-    this.drawRect({ x, y, width: side, height: side, color })
+    const ctx = this.canvas.getContext()
+    ctx.fillStyle = color || ''
+    ctx.fillRect(x, y, side, side)
   }
 
   private clearScreen() {
