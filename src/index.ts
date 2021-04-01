@@ -1,5 +1,5 @@
-import Canvas from './utils/canvas/canvas'
-import drawRect from './utils/canvas/drawRect'
+import Canvas from './canvas/canvas'
+import drawRect from './canvas/drawRect'
 
 const canvas = Canvas.getInstance()
 canvas.createContext()
