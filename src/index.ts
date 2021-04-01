@@ -1,5 +1,5 @@
-import Game from './game/game'
 import Grid from './game/grid'
+import Game from './game/game'
 import Canvas from './canvas/canvas'
 import Drawer from './canvas/drawer'
 import Spawner from './game/spawner'
