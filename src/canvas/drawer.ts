@@ -1,5 +1,5 @@
 import Canvas from './canvas'
-import Grid from '../game/grid'
+import Grid from '../core/grid'
 import { ALIVE_CELL_COLOR } from '../common/constants'
 
 class Drawer {
