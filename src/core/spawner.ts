@@ -9,16 +9,6 @@ class Spawner {
     this.grid = grid
   }
 
-  private getRandomCellCoordinate(): Point {
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
-
-    return {
-      x: getRandomValue(0, rows - 1),
-      y: getRandomValue(0, columns - 1),
-    }
-  }
-
   public spawnRandomCells(amount: number) {
     const gridCopy = arrayClone(this.grid.getGrid())
 
@@ -28,6 +18,16 @@ class Spawner {
     }
 
     this.grid.setGrid(gridCopy)
+  }
+
+  private getRandomCellCoordinate(): Point {
+    const rows = this.grid.getRows()
+    const columns = this.grid.getColumns()
+
+    return {
+      x: getRandomValue(0, rows - 1),
+      y: getRandomValue(0, columns - 1),
+    }
   }
 }
 
