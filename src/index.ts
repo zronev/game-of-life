@@ -1,4 +1,5 @@
 import Game from './core/game'
+import GenerationCounter from './ui/generation-counter'
 import { createGameOptions } from './core/utils'
 
 const options = createGameOptions({
@@ -16,14 +17,14 @@ const options = createGameOptions({
 })
 
 const game = new Game(options)
-const generation = document.querySelector('#generation-count')!
+const generationCounter = new GenerationCounter('#generation-count')
 
 game.init()
 game.spawn(2000)
 
 setInterval(() => {
   game.step()
-  generation.textContent = String(game.getGenerationCount())
+  generationCounter.update(game.getGenerationCount())
 }, 32)
 
 const spawnButton: HTMLButtonElement = document.querySelector('#spawn-button')!
