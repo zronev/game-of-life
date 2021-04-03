@@ -1,13 +1,13 @@
-import { GridType } from './types'
+import { GridOptions, GridType } from './types'
 
 class Grid {
   private rows: number
   private columns: number
   private grid: GridType
 
-  constructor(rows: number, columns: number) {
-    this.rows = rows
-    this.columns = columns
+  constructor(options: GridOptions) {
+    this.rows = options.rows
+    this.columns = options.columns
     this.grid = this.makeGrid()
   }
 

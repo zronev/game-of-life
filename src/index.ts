@@ -1,13 +1,25 @@
-import Canvas from './canvas/canvas'
 import Game from './core/game'
+import { createGameOptions } from './core/utils'
 
-const canvas = Canvas.getInstance()
-canvas.setSize(800, 800)
+const options = createGameOptions({
+  canvas: {
+    width: 800,
+    height: 800,
+  },
+  grid: {
+    rows: 100,
+    columns: 100,
+  },
+  cell: {
+    color: '#2d3436',
+  },
+})
 
-const game = new Game()
+const game = new Game(options)
 
-game.spawn()
+game.init()
+game.spawn(2000)
 
 setInterval(() => {
   game.step()
-}, 120)
+}, 32)

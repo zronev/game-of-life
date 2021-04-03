@@ -1,20 +1,23 @@
 import Canvas from './canvas'
 import Grid from '../core/grid'
-import { ALIVE_CELL_COLOR } from '../common/constants'
+import { GameOptions } from '../core/types'
 
 class Drawer {
   private canvas: Canvas
+  private options: GameOptions
 
-  constructor() {
+  constructor(options: GameOptions) {
     this.canvas = Canvas.getInstance()
+    this.options = options
   }
 
-  public drawGrid(gridInstance: Grid) {
+  public update(gridInstance: Grid) {
     this.clearScreen()
+    this.drawGrid(gridInstance)
+  }
 
-    // TODO: deal with size of rect and grid
-    const rectSize = 16
-
+  private drawGrid(gridInstance: Grid) {
+    const rectSize = this.getRectSize()
     const grid = gridInstance.getGrid()
     const rows = gridInstance.getRows()
     const columns = gridInstance.getColumns()
@@ -25,9 +28,18 @@ class Drawer {
 
         if (!cell) continue
 
-        this.drawCell(x * rectSize, y * rectSize, rectSize, ALIVE_CELL_COLOR)
+        this.drawCell(
+          x * rectSize,
+          y * rectSize,
+          rectSize,
+          this.options.cell.color
+        )
       }
     }
+  }
+
+  private getRectSize(): number {
+    return this.options.canvas.width / this.options.grid.rows
   }
 
   private drawCell(x: number, y: number, side: number, color?: string) {

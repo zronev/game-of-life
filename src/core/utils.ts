@@ -1,6 +1,6 @@
-import { GridType } from './types'
+import { GameOptions, GridType } from './types'
 
-const countNeighbours = (
+export const countNeighbours = (
   x: number,
   y: number,
   grid: GridType,
@@ -37,4 +37,4 @@ const countNeighbours = (
   return neighbours
 }
 
-export default countNeighbours
+export const createGameOptions = (options: GameOptions): GameOptions => options

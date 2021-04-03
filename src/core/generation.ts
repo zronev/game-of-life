@@ -1,7 +1,7 @@
 import Grid from './grid'
 import Rules from './rules'
 
-import countNeighbours from './utils'
+import { countNeighbours } from './utils'
 import { arrayClone } from '../common/utils'
 import { GridType, RulesState } from './types'
 
