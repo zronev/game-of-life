@@ -16,12 +16,14 @@ const options = createGameOptions({
 })
 
 const game = new Game(options)
+const generation = document.querySelector('#generation-count')!
 
 game.init()
 game.spawn(2000)
 
 setInterval(() => {
   game.step()
+  generation.textContent = String(game.getGenerationCount())
 }, 32)
 
 const spawnButton: HTMLButtonElement = document.querySelector('#spawn-button')!

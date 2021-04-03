@@ -6,15 +6,17 @@ import { arrayClone } from '../common/utils'
 import { GridType, RulesState } from './types'
 
 class Generation {
+  private count: number
   private grid: Grid
   private rules: Rules
 
   constructor(grid: Grid) {
     this.grid = grid
     this.rules = new Rules()
+    this.count = 0
   }
 
-  public nextGeneration() {
+  public next() {
     const grid = this.grid.getGrid()
     const rows = this.grid.getRows()
     const columns = this.grid.getColumns()
@@ -30,6 +32,11 @@ class Generation {
     }
 
     this.grid.setGrid(gridCopy)
+    this.increaseCount()
+  }
+
+  public getCount(): number {
+    return this.count
   }
 
   private changeCellState(
@@ -48,6 +55,10 @@ class Generation {
       default:
         break
     }
+  }
+
+  private increaseCount() {
+    this.count++
   }
 }
 

@@ -33,8 +33,12 @@ class Game {
   }
 
   public step() {
-    this.generation.nextGeneration()
+    this.generation.next()
     this.updateGrid()
+  }
+
+  public getGenerationCount() {
+    return this.generation.getCount()
   }
 
   private setCanvasSize({ width, height }: CanvasOptions) {
