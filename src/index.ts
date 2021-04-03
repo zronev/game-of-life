@@ -1,6 +1,9 @@
 import Game from './core/game'
 import Loop from './core/loop'
+
+import Button from './ui/button'
 import GenerationCounter from './ui/generation-counter'
+
 import { createGameOptions } from './core/utils'
 
 const options = createGameOptions({
@@ -18,8 +21,6 @@ const options = createGameOptions({
 })
 
 const game = new Game(options)
-const generationCounter = new GenerationCounter('#generation-count')
-
 game.init()
 game.spawn()
 
@@ -29,10 +30,8 @@ loop.start(() => {
   generationCounter.update(game.getGenerationCount())
 })
 
-const spawnButton: HTMLButtonElement = document.querySelector('#spawn-button')!
-
-const onSpawnClick = () => {
+const generationCounter = new GenerationCounter('#generation-count')
+const spawnButton = new Button('#spawn-button')
+spawnButton.onClick(() => {
   game.spawn()
-}
-
-spawnButton.addEventListener('click', onSpawnClick)
+})
