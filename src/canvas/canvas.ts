@@ -1,11 +1,9 @@
 class Canvas {
-  public static size: number
   private static instance: Canvas
   private static ctx: CanvasRenderingContext2D
   private static domElement: HTMLCanvasElement
 
   private constructor() {
-    Canvas.size = 800
     this.createContext()
   }
 
@@ -25,10 +23,10 @@ class Canvas {
     return Canvas.domElement
   }
 
-  public setSize(width?: number, height?: number) {
+  public setSize(width: number, height: number) {
     const canvasElement = this.getDOMElement()
-    canvasElement.width = width || Canvas.size
-    canvasElement.height = height || Canvas.size
+    canvasElement.width = width
+    canvasElement.height = height
   }
 
   private createContext() {

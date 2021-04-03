@@ -16,6 +16,12 @@ class Drawer {
     this.drawGrid(gridInstance)
   }
 
+  private clearScreen() {
+    const ctx = this.canvas.getContext()
+    const canvasElement = this.canvas.getDOMElement()
+    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
+  }
+
   private drawGrid(gridInstance: Grid) {
     const rectSize = this.getRectSize()
     const grid = gridInstance.getGrid()
@@ -46,12 +52,6 @@ class Drawer {
     const ctx = this.canvas.getContext()
     ctx.fillStyle = color || ''
     ctx.fillRect(x, y, side, side)
-  }
-
-  private clearScreen() {
-    const ctx = this.canvas.getContext()
-    const canvasElement = this.canvas.getDOMElement()
-    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
   }
 }
 
