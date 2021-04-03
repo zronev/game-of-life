@@ -23,3 +23,11 @@ game.spawn(2000)
 setInterval(() => {
   game.step()
 }, 32)
+
+const spawnButton: HTMLButtonElement = document.querySelector('#spawn-button')!
+
+const onSpawnClick = () => {
+  game.spawn(2000)
+}
+
+spawnButton.addEventListener('click', onSpawnClick)

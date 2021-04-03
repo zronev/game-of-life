@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game of Life</title>
-    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/index.scss" />
   </head>
   <body>
-    <main>
-      <canvas id="canvas"></canvas>
+    <main class="main">
+      <canvas id="canvas" class="canvas"></canvas>
     </main>
+
+    <aside class="controls">
+      <button id="spawn-button" class="button">Spawn</button>
+    </aside>
 
     <script src="./index.ts"></script>
   </body>
