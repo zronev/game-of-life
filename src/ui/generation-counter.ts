@@ -1,8 +1,8 @@
-class GenerationCounter {
-  private domElement: HTMLElement
+import Element from './element'
 
+class GenerationCounter extends Element {
   constructor(selectors: string) {
-    this.domElement = document.querySelector(selectors)!
+    super(selectors)
   }
 
   public update(count: number) {
