@@ -11,7 +11,7 @@ class Grid {
     this.grid = this.makeGrid()
   }
 
-  public getGrid() {
+  public getGrid(): GridType {
     return this.grid
   }
 
@@ -19,15 +19,15 @@ class Grid {
     this.grid = grid
   }
 
-  public getRows() {
+  public getRows(): number {
     return this.rows
   }
 
-  public getColumns() {
+  public getColumns(): number {
     return this.columns
   }
 
-  private makeGrid() {
+  private makeGrid(): GridType {
     return Array<boolean[]>(this.rows)
       .fill([])
       .map(() => Array(this.columns).fill(false))

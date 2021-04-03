@@ -41,7 +41,7 @@ class Game {
     this.updateGrid()
   }
 
-  public getGenerationCount() {
+  public getGenerationCount(): number {
     return this.generation.getCount()
   }
 
