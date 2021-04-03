@@ -1,22 +1,13 @@
-import Grid from './core/grid'
-import Spawner from './core/spawner'
-import Generation from './core/generation'
-
 import Canvas from './canvas/canvas'
-import Drawer from './canvas/drawer'
+import Game from './core/game'
 
 const canvas = Canvas.getInstance()
 canvas.setSize(800, 800)
 
-const grid = new Grid(50, 50)
-const generation = new Generation(grid)
-const drawer = new Drawer()
-const spawner = new Spawner(grid)
+const game = new Game()
 
-spawner.spawnRandomCells(600)
-drawer.drawGrid(grid)
+game.spawn()
 
 setInterval(() => {
-  generation.nextGeneration()
-  drawer.drawGrid(grid)
+  game.step()
 }, 120)
