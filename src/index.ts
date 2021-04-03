@@ -1,8 +1,9 @@
 import Grid from './core/grid'
+import Spawner from './core/spawner'
 import Generation from './core/generation'
+
 import Canvas from './canvas/canvas'
 import Drawer from './canvas/drawer'
-import Spawner from './core/spawner'
 
 const canvas = Canvas.getInstance()
 canvas.setSize(800, 800)
