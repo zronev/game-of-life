@@ -5,7 +5,7 @@ import countNeighbours from './utils'
 import { arrayClone } from '../common/utils'
 import { GridType, RulesState } from './types'
 
-class Game {
+class Generation {
   private grid: Grid
   private rules: Rules
 
@@ -23,7 +23,6 @@ class Game {
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
-
         const neighbours = countNeighbours(x, y, grid, rows, columns)
         const rulesState = this.rules.applyRules(cell, neighbours)
         this.changeCellState(x, y, gridCopy, rulesState)
@@ -52,4 +51,4 @@ class Game {
   }
 }
 
-export default Game
+export default Generation
