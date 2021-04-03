@@ -15,12 +15,11 @@ class Game {
   private options: GameOptions
 
   constructor(options: GameOptions) {
-    this.options = options
-
     this.grid = new Grid(options.grid)
     this.drawer = new Drawer(options)
     this.spawner = new Spawner(this.grid)
     this.generation = new Generation(this.grid)
+    this.options = options
   }
 
   public init() {
