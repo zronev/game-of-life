@@ -20,7 +20,7 @@ const game = new Game(options)
 const generationCounter = new GenerationCounter('#generation-count')
 
 game.init()
-game.spawn(2000)
+game.spawn()
 
 setInterval(() => {
   game.step()
@@ -30,7 +30,7 @@ setInterval(() => {
 const spawnButton: HTMLButtonElement = document.querySelector('#spawn-button')!
 
 const onSpawnClick = () => {
-  game.spawn(2000)
+  game.spawn()
 }
 
 spawnButton.addEventListener('click', onSpawnClick)

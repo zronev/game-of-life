@@ -27,8 +27,13 @@ class Game {
     this.setCanvasSize(this.options.canvas)
   }
 
-  public spawn(amount = 600) {
-    this.spawner.spawnRandomCells(amount)
+  public spawn(amount?: number) {
+    const GRID_OCCUPANCY_RATE = 0.25
+    const defaultAmount = Math.floor(
+      this.grid.getColumns() * this.grid.getColumns() * GRID_OCCUPANCY_RATE
+    )
+
+    this.spawner.spawnRandomCells(amount || defaultAmount)
     this.updateGrid()
   }
 
