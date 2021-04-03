@@ -11,6 +11,17 @@ class Grid {
     this.grid = this.makeGrid()
   }
 
+  public getAvailableCells(): number {
+    const maxAmount = this.rows * this.columns
+    const usedCellsCount = this.grid.reduce(
+      (count, col) =>
+        count + col.reduce((count, cell) => (cell ? count + 1 : count), 0),
+      0
+    )
+
+    return maxAmount - usedCellsCount
+  }
+
   public getGrid(): GridType {
     return this.grid
   }

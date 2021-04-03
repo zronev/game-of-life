@@ -1,6 +1,6 @@
 import Grid from './grid'
 import { Point } from '../common/types'
-import { getRandomValue } from '../common/utils'
+import { clamp, getRandomValue } from '../common/utils'
 
 class Spawner {
   private grid: Grid
@@ -11,10 +11,19 @@ class Spawner {
 
   public spawnRandomCells(amount: number) {
     const grid = this.grid.getGrid()
+    const availableCells = this.grid.getAvailableCells()
+    const resultAmount = clamp(amount, 0, availableCells)
 
-    for (let y = 0; y < amount; y++) {
+    let count = 0
+
+    while (count < resultAmount) {
       const point = this.getRandomCellCoordinate()
+      const isCellUsed = grid[point.y][point.x]
+
+      if (isCellUsed) continue
+
       grid[point.y][point.x] = true
+      count++
     }
   }
 
