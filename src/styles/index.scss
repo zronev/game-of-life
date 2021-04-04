@@ -1,6 +1,12 @@
 :root {
   --main-color: #2d3436;
   --border: 2px solid var(--main-color);
+  --color-on-hover: #ffffff;
+  --default-hover-color: #dfe6e9;
+  --success-hover-color: #55efc4;
+  --danger-hover-color: #d63031;
+  --info-hover-color: #0984e3;
+  --warning-hover-color: #ffeaa7;
 }
 
 html,
@@ -42,8 +48,6 @@ p {
 }
 
 .button {
-  --hover-color: #55efc4;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,13 +62,43 @@ p {
 
   transition: all 175ms ease-out;
 
-  &:hover {
-    background: var(--hover-color);
+  &:hover,
+  &:active {
+    color: var(--color-on-hover);
+    border: 2px solid var(--default-hover-color);
+    background: var(--default-hover-color);
     transition-timing-function: ease-in;
   }
 
-  &:active {
-    background: var(--hover-color);
-    transition-timing-function: ease-in;
+  &--success {
+    &:hover,
+    &:active {
+      border: 2px solid var(--success-hover-color);
+      background: var(--success-hover-color);
+    }
+  }
+
+  &--danger {
+    &:hover,
+    &:active {
+      border: 2px solid var(--danger-hover-color);
+      background: var(--danger-hover-color);
+    }
+  }
+
+  &--info {
+    &:hover,
+    &:active {
+      border: 2px solid var(--info-hover-color);
+      background: var(--info-hover-color);
+    }
+  }
+
+  &--warning {
+    &:hover,
+    &:active {
+      border: 2px solid var(--warning-hover-color);
+      background: var(--warning-hover-color);
+    }
   }
 }
