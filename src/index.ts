@@ -24,14 +24,21 @@ const game = new Game(options)
 game.init()
 game.spawn()
 
-const loop = new Loop(50)
-loop.start(() => {
+const loopStep = () => {
   game.step()
   generationCounter.update(game.getGenerationCount())
-})
+}
+
+const loop = new Loop(120)
+loop.start(loopStep)
 
 const generationCounter = new GenerationCounter('#generation-count')
+
 const spawnButton = new Button('#spawn-button')
-spawnButton.onClick(() => {
-  game.spawn()
-})
+spawnButton.onClick(() => game.spawn())
+
+const pauseButton = new Button('#pause-button')
+pauseButton.onClick(() => loop.stop())
+
+const buttonButton = new Button('#play-button')
+buttonButton.onClick(() => loop.start(loopStep))
