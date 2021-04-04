@@ -1,0 +1,55 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  min-width: 10rem;
+  padding: 0.5rem 1rem;
+  border: var(--border);
+  background: none;
+
+  transition: all 175ms ease-out;
+
+  &:hover,
+  &:active {
+    color: var(--color-on-hover);
+    border: 2px solid var(--default-hover-color);
+    background: var(--default-hover-color);
+    transition-timing-function: ease-in;
+  }
+
+  &--success {
+    &:hover,
+    &:active {
+      border: 2px solid var(--success-hover-color);
+      background: var(--success-hover-color);
+    }
+  }
+
+  &--danger {
+    &:hover,
+    &:active {
+      border: 2px solid var(--danger-hover-color);
+      background: var(--danger-hover-color);
+    }
+  }
+
+  &--info {
+    &:hover,
+    &:active {
+      border: 2px solid var(--info-hover-color);
+      background: var(--info-hover-color);
+    }
+  }
+
+  &--warning {
+    &:hover,
+    &:active {
+      border: 2px solid var(--warning-hover-color);
+      background: var(--warning-hover-color);
+    }
+  }
+}
