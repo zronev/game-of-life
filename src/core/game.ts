@@ -27,11 +27,7 @@ class Game {
   }
 
   public spawn(amount?: number) {
-    const GRID_OCCUPANCY_RATE = 0.25
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
-    const defaultAmount = Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
-
+    const defaultAmount = this.getDefaultAmount()
     this.spawner.spawnRandomCells(amount || defaultAmount)
     this.updateGrid()
   }
@@ -52,6 +48,13 @@ class Game {
 
   private updateGrid() {
     this.drawer.update(this.grid)
+  }
+
+  private getDefaultAmount(): number {
+    const GRID_OCCUPANCY_RATE = 0.25
+    const rows = this.grid.getRows()
+    const columns = this.grid.getColumns()
+    return Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
   }
 }
 
