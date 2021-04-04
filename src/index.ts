@@ -24,7 +24,7 @@ const game = new Game(options)
 game.init()
 game.spawn()
 
-const loop = new Loop(32)
+const loop = new Loop(50)
 loop.start(() => {
   game.step()
   generationCounter.update(game.getGenerationCount())
