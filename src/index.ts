@@ -40,5 +40,5 @@ spawnButton.onClick(() => game.spawn())
 const pauseButton = new Button('#pause-button')
 pauseButton.onClick(() => loop.stop())
 
-const buttonButton = new Button('#play-button')
-buttonButton.onClick(() => loop.start(loopStep))
+const playButton = new Button('#play-button')
+playButton.onClick(() => loop.start(loopStep))
