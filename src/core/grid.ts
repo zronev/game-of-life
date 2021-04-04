@@ -1,4 +1,5 @@
-import { GridOptions, GridType } from './types'
+import { GridType } from './types'
+import { GridOptions } from './options'
 
 class Grid {
   private rows: number

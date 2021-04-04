@@ -5,7 +5,7 @@ import Generation from './generation'
 import Drawer from '../canvas/drawer'
 import Canvas from '../canvas/canvas'
 
-import { CanvasOptions, GameOptions } from './types'
+import { CanvasOptions, GameOptions } from './options'
 
 class Game {
   private grid: Grid

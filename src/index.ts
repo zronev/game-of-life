@@ -5,21 +5,7 @@ import Canvas from './canvas/canvas'
 import Button from './ui/button'
 import GenerationCounter from './ui/generation-counter'
 
-import { createGameOptions } from './core/utils'
-
-const options = createGameOptions({
-  canvas: {
-    width: 800,
-    height: 800,
-  },
-  grid: {
-    rows: 100,
-    columns: 100,
-  },
-  cell: {
-    color: '#2d3436',
-  },
-})
+import options from './core/options'
 
 const game = new Game(options)
 game.init()

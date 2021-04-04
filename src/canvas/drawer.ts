@@ -1,6 +1,6 @@
 import Canvas from './canvas'
 import Grid from '../core/grid'
-import { GameOptions } from '../core/types'
+import { GameOptions } from '../core/options'
 
 class Drawer {
   private canvas: Canvas
