@@ -1,6 +1,6 @@
-import Element from './element'
+import UIElement from './element'
 
-class GenerationCounter extends Element {
+class GenerationCounter extends UIElement<HTMLElement> {
   constructor(selectors: string) {
     super(selectors)
   }

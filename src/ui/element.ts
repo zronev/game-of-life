@@ -1,9 +1,9 @@
-class Element {
-  protected domElement: HTMLElement
+abstract class UIElement<T extends Element> {
+  protected domElement: T
 
   constructor(selectors: string) {
     this.domElement = document.querySelector(selectors)!
   }
 }
 
-export default Element
+export default UIElement
