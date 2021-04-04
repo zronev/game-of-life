@@ -14,7 +14,7 @@ class Loop {
 
     const gameLoop = (timestamp: number) => {
       if (timestamp < lastFrameTimeMs + 1000 / this.interval) {
-        requestAnimationFrame(gameLoop)
+        this.requestId = window.requestAnimationFrame(gameLoop)
         return
       }
 
