@@ -1,19 +1,19 @@
 import Grid from './grid'
 import Rules from './rules'
 
-import { countNeighbours } from './utils'
 import { arrayClone } from '../common/utils'
 import { GridType, RulesState } from './types'
+import GridService from './grid-service'
 
 class Generation {
   private count: number
-  private grid: Grid
   private rules: Rules
+  private gridService: GridService
 
-  constructor(grid: Grid) {
-    this.grid = grid
-    this.rules = new Rules()
+  constructor(private grid: Grid) {
     this.count = 0
+    this.rules = new Rules()
+    this.gridService = new GridService(grid)
   }
 
   public next() {
@@ -25,7 +25,7 @@ class Generation {
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
-        const neighbours = countNeighbours(x, y, grid, rows, columns)
+        const neighbours = this.gridService.countNeighbours(x, y)
         const rulesState = this.rules.applyRules(cell, neighbours)
         this.changeCellState(x, y, gridCopy, rulesState)
       }
