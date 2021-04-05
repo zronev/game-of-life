@@ -1,4 +1,4 @@
-import { RulesState } from './types'
+import { RulesState } from './utility/types'
 
 class Rules {
   constructor() {}

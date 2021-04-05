@@ -1,5 +1,5 @@
-import { GridType } from './types'
-import { GridOptions } from './options'
+import { GridType } from '../utility/types'
+import { GridOptions } from '../utility/options'
 
 class Grid {
   private rows: number

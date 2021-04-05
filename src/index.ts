@@ -5,7 +5,7 @@ import Canvas from './canvas/canvas'
 import Button from './ui/button'
 import GenerationCounter from './ui/generation-counter'
 
-import options from './core/options'
+import options from './core/utility/options'
 import { downloadScreenshot } from './controls/utils'
 
 const game = new Game(options)

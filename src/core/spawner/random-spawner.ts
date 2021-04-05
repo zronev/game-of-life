@@ -1,9 +1,9 @@
-import Grid from './grid'
+import Grid from '../grid/grid'
 import Spawner from './spawner'
-import GridService from './grid-service'
+import GridService from '../grid/grid-service'
 
-import { Point } from '../common/types'
-import { clamp, getRandomValue } from '../common/utils'
+import { Point } from '../../common/types'
+import { clamp, getRandomValue } from '../../common/utils'
 
 class RandomSpawner extends Spawner {
   private gridService: GridService

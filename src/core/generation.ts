@@ -1,9 +1,9 @@
-import Grid from './grid'
 import Rules from './rules'
+import Grid from './grid/grid'
+import GridService from './grid/grid-service'
 
 import { arrayClone } from '../common/utils'
-import { GridType, RulesState } from './types'
-import GridService from './grid-service'
+import { GridType, RulesState } from './utility/types'
 
 class Generation {
   private count: number

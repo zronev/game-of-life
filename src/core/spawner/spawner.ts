@@ -1,4 +1,4 @@
-import Grid from './grid'
+import Grid from '../grid/grid'
 
 abstract class Spawner {
   constructor(protected grid: Grid) {}

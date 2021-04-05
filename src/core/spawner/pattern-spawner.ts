@@ -1,5 +1,5 @@
 import Spawner from './spawner'
-import { arrayClone } from '../common/utils'
+import { arrayClone } from '../../common/utils'
 
 class PatternSpawner extends Spawner {
   public spawnPattern(pattern: boolean[][]) {

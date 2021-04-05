@@ -1,4 +1,4 @@
-import Grid from './grid'
+import Grid from '../grid/grid'
 
 class GridService {
   constructor(private grid: Grid) {}
