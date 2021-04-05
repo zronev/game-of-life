@@ -4,11 +4,9 @@ import { GameOptions } from '../core/utility/options'
 
 class Drawer {
   private canvas: Canvas
-  private options: GameOptions
 
-  constructor(options: GameOptions) {
+  constructor(private options: GameOptions) {
     this.canvas = Canvas.getInstance()
-    this.options = options
   }
 
   public update(gridInstance: Grid) {
