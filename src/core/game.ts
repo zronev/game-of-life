@@ -1,13 +1,11 @@
 import Grid from './grid/grid'
+import Drawer from '../canvas/drawer'
 import Generation from './generation'
 import GridService from './grid/grid-service'
 import RandomSpawner from './spawner/random-spawner'
 import PatternSpawner from './spawner/pattern-spawner'
 
-import Drawer from '../canvas/drawer'
-import Canvas from '../canvas/canvas'
-
-import { CanvasOptions, GameOptions } from './utility/options'
+import { GameOptions } from './utility/options'
 
 class Game {
   private grid: Grid
@@ -24,10 +22,6 @@ class Game {
     this.gridService = new GridService(this.grid)
     this.randomSpawner = new RandomSpawner(this.grid)
     this.patternSpawner = new PatternSpawner(this.grid)
-  }
-
-  public init() {
-    this.setCanvasSize(this.options.canvas)
   }
 
   public step() {
@@ -48,11 +42,6 @@ class Game {
 
   public getGenerationCount(): number {
     return this.generation.getCount()
-  }
-
-  private setCanvasSize({ width, height }: CanvasOptions) {
-    const canvas = Canvas.getInstance()
-    canvas.setSize(width, height)
   }
 
   private updateGrid() {

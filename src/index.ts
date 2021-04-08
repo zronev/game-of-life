@@ -9,15 +9,14 @@ import options from './core/utility/options'
 import { downloadScreenshot } from './controls/utils'
 
 const game = new Game(options)
-game.init()
 game.randomSpawn()
 
 const loopStep = () => {
   game.step()
   generationCounter.update(game.getGenerationCount())
-}
+} 
 
-const loop = new Loop(60)
+const loop = new Loop(2)
 loop.start(loopStep)
 
 const generationCounter = new GenerationCounter('#generation-count')
@@ -44,11 +43,10 @@ playButton.onClick(() => loop.start(loopStep))
 
 const patternSpawnButton = new Button('#pattern-spawn-button')
 patternSpawnButton.onClick(() =>
-  game.patternSpawn(
-    [
-      [true, true, false],
-      [true, true, false],
-      [false, false, false],
-    ],
-  )
+  game.patternSpawn([
+    [false, false, true, false],
+    [true, false, false, true],
+    [true, false, false, true],
+    [false, true, false, false],
+  ])
 )

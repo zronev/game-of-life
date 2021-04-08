@@ -43,7 +43,8 @@ class Drawer {
   }
 
   private getRectSize(): number {
-    return this.options.canvas.width / this.options.grid.rows
+    const canvasElement = this.canvas.getDOMElement()
+    return Math.floor(canvasElement.width / this.options.grid.rows)
   }
 
   private drawCell(x: number, y: number, side: number, color?: string) {

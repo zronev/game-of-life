@@ -23,12 +23,6 @@ class Canvas {
     return Canvas.domElement
   }
 
-  public setSize(width: number, height: number) {
-    const canvasElement = this.getDOMElement()
-    canvasElement.width = width
-    canvasElement.height = height
-  }
-
   private createContext() {
     const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!
     const ctx = canvas.getContext('2d')!
