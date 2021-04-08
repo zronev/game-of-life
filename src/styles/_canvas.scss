@@ -1,3 +1,5 @@
 .canvas {
   border: var(--border);
+  image-rendering: crisp-edges; // for Firefox
+  image-rendering: pixelated;
 }

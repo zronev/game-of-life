@@ -1,3 +1,45 @@
 .main {
-  margin-top: 1rem;
+  display: grid;
+  grid-template-areas:
+    'info .'
+    'game patterns'
+    'controls .';
+  grid-template-columns: auto minmax(
+      auto,
+      calc(2 * var(--button-min-width) + var(--gap-size))
+    );
+  gap: var(--gap-size);
+  max-width: 64rem;
+  margin: 2rem auto 0;
+  position: relative;
+
+  @media (min-width: 90rem) {
+    max-width: 68rem;
+  }
+
+  @media (max-width: 64rem) {
+    grid-template-areas:
+      'info'
+      'game'
+      'controls'
+      'patterns';
+    grid-template-columns: auto;
+    max-width: 40rem;
+  }
+}
+
+.main__info {
+  grid-area: info;
+}
+
+.main__game {
+  grid-area: game;
+}
+
+.main__patterns {
+  grid-area: patterns;
+}
+
+.main__controls {
+  grid-area: controls;
 }

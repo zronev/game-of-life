@@ -6,7 +6,7 @@
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
-  min-width: 10rem;
+  min-width: var(--button-min-width);
   padding: 0.5rem 1rem;
   border: var(--border);
   background: none;
