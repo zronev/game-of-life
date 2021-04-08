@@ -30,14 +30,16 @@
     <link rel="manifest" href="../assets/site.webmanifest" />
   </head>
   <body>
-    <section class="generation">
-      <p>generation: <span id="generation-count">0</span></p>
-    </section>
-
     <main class="main">
-      <canvas id="canvas" class="canvas"></canvas>
+      <section class="generation main__info">
+        <p>generation: <span id="generation-count">0</span></p>
+      </section>
 
-      <section class="controls">
+      <section class="game-wrapper main__game">
+        <canvas id="canvas" width="600" height="600" class="canvas"></canvas>
+      </section>
+
+      <section class="controls main__controls">
         <button id="spawn-button" class="button button--success">spawn</button>
         <button id="screenshot-button" class="button button--info">
           screenshot
@@ -46,10 +48,12 @@
         <button id="pause-button" class="button button--danger">pause</button>
       </section>
 
-      <section class="patterns">
-        <button id="pattern-spawn-button" class="button button--danger">
-          pattern
-        </button>
+      <section class="patterns main__patterns">
+        <div class="patterns__column">
+          <button id="pattern-spawn-button" class="button button--danger">
+            pattern
+          </button>
+        </div>
       </section>
     </main>
 
