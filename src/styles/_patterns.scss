@@ -1,8 +1,5 @@
 .patterns {
-  &__column {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: var(--gap-size);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-size);
 }

@@ -4,9 +4,8 @@
     'info .'
     'game patterns'
     'controls .';
-  grid-template-columns: auto minmax(
-      auto,
-      calc(2 * var(--button-min-width) + var(--gap-size))
+  grid-template-columns: auto calc(
+      2 * var(--button-min-width) + var(--gap-size)
     );
   gap: var(--gap-size);
   max-width: 64rem;
