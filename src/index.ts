@@ -18,24 +18,27 @@ const loopStep = () => {
   generationCounter.update(game.getGenerationCount())
 }
 
-const loop = new Loop(2)
+const loop = new Loop(3)
 loop.start(loopStep)
 
 const generationCounter = new GenerationCounter('#generation-count')
 
-const screenshotButton = new Button('#screenshot-button')
-screenshotButton.onClick(() => {
-  const canvas = Canvas.getInstance()
-  const canvasDomElement = canvas.getDOMElement()
-  downloadScreenshot(canvasDomElement, {
-    fileName: 'game_of_life',
-    imageType: 'image/png',
-    quality: 1.0,
-  })
-})
+// const screenshotButton = new Button('#screenshot-button')
+// screenshotButton.onClick(() => {
+//   const canvas = Canvas.getInstance()
+//   const canvasDomElement = canvas.getDOMElement()
+//   downloadScreenshot(canvasDomElement, {
+//     fileName: 'game_of_life',
+//     imageType: 'image/png',
+//     quality: 1.0,
+//   })
+// })
 
 const spawnButton = new Button('#spawn-button')
 spawnButton.onClick(() => game.randomSpawn())
+
+const clearButton = new Button('#clear-button')
+clearButton.onClick(() => game.clearGrid())
 
 const pauseButton = new Button('#pause-button')
 pauseButton.onClick(() => loop.stop())
@@ -44,4 +47,7 @@ const playButton = new Button('#play-button')
 playButton.onClick(() => loop.start(loopStep))
 
 const patternSpawnButton = new Button('#pattern-spawn-button')
-patternSpawnButton.onClick(() => game.patternSpawn(patterns.toad))
+const [textContent, pattern] = Object.entries(patterns)[2]
+
+patternSpawnButton.setTextContent(textContent)
+patternSpawnButton.onClick(() => game.patternSpawn(pattern))

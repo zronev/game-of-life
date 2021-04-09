@@ -44,6 +44,11 @@ class Game {
     return this.generation.getCount()
   }
 
+  public clearGrid() {
+    this.gridService.clearGrid()
+    this.updateGrid()
+  }
+
   private updateGrid() {
     this.drawer.update(this.grid)
   }

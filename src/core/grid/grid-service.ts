@@ -1,7 +1,15 @@
 import Grid from '../grid/grid'
+import { createMatrix } from '../../common/utils'
 
 class GridService {
   constructor(private grid: Grid) {}
+
+  public clearGrid() {
+    const rows = this.grid.getRows()
+    const columns = this.grid.getColumns()
+    const emptyGrid = createMatrix(rows, columns, false)
+    this.grid.setGrid(emptyGrid)
+  }
 
   public getAvailableCells(): number {
     const rows = this.grid.getRows()
