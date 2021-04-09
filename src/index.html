@@ -31,33 +31,15 @@
   </head>
   <body>
     <main class="main">
-      <section class="generation main__info">
-        <p>generation: <span id="generation-count">0</span></p>
-      </section>
+      <section id="generation" class="generation main__info"></section>
 
       <section class="game-wrapper main__game">
         <canvas id="canvas" width="600" height="600" class="canvas"></canvas>
       </section>
 
-      <section class="controls main__controls">
-        <button id="spawn-button" class="button button--success">spawn</button>
-        <button id="clear-button" class="button button--danger">
-          clear
-        </button>
-        <!-- <button id="screenshot-button" class="button button--info">
-          screenshot
-        </button> -->
-        <button id="play-button" class="button button--warning">play</button>
-        <button id="pause-button" class="button button--danger">pause</button>
-      </section>
+      <section id="controls" class="controls main__controls"></section>
 
-      <section class="patterns main__patterns">
-        <div class="patterns__column">
-          <button id="pattern-spawn-button" class="button button--danger">
-            pattern
-          </button>
-        </div>
-      </section>
+      <section id="patterns" class="patterns main__patterns"></section>
     </main>
 
     <script src="./index.ts"></script>

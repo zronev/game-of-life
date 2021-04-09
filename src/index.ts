@@ -1,14 +1,11 @@
 import Game from './core/game'
 import Loop from './core/loop'
-import Canvas from './canvas/canvas'
 
 import Button from './ui/button'
 import GenerationCounter from './ui/generation-counter'
 
 import options from './core/utility/options'
 import patterns from './patterns/data'
-
-import { downloadScreenshot } from './controls/utils'
 
 const game = new Game(options)
 game.randomSpawn()
@@ -18,36 +15,29 @@ const loopStep = () => {
   generationCounter.update(game.getGenerationCount())
 }
 
-const loop = new Loop(3)
+const loop = new Loop(30)
 loop.start(loopStep)
 
-const generationCounter = new GenerationCounter('#generation-count')
+const generationCounter = new GenerationCounter('#generation')
 
-// const screenshotButton = new Button('#screenshot-button')
-// screenshotButton.onClick(() => {
-//   const canvas = Canvas.getInstance()
-//   const canvasDomElement = canvas.getDOMElement()
-//   downloadScreenshot(canvasDomElement, {
-//     fileName: 'game_of_life',
-//     imageType: 'image/png',
-//     quality: 1.0,
-//   })
-// })
-
-const spawnButton = new Button('#spawn-button')
+const spawnButton = new Button('#controls')
+spawnButton.setTextContent('spawn')
 spawnButton.onClick(() => game.randomSpawn())
 
-const clearButton = new Button('#clear-button')
+const clearButton = new Button('#controls')
+clearButton.setTextContent('clear')
 clearButton.onClick(() => game.clearGrid())
 
-const pauseButton = new Button('#pause-button')
-pauseButton.onClick(() => loop.stop())
-
-const playButton = new Button('#play-button')
+const playButton = new Button('#controls')
+playButton.setTextContent('play')
 playButton.onClick(() => loop.start(loopStep))
 
-const patternSpawnButton = new Button('#pattern-spawn-button')
-const [textContent, pattern] = Object.entries(patterns)[2]
+const pauseButton = new Button('#controls')
+pauseButton.setTextContent('pause')
+pauseButton.onClick(() => loop.stop())
 
-patternSpawnButton.setTextContent(textContent)
-patternSpawnButton.onClick(() => game.patternSpawn(pattern))
+Object.entries(patterns).forEach(([key, pattern]) => {
+  const patternSpawnButton = new Button('#patterns')
+  patternSpawnButton.setTextContent(key)
+  patternSpawnButton.onClick(() => game.patternSpawn(pattern, { x: 50, y: 50 }))
+})
