@@ -6,6 +6,7 @@ import RandomSpawner from './spawner/random-spawner'
 import PatternSpawner from './spawner/pattern-spawner'
 
 import { GameOptions } from './utility/options'
+import { Point } from '../common/types'
 
 class Game {
   private grid: Grid
@@ -35,8 +36,8 @@ class Game {
     this.updateGrid()
   }
 
-  public patternSpawn(pattern: boolean[][]) {
-    this.patternSpawner.spawn(pattern)
+  public patternSpawn(pattern: boolean[][], offset?: Point) {
+    this.patternSpawner.spawn(pattern, offset)
     this.updateGrid()
   }
 

@@ -1,11 +1,12 @@
 import Spawner from './spawner'
+import { Point } from '../../common/types'
 import { arrayClone } from '../../common/utils'
 
 class PatternSpawner extends Spawner {
-  public spawn(pattern: boolean[][]) {
+  public spawn(pattern: boolean[][], offset?: Point) {
     const isValidPattern = this.isValidPattern(pattern)
 
-    if (isValidPattern) this.placeInGrid(pattern)
+    if (isValidPattern) this.placeInGrid(pattern, offset)
   }
 
   private isValidPattern(pattern: boolean[][]): boolean {
@@ -18,7 +19,13 @@ class PatternSpawner extends Spawner {
     return patternRows <= gridRows && patternColumns <= gridColumns
   }
 
-  private placeInGrid(pattern: boolean[][]) {
+  private placeInGrid(
+    pattern: boolean[][],
+    offset: Point = {
+      x: 0,
+      y: 0,
+    }
+  ) {
     const gridCopy = arrayClone(this.grid.getGrid())
 
     const patternRows = pattern[0].length
@@ -26,7 +33,7 @@ class PatternSpawner extends Spawner {
 
     for (let y = 0; y < patternColumns; y++) {
       for (let x = 0; x < patternRows; x++) {
-        gridCopy[y][x] = pattern[y][x]
+        gridCopy[y + offset.y][x + offset.x] = pattern[y][x]
       }
     }
 
