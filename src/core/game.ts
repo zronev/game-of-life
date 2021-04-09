@@ -31,12 +31,12 @@ class Game {
 
   public randomSpawn(amount?: number) {
     const defaultAmount = this.gridService.getDefaultAmount()
-    this.randomSpawner.spawnRandomCells(amount || defaultAmount)
+    this.randomSpawner.spawn(amount || defaultAmount)
     this.updateGrid()
   }
 
   public patternSpawn(pattern: boolean[][]) {
-    this.patternSpawner.spawnPattern(pattern)
+    this.patternSpawner.spawn(pattern)
     this.updateGrid()
   }
 

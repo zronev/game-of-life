@@ -13,7 +13,7 @@ class RandomSpawner extends Spawner {
     this.gridService = new GridService(grid)
   }
 
-  public spawnRandomCells(amount: number) {
+  public spawn(amount: number) {
     const grid = this.grid.getGrid()
     const availableCells = this.gridService.getAvailableCells()
     const resultAmount = clamp(amount, 0, availableCells)

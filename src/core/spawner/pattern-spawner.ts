@@ -2,7 +2,7 @@ import Spawner from './spawner'
 import { arrayClone } from '../../common/utils'
 
 class PatternSpawner extends Spawner {
-  public spawnPattern(pattern: boolean[][]) {
+  public spawn(pattern: boolean[][]) {
     const isValidPattern = this.isValidPattern(pattern)
 
     if (isValidPattern) this.placeInGrid(pattern)
