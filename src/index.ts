@@ -6,6 +6,8 @@ import Button from './ui/button'
 import GenerationCounter from './ui/generation-counter'
 
 import options from './core/utility/options'
+import patterns from './patterns/data'
+
 import { downloadScreenshot } from './controls/utils'
 
 const game = new Game(options)
@@ -14,7 +16,7 @@ game.randomSpawn()
 const loopStep = () => {
   game.step()
   generationCounter.update(game.getGenerationCount())
-} 
+}
 
 const loop = new Loop(2)
 loop.start(loopStep)
@@ -42,11 +44,4 @@ const playButton = new Button('#play-button')
 playButton.onClick(() => loop.start(loopStep))
 
 const patternSpawnButton = new Button('#pattern-spawn-button')
-patternSpawnButton.onClick(() =>
-  game.patternSpawn([
-    [false, false, true, false],
-    [true, false, false, true],
-    [true, false, false, true],
-    [false, true, false, false],
-  ])
-)
+patternSpawnButton.onClick(() => game.patternSpawn(patterns.toad))
