@@ -8,3 +8,13 @@ export const arrayClone = <T>(arr: T[]) => JSON.parse(JSON.stringify(arr))
 
 export const clamp = (value: number, min: number, max: number): number =>
   Math.max(min, Math.min(value, max))
+
+export const createMatrix = <T>(
+  rows: number,
+  columns: number,
+  value: T
+): T[][] => {
+  return Array<T[]>(rows)
+    .fill([])
+    .map(() => Array(columns).fill(value))
+}

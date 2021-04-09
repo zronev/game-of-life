@@ -1,5 +1,6 @@
 import { GridType } from '../utility/types'
 import { GridOptions } from '../utility/options'
+import { createMatrix } from '../../common/utils'
 
 class Grid {
   private rows: number
@@ -9,7 +10,7 @@ class Grid {
   constructor(options: GridOptions) {
     this.rows = options.rows
     this.columns = options.columns
-    this.grid = this.makeGrid()
+    this.grid = createMatrix<boolean>(this.rows, this.columns, false)
   }
 
   public getGrid(): GridType {
@@ -26,12 +27,6 @@ class Grid {
 
   public getColumns(): number {
     return this.columns
-  }
-
-  private makeGrid(): GridType {
-    return Array<boolean[]>(this.rows)
-      .fill([])
-      .map(() => Array(this.columns).fill(false))
   }
 }
 
