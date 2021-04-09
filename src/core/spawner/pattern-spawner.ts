@@ -26,7 +26,7 @@ class PatternSpawner extends Spawner {
 
     for (let y = 0; y < patternColumns; y++) {
       for (let x = 0; x < patternRows; x++) {
-        gridCopy[y][x] = pattern[x][y]
+        gridCopy[y][x] = pattern[y][x]
       }
     }
 
