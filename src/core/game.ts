@@ -41,8 +41,12 @@ class Game {
     this.updateGrid()
   }
 
-  public getGenerationCount(): number {
+  public getGeneration(): number {
     return this.generation.getCount()
+  }
+
+  public getPopulation(): number {
+    return this.gridService.getUsedCellsCount()
   }
 
   public clearGrid() {

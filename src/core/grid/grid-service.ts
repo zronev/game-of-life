@@ -63,7 +63,7 @@ class GridService {
     return neighbours
   }
 
-  private getUsedCellsCount(): number {
+  public getUsedCellsCount(): number {
     const grid = this.grid.getGrid()
     return grid.reduce(
       (count, col) =>
