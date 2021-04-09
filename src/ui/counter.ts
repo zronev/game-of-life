@@ -5,7 +5,7 @@ class Counter extends UIElement<HTMLDivElement> {
     super('div', parentSelectors, className)
   }
 
-  public update(caption: string, count: number) {
+  public update(caption: string, count: string | number) {
     this.domElement.textContent = `${caption}: ${count}`
   }
 }

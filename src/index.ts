@@ -13,9 +13,10 @@ game.randomSpawn()
 const loop = new Loop(60)
 
 const step = () => {
+  const population = game.getPopulation()
   game.step()
-  updateGeneration()
-  updatePopulation()
+  updateGeneration(population)
+  populationCounter.update('population', population)
 }
 
 loop.start(step)
@@ -23,23 +24,24 @@ loop.start(step)
 const generationCounter = new Counter('#info')
 const populationCounter = new Counter('#info')
 
-const updateGeneration = () =>
-  generationCounter.update('generation', game.getGeneration())
-const updatePopulation = () =>
-  populationCounter.update('population', game.getPopulation())
+const updateGeneration = (population: number) => {
+  const isColonyDead = population === 0
+  const caption = isColonyDead ? 'your colony is dead' : game.getGeneration()
+  generationCounter.update('generation', caption)
+}
 
 const spawnButton = new Button('#controls')
 spawnButton.setTextContent('spawn')
 spawnButton.onClick(() => {
   game.randomSpawn()
-  updatePopulation()
+  populationCounter.update('population', game.getPopulation())
 })
 
 const clearButton = new Button('#controls')
 clearButton.setTextContent('clear')
 clearButton.onClick(() => {
   game.clearGrid()
-  updatePopulation()
+  populationCounter.update('population', game.getPopulation())
 })
 
 const playButton = new Button('#controls')
@@ -52,9 +54,10 @@ pauseButton.onClick(() => loop.stop())
 
 Object.entries(patterns).forEach(([key, pattern]) => {
   const patternSpawnButton = new Button('#patterns')
+
   patternSpawnButton.setTextContent(key)
   patternSpawnButton.onClick(() => {
     game.patternSpawn(pattern, { x: 50, y: 50 })
-    updatePopulation()
+    populationCounter.update('population', game.getPopulation())
   })
 })
