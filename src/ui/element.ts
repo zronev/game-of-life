@@ -34,7 +34,9 @@ abstract class UIElement<T extends HTMLElement> {
   }
 
   private addClassName(className?: string) {
-    if (className) this.domElement.classList.add(className)
+    if (!className) return
+    const classes = className.split(' ').filter(Boolean)
+    this.domElement.classList.add(...classes)
   }
 }
 
