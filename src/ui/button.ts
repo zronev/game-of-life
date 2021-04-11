@@ -1,8 +1,8 @@
 import UIElement from './element'
 
 class Button extends UIElement<HTMLButtonElement> {
-  constructor(parentSelectors?: string) {
-    super('button', parentSelectors, 'button')
+  constructor(parentSelectors?: string, className = '') {
+    super('button', parentSelectors, `button ${className}`)
   }
 
   public onClick(fn: () => void) {
