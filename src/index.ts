@@ -1,11 +1,11 @@
 import Game from './core/game'
 import Loop from './core/loop'
 
+import Info from './info/info'
 import Button from './ui/button'
-import Counter from './ui/counter'
 
 import options from './core/utility/options'
-import patterns from './patterns/data'
+import createPatterns from './patterns'
 
 const game = new Game(options)
 game.randomSpawn()
@@ -13,35 +13,26 @@ game.randomSpawn()
 const loop = new Loop(60)
 
 const step = () => {
-  const population = game.getPopulation()
   game.step()
-  updateGeneration(population)
-  populationCounter.update('population', population)
+  info.updateCounters()
 }
 
 loop.start(step)
 
-const generationCounter = new Counter('#info')
-const populationCounter = new Counter('#info')
+const info = new Info(game)
 
-const updateGeneration = (population: number) => {
-  const isColonyDead = population === 0
-  const caption = isColonyDead ? 'your colony is dead' : game.getGeneration()
-  generationCounter.update('generation', caption)
-}
-
-const spawnButton = new Button('#controls')
+const spawnButton = new Button('#controls', 'button--success')
 spawnButton.setTextContent('spawn')
 spawnButton.onClick(() => {
   game.randomSpawn()
-  populationCounter.update('population', game.getPopulation())
+  info.updateCounters()
 })
 
-const clearButton = new Button('#controls')
+const clearButton = new Button('#controls', 'button--danger')
 clearButton.setTextContent('clear')
 clearButton.onClick(() => {
   game.clearGrid()
-  populationCounter.update('population', game.getPopulation())
+  info.updateCounters()
 })
 
 const playButton = new Button('#controls')
@@ -52,12 +43,4 @@ const pauseButton = new Button('#controls')
 pauseButton.setTextContent('pause')
 pauseButton.onClick(() => loop.stop())
 
-Object.entries(patterns).forEach(([key, pattern]) => {
-  const patternSpawnButton = new Button('#patterns')
-
-  patternSpawnButton.setTextContent(key)
-  patternSpawnButton.onClick(() => {
-    game.patternSpawn(pattern, { x: 50, y: 50 })
-    populationCounter.update('population', game.getPopulation())
-  })
-})
+createPatterns(game, info)
