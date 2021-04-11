@@ -8,13 +8,13 @@ import { clamp, getRandomValue } from '../../common/utils'
 class RandomSpawner extends Spawner {
   private gridService: GridService
 
-  constructor(protected grid: Grid) {
-    super(grid)
-    this.gridService = new GridService(grid)
+  constructor(protected gridInstance: Grid) {
+    super(gridInstance)
+    this.gridService = new GridService(gridInstance)
   }
 
   public spawn(amount: number) {
-    const grid = this.grid.getGrid()
+    const { grid } = this.gridInstance
     const availableCells = this.gridService.getAvailableCells()
     const resultAmount = clamp(amount, 0, availableCells)
 
@@ -32,8 +32,7 @@ class RandomSpawner extends Spawner {
   }
 
   private getRandomCellCoordinate(): Point {
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
+    const { rows, columns } = this.gridInstance
 
     return {
       x: getRandomValue(0, rows - 1),

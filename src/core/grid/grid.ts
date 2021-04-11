@@ -3,30 +3,30 @@ import { GridOptions } from '../utility/options'
 import { createMatrix } from '../../common/utils'
 
 class Grid {
-  private rows: number
-  private columns: number
-  private grid: GridType
+  private _rows: number
+  private _columns: number
+  private _grid: GridType
 
   constructor(options: GridOptions) {
-    this.rows = options.rows
-    this.columns = options.columns
-    this.grid = createMatrix<boolean>(this.rows, this.columns, false)
+    this._rows = options.rows
+    this._columns = options.columns
+    this._grid = createMatrix<boolean>(this.rows, this.columns, false)
   }
 
-  public getGrid(): GridType {
-    return this.grid
+  public get grid(): GridType {
+    return this._grid
   }
 
-  public setGrid(grid: GridType) {
-    this.grid = grid
+  public set grid(value: GridType) {
+    this._grid = value
   }
 
-  public getRows(): number {
-    return this.rows
+  public get rows(): number {
+    return this._rows
   }
 
-  public getColumns(): number {
-    return this.columns
+  public get columns(): number {
+    return this._columns
   }
 }
 

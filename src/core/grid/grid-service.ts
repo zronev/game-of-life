@@ -2,19 +2,16 @@ import Grid from '../grid/grid'
 import { createMatrix } from '../../common/utils'
 
 class GridService {
-  constructor(private grid: Grid) {}
+  constructor(private gridInstance: Grid) {}
 
   public clearGrid() {
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
+    const { rows, columns } = this.gridInstance
     const emptyGrid = createMatrix(rows, columns, false)
-    this.grid.setGrid(emptyGrid)
+    this.gridInstance.grid = emptyGrid
   }
 
   public getAvailableCells(): number {
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
-
+    const { rows, columns } = this.gridInstance
     const maxAmount = rows * columns
     const usedCellsCount = this.getUsedCellsCount()
 
@@ -23,15 +20,12 @@ class GridService {
 
   public getDefaultAmount(): number {
     const GRID_OCCUPANCY_RATE = 0.25
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
+    const { rows, columns } = this.gridInstance
     return Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
   }
 
   public countNeighbours(x: number, y: number): number {
-    const grid = this.grid.getGrid()
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
+    const { grid, rows, columns } = this.gridInstance
 
     let neighbours = 0
 
@@ -64,7 +58,7 @@ class GridService {
   }
 
   public getUsedCellsCount(): number {
-    const grid = this.grid.getGrid()
+    const { grid } = this.gridInstance
     return grid.reduce(
       (count, col) =>
         count + col.reduce((count, cell) => (cell ? count + 1 : count), 0),

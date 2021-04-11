@@ -10,16 +10,14 @@ class Generation {
   private rules: Rules
   private gridService: GridService
 
-  constructor(private grid: Grid) {
+  constructor(private gridInstance: Grid) {
     this.count = 0
     this.rules = new Rules()
-    this.gridService = new GridService(grid)
+    this.gridService = new GridService(gridInstance)
   }
 
   public next() {
-    const grid = this.grid.getGrid()
-    const rows = this.grid.getRows()
-    const columns = this.grid.getColumns()
+    const { grid, rows, columns } = this.gridInstance
     const gridCopy = arrayClone(grid)
 
     for (let y = 0; y < columns; y++) {
@@ -31,7 +29,7 @@ class Generation {
       }
     }
 
-    this.grid.setGrid(gridCopy)
+    this.gridInstance.grid = gridCopy
     this.increaseCount()
   }
 

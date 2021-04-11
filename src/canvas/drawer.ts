@@ -22,9 +22,7 @@ class Drawer {
 
   private drawGrid(gridInstance: Grid) {
     const rectSize = this.getRectSize()
-    const grid = gridInstance.getGrid()
-    const rows = gridInstance.getRows()
-    const columns = gridInstance.getColumns()
+    const { grid, rows, columns } = gridInstance
 
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {

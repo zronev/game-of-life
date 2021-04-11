@@ -1,7 +1,7 @@
 import Grid from '../grid/grid'
 
 abstract class Spawner {
-  constructor(protected grid: Grid) {}
+  constructor(protected gridInstance: Grid) {}
 
   public abstract spawn(...args: any): void
 }
