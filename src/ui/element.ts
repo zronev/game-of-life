@@ -1,12 +1,12 @@
 abstract class UIElement<T extends HTMLElement> {
-  protected domElement: T
+  protected _domElement: T
 
   constructor(
     tagName: keyof HTMLElementTagNameMap,
     parentSelectors?: string,
     className?: string
   ) {
-    this.domElement = this.getDOMElement(tagName)
+    this._domElement = this.createDOMElement(tagName)
     this.appendDOMElement(parentSelectors)
     this.addClassName(className)
   }
@@ -15,9 +15,12 @@ abstract class UIElement<T extends HTMLElement> {
     this.domElement.textContent = textContent
   }
 
-  private getDOMElement(tagName: string): T {
-    const domElement = document.createElement(tagName)!
-    return domElement as T
+  public get domElement(): T {
+    return this._domElement
+  }
+
+  private createDOMElement(tagName: string): T {
+    return document.createElement(tagName)! as T
   }
 
   private appendDOMElement(parentSelectors?: string) {

@@ -1,16 +1,12 @@
-import Canvas from './canvas'
-import Grid from '../core/grid/grid'
-import { CellOptions, GridOptions } from '../core/utility/options'
+import Grid from './grid/grid'
+import Canvas from '../ui/canvas'
+import { GameOptions } from './utility/options'
 
 class Drawer {
   private canvas: Canvas
 
-  constructor(
-    private gridOptions: GridOptions,
-    private cellOptions: CellOptions,
-    canvasSelectors: string
-  ) {
-    const canvas = new Canvas(canvasSelectors)
+  constructor(private options: GameOptions) {
+    const canvas = new Canvas(options.canvas)
     this.canvas = canvas
   }
 
@@ -38,7 +34,7 @@ class Drawer {
           x * rectSize,
           y * rectSize,
           rectSize,
-          this.cellOptions.color
+          this.options.cell.color
         )
       }
     }
@@ -46,7 +42,7 @@ class Drawer {
 
   private getRectSize(): number {
     const { domElement } = this.canvas
-    return Math.floor(domElement.width / this.gridOptions.rows)
+    return Math.floor(domElement.width / this.options.grid.rows)
   }
 
   private drawCell(x: number, y: number, side: number, color?: string) {
