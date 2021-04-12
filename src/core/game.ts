@@ -16,7 +16,7 @@ class Game {
   private randomSpawner: RandomSpawner
   private patternSpawner: PatternSpawner
 
-  constructor(private options: GameOptions) {
+  constructor(options: GameOptions) {
     this.grid = new Grid(options.grid)
     this.drawer = new Drawer(options)
     this.generation = new Generation(this.grid)
