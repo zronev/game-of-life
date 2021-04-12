@@ -4,7 +4,12 @@ import { CanvasOptions } from '../core/utility/options'
 class Canvas extends UIElement<HTMLCanvasElement> {
   private _ctx: CanvasRenderingContext2D
 
-  constructor({ parentSelectors, width, height, className }: CanvasOptions) {
+  constructor({
+    parentSelectors,
+    width,
+    height,
+    className = '',
+  }: CanvasOptions) {
     super('canvas', parentSelectors, `canvas ${className}`)
 
     this._ctx = this.domElement.getContext('2d')!
