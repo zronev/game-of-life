@@ -2,7 +2,7 @@ class Canvas {
   private _ctx: CanvasRenderingContext2D
   private _domElement: HTMLCanvasElement
 
-  private constructor(selector: string) {
+  constructor(selector: string) {
     const canvas = document.querySelector<HTMLCanvasElement>(selector)!
     const ctx = canvas.getContext('2d')!
 
