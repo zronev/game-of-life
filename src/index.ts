@@ -12,7 +12,7 @@ const loop = new Loop(60)
 
 const step = () => {
   game.step()
-  info.updateCounters()
+  info.updateAllCounters()
 }
 
 game.randomSpawn()

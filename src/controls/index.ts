@@ -13,14 +13,14 @@ const createControls = (
   spawnButton.setTextContent('spawn')
   spawnButton.onClick(() => {
     game.randomSpawn()
-    info.updateCounters()
+    info.updateAllCounters()
   })
 
   const clearButton = new Button('#controls', 'button--danger')
   clearButton.setTextContent('clear')
   clearButton.onClick(() => {
     game.clearGrid()
-    info.updateCounters()
+    info.updateAllCounters()
   })
 
   const playButton = new Button('#controls')

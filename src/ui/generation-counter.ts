@@ -6,12 +6,8 @@ class GenerationCounter extends Counter {
     super('#info')
   }
 
-  public updateGeneration(population: number) {
-    const isColonyDead = population === 0
-    const caption = isColonyDead
-      ? 'your colony is dead'
-      : this.game.getGeneration()
-    this.update('generation', caption)
+  public updateGeneration() {
+    this.update('generation', this.game.getGeneration())
   }
 }
 

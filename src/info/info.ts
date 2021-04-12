@@ -6,15 +6,22 @@ class Info {
   private generationCounter: GenerationCounter
   private populationCounter: PopulationCounter
 
-  constructor(private game: Game) {
+  constructor(game: Game) {
     this.generationCounter = new GenerationCounter(game)
-    this.populationCounter = new PopulationCounter()
+    this.populationCounter = new PopulationCounter(game)
   }
 
-  public updateCounters(options = { generation: true, population: true }) {
-    const population = this.game.getPopulation()
-    if (options.generation) this.generationCounter.updateGeneration(population)
-    if (options.population) this.populationCounter.updatePopulation(population)
+  public updateAllCounters() {
+    this.updateGenerationCounter()
+    this.updatePopulationCounter()
+  }
+
+  public updateGenerationCounter() {
+    this.generationCounter.updateGeneration()
+  }
+
+  public updatePopulationCounter() {
+    this.populationCounter.updatePopulation()
   }
 }
 

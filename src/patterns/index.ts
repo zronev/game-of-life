@@ -10,7 +10,7 @@ const createPatterns = (game: Game, info: Info) => {
     patternSpawnButton.setTextContent(key)
     patternSpawnButton.onClick(() => {
       game.patternSpawn(pattern, { x: 50, y: 50 })
-      info.updateCounters({ generation: false, population: true })
+      info.updatePopulationCounter()
     })
   })
 }
