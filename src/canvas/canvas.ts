@@ -1,34 +1,21 @@
 class Canvas {
-  private static instance: Canvas
-  private static ctx: CanvasRenderingContext2D
-  private static domElement: HTMLCanvasElement
+  private _ctx: CanvasRenderingContext2D
+  private _domElement: HTMLCanvasElement
 
-  private constructor() {
-    this.createContext()
-  }
-
-  public static getInstance(): Canvas {
-    if (!Canvas.instance) {
-      Canvas.instance = new Canvas()
-    }
-
-    return Canvas.instance
-  }
-
-  public getContext(): CanvasRenderingContext2D {
-    return Canvas.ctx
-  }
-
-  public getDOMElement(): HTMLCanvasElement {
-    return Canvas.domElement
-  }
-
-  private createContext() {
-    const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!
+  private constructor(selector: string) {
+    const canvas = document.querySelector<HTMLCanvasElement>(selector)!
     const ctx = canvas.getContext('2d')!
 
-    Canvas.ctx = ctx
-    Canvas.domElement = canvas
+    this._ctx = ctx
+    this._domElement = canvas
+  }
+
+  public get ctx(): CanvasRenderingContext2D {
+    return this._ctx
+  }
+
+  public get domElement(): HTMLCanvasElement {
+    return this._domElement
   }
 }
 

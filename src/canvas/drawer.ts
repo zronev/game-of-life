@@ -3,11 +3,7 @@ import Grid from '../core/grid/grid'
 import { GameOptions } from '../core/utility/options'
 
 class Drawer {
-  private canvas: Canvas
-
-  constructor(private options: GameOptions) {
-    this.canvas = Canvas.getInstance()
-  }
+  constructor(private options: GameOptions, private canvas: Canvas) {}
 
   public update(gridInstance: Grid) {
     this.clearScreen()
@@ -15,9 +11,8 @@ class Drawer {
   }
 
   private clearScreen() {
-    const ctx = this.canvas.getContext()
-    const canvasElement = this.canvas.getDOMElement()
-    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
+    const { ctx, domElement } = this.canvas
+    ctx.clearRect(0, 0, domElement.width, domElement.height)
   }
 
   private drawGrid(gridInstance: Grid) {
@@ -41,12 +36,12 @@ class Drawer {
   }
 
   private getRectSize(): number {
-    const canvasElement = this.canvas.getDOMElement()
-    return Math.floor(canvasElement.width / this.options.grid.rows)
+    const { domElement } = this.canvas
+    return Math.floor(domElement.width / this.options.grid.rows)
   }
 
   private drawCell(x: number, y: number, side: number, color?: string) {
-    const ctx = this.canvas.getContext()
+    const { ctx } = this.canvas
     ctx.fillStyle = color || ''
     ctx.fillRect(x, y, side, side)
   }
