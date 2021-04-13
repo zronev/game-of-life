@@ -7,10 +7,11 @@ class Grid {
   private _columns: number
   private _grid: GridType
 
-  constructor(options: GridOptions) {
+  constructor(options: GridOptions, prepared?: GridType) {
     this._rows = options.rows
     this._columns = options.columns
-    this._grid = createMatrix<boolean>(this.rows, this.columns, false)
+    this._grid =
+      prepared || createMatrix<boolean>(this.rows, this.columns, false)
   }
 
   public get grid(): GridType {
