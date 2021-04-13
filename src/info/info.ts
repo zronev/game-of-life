@@ -9,6 +9,7 @@ class Info {
   constructor(game: Game) {
     this.generationCounter = new GenerationCounter(game)
     this.populationCounter = new PopulationCounter(game)
+    this.updateAllCounters()
   }
 
   public updateAllCounters() {
