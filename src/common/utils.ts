@@ -18,3 +18,15 @@ export const createMatrix = <T>(
     .fill([])
     .map(() => Array(columns).fill(value))
 }
+
+// export const transposeMatrix = <T>(matrix: T[][]): T[][] => {
+//   const clone = arrayClone(matrix)
+
+//   for (let y = 0; y < matrix.length; y++) {
+//     for (let x = 0; x < matrix[0].length; x++) {
+//       const cell = matrix[y][x]
+//     }
+//   }
+
+//   return clone
+// }
