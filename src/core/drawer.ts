@@ -1,14 +1,12 @@
 import Grid from './grid/grid'
 import Canvas from '../ui/canvas'
-import { GameOptions } from './utility/options'
+import { CellOptions, GridOptions } from './utility/options'
 
 class Drawer {
-  private canvas: Canvas
-
-  constructor(private options: GameOptions) {
-    const canvas = new Canvas(options.canvas)
-    this.canvas = canvas
-  }
+  constructor(
+    private options: { cell: CellOptions; grid: GridOptions },
+    private canvas: Canvas
+  ) {}
 
   public update(gridInstance: Grid) {
     this.clearScreen()

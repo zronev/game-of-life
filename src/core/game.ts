@@ -1,5 +1,6 @@
 import Grid from './grid/grid'
 import Drawer from './drawer'
+import Canvas from '../ui/canvas'
 import Generation from './generation'
 import GridService from './grid/grid-service'
 import RandomSpawner from './spawner/random-spawner'
@@ -17,8 +18,10 @@ class Game {
   private patternSpawner: PatternSpawner
 
   constructor(options: GameOptions) {
+    const canvas = new Canvas(options.canvas)
+
     this.grid = new Grid(options.grid)
-    this.drawer = new Drawer(options)
+    this.drawer = new Drawer(options, canvas)
     this.generation = new Generation(this.grid)
     this.gridService = new GridService(this.grid)
     this.randomSpawner = new RandomSpawner(this.grid)
