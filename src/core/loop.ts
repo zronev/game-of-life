@@ -1,10 +1,9 @@
 class Loop {
   private interval: number
-  private requestId: number | null
+  private requestId: number | null = null
 
   constructor(interval: number) {
     this.interval = interval
-    this.requestId = null
   }
 
   public start(fn: () => void) {
