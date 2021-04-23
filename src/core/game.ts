@@ -6,7 +6,7 @@ import GridService from './grid/grid-service'
 import RandomSpawner from './spawner/random-spawner'
 import PatternSpawner from './spawner/pattern-spawner'
 
-import { GameOptions } from './utility/options'
+import { Options } from './utility/options'
 import { Point } from '../common/types'
 
 class Game {
@@ -17,7 +17,7 @@ class Game {
   private randomSpawner: RandomSpawner
   private patternSpawner: PatternSpawner
 
-  constructor(options: GameOptions) {
+  constructor(options: Options) {
     const canvas = new Canvas(options.canvas)
 
     this.grid = new Grid(options.grid)

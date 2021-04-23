@@ -14,15 +14,15 @@ export type CanvasOptions = {
   className?: string
 }
 
-export interface GameOptions {
+export interface Options {
   canvas: CanvasOptions
   grid: GridOptions
   cell: CellOptions
 }
 
-const createGameOptions = (options: GameOptions): GameOptions => options
+export const createOptions = (options: Options): Options => options
 
-const options = createGameOptions({
+const options = createOptions({
   canvas: {
     parentSelectors: '#game',
     width: 600,
