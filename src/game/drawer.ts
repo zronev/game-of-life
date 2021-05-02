@@ -1,12 +1,13 @@
 import Grid from '../core/grid'
 import Canvas from '../app/ui/canvas'
-import { CellOptions, GridOptions } from './options'
+import { Options } from './options'
 
 class Drawer {
-  constructor(
-    private options: { cell: CellOptions; grid: GridOptions },
-    private canvas: Canvas
-  ) {}
+  private canvas: Canvas
+
+  constructor(private options: Options) {
+    this.canvas = new Canvas(options.canvas)
+  }
 
   public update(gridInstance: Grid) {
     this.clearScreen()
