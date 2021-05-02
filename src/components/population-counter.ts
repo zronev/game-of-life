@@ -1,4 +1,4 @@
-import Game from '../../game/game'
+import Game from '../game'
 import Counter from './counter'
 
 class PopulationCounter extends Counter {

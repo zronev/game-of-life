@@ -1,6 +1,6 @@
 import Game from '../../game'
 import Info from '../info/info'
-import Button from '../ui/button'
+import Button from '../../components/button'
 import patterns from './data'
 
 const createPatterns = (game: Game, info: Info) => {

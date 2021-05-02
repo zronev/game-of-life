@@ -1,5 +1,5 @@
 import Grid from '../core/grid'
-import Canvas from '../app/ui/canvas'
+import Canvas from '../components/canvas'
 import { Options } from './options'
 
 class Drawer {

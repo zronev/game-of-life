@@ -1,5 +1,5 @@
 import UIElement from './element'
-import { CanvasOptions } from '../../game'
+import { CanvasOptions } from '../game'
 
 class Canvas extends UIElement<HTMLCanvasElement> {
   private _ctx: CanvasRenderingContext2D

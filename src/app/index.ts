@@ -1,8 +1,8 @@
 import Game, { Loop, createOptions } from '../game'
-import Info from './info/info'
+import Info from '../ui/info/info'
 
-import createPatterns from './patterns'
-import createControls from './controls'
+import createPatterns from '../ui/patterns'
+import createControls from '../ui/controls'
 
 const options = createOptions({
   canvas: {

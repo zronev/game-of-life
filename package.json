@@ -2,10 +2,10 @@
   "name": "game-of-life",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/app/index.ts",
   "scripts": {
-    "dev": "parcel src/index.html --open",
-    "build": "parcel build src/index.html",
+    "dev": "parcel src/app/index.html --open",
+    "build": "parcel build src/app/index.html",
     "test": "jest",
     "coverage": "jest --coverage"
   },
