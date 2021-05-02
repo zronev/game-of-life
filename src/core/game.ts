@@ -45,7 +45,7 @@ class Game {
   }
 
   public getGeneration(): number {
-    return this.generation.getCount()
+    return this.generation.count
   }
 
   public getPopulation(): number {

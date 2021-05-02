@@ -1,3 +1,3 @@
 export type GridType = boolean[][]
 
-export type RulesState = 'alive' | 'dead' | 'skip'
+export type RulesResult = 'alive' | 'dead' | 'skip'

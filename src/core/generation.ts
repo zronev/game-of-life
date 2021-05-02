@@ -3,60 +3,52 @@ import Grid from './grid/grid'
 import GridService from './grid/grid-service'
 
 import { arrayClone } from '../common/utils'
-import { GridType, RulesState } from './utility/types'
+import { RulesResult } from './utility/types'
 
 class Generation {
-  private count: number
-  private rules: Rules
-  private gridService: GridService
+  private _count: number
+  private _rules: Rules
+  private _gridService: GridService
 
-  constructor(private gridInstance: Grid) {
-    this.count = 0
-    this.rules = new Rules()
-    this.gridService = new GridService(gridInstance)
+  constructor(private _gridInstance: Grid) {
+    this._count = 0
+    this._rules = new Rules()
+    this._gridService = new GridService(_gridInstance)
+  }
+
+  get count(): number {
+    return this._count
   }
 
   public next() {
-    const { grid, rows, columns } = this.gridInstance
+    const { grid, rows, columns } = this._gridInstance
     const gridCopy = arrayClone(grid)
 
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
-        const neighbours = this.gridService.countNeighbours(x, y)
-        const rulesState = this.rules.applyRules(cell, neighbours)
-        this.changeCellState(x, y, gridCopy, rulesState)
+        const neighbours = this._gridService.countNeighbours(x, y)
+        const rulesState = this._rules.applyRules(cell, neighbours)
+        gridCopy[y][x] = this.getCellState(cell, rulesState)
       }
     }
 
-    this.gridInstance.grid = gridCopy
-    this.increaseCount()
+    this._gridInstance.grid = gridCopy
+    this._count++
   }
 
-  public getCount(): number {
-    return this.count
-  }
-
-  private changeCellState(
-    x: number,
-    y: number,
-    grid: GridType,
-    rulesState: RulesState
-  ) {
-    switch (rulesState) {
+  private getCellState(
+    currentCellState: boolean,
+    rulesResult: RulesResult
+  ): boolean {
+    switch (rulesResult) {
       case 'alive':
-        grid[y][x] = true
-        break
+        return true
       case 'dead':
-        grid[y][x] = false
-        break
+        return false
       default:
-        break
+        return currentCellState
     }
-  }
-
-  private increaseCount() {
-    this.count++
   }
 }
 
