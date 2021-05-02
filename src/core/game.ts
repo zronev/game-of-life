@@ -1,8 +1,8 @@
-import Grid from './grid/grid'
+import Grid from './grid'
 import Drawer from './drawer'
 import Canvas from '../ui/canvas'
 import Generation from './generation'
-import GridService from './grid/grid-service'
+import * as GridService from './grid'
 import RandomSpawner from './spawner/random-spawner'
 import PatternSpawner from './spawner/pattern-spawner'
 
@@ -13,7 +13,6 @@ class Game {
   private grid: Grid
   private drawer: Drawer
   private generation: Generation
-  private gridService: GridService
   private randomSpawner: RandomSpawner
   private patternSpawner: PatternSpawner
 
@@ -23,7 +22,6 @@ class Game {
     this.grid = new Grid(options.grid)
     this.drawer = new Drawer(options, canvas)
     this.generation = new Generation(this.grid)
-    this.gridService = new GridService(this.grid)
     this.randomSpawner = new RandomSpawner(this.grid)
     this.patternSpawner = new PatternSpawner(this.grid)
   }
@@ -34,7 +32,7 @@ class Game {
   }
 
   public randomSpawn(amount?: number) {
-    const defaultAmount = this.gridService.getDefaultAmount()
+    const defaultAmount = GridService.getDefaultAmount(this.grid)
     this.randomSpawner.spawn(amount || defaultAmount)
     this.updateGrid()
   }
@@ -49,11 +47,11 @@ class Game {
   }
 
   public getPopulation(): number {
-    return this.gridService.getUsedCellsCount()
+    return GridService.getUsedCellsCount(this.grid)
   }
 
   public clearGrid() {
-    this.gridService.clearGrid()
+    this.grid.grid = GridService.clearGrid(this.grid)
     this.updateGrid()
   }
 

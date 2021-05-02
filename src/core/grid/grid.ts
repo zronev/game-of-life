@@ -1,4 +1,4 @@
-import { GridType } from '../utility/types'
+import { GridType } from './types'
 import { GridOptions } from '../utility/options'
 import { createMatrix } from '../../common/utils'
 

@@ -1,21 +1,18 @@
-import Grid from '../grid/grid'
+import Grid from '../grid'
 import Spawner from './spawner'
-import GridService from '../grid/grid-service'
+import * as GridService from '../grid'
 
 import { Point } from '../../common/types'
 import { clamp, getRandomValue } from '../../common/utils'
 
 class RandomSpawner extends Spawner {
-  private gridService: GridService
-
   constructor(protected gridInstance: Grid) {
     super(gridInstance)
-    this.gridService = new GridService(gridInstance)
   }
 
   public spawn(amount: number) {
     const { grid } = this.gridInstance
-    const availableCells = this.gridService.getAvailableCells()
+    const availableCells = GridService.getAvailableCells(this.gridInstance)
     const resultAmount = clamp(amount, 0, availableCells)
 
     let count = 0

@@ -1,4 +1,4 @@
-import Grid from './grid/grid'
+import Grid from './grid'
 import Canvas from '../ui/canvas'
 import { CellOptions, GridOptions } from './utility/options'
 

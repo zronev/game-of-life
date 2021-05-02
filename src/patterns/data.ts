@@ -1,6 +1,6 @@
-import { GridType } from '../core/utility/types'
+import { GridType } from '../core/grid/types'
 
-type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | "R pentimo"
+type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
 
 const patterns: Record<PatternKey, GridType> = {
   block: [
@@ -24,11 +24,11 @@ const patterns: Record<PatternKey, GridType> = {
     [true, true, false, false],
     [true, true, false, false],
   ],
-  "R pentimo": [
+  'R pentimo': [
     [false, true, true],
     [true, true, false],
     [false, true, false],
-  ]
+  ],
 }
 
 export default patterns
