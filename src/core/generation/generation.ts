@@ -15,6 +15,11 @@ class Generation {
   }
 
   public next() {
+    this.changeGenerationOnGrid()
+    this._count++
+  }
+
+  private changeGenerationOnGrid() {
     const { grid, rows, columns } = this._gridInstance
     const gridCopy = arrayClone(grid)
 
@@ -28,7 +33,6 @@ class Generation {
     }
 
     this._gridInstance.grid = gridCopy
-    this._count++
   }
 
   private getCellState(
