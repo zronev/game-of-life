@@ -1,6 +1,6 @@
-import Grid from './grid'
-import Canvas from '../ui/canvas'
-import { CellOptions, GridOptions } from './utility/options'
+import Grid from '../core/grid'
+import Canvas from '../app/ui/canvas'
+import { CellOptions, GridOptions } from './options'
 
 class Drawer {
   constructor(

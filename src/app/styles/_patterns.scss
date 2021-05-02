@@ -1,0 +1,19 @@
+.patterns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.pattern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  &__canvas {
+    border: none;
+  }
+}

@@ -1,5 +1,4 @@
-import Game from '../core/game'
-import Loop from '../core/loop'
+import Game, { Loop } from '../../game'
 import Info from '../info/info'
 import Button from '../ui/button'
 

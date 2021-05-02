@@ -1,7 +1,7 @@
-import Grid from './grid'
-import * as GridService from './grid'
-import Rules, { RulesResult } from './rules'
-import { arrayClone } from '../common/utils'
+import Grid from '../grid'
+import * as GridService from '../grid'
+import Rules, { RulesResult } from '../rules'
+import { arrayClone } from '../../common/utils'
 
 class Generation {
   private _count: number

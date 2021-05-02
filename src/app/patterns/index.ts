@@ -1,4 +1,4 @@
-import Game from '../core/game'
+import Game from '../../game'
 import Info from '../info/info'
 import Button from '../ui/button'
 import patterns from './data'

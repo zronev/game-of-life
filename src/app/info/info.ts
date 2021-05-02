@@ -1,4 +1,4 @@
-import Game from '../core/game'
+import Game from '../../game'
 import GenerationCounter from '../ui/generation-counter'
 import PopulationCounter from '../ui/population-counter'
 

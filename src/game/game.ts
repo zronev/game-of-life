@@ -1,12 +1,12 @@
-import Grid from './grid'
+import Grid from '../core/grid'
 import Drawer from './drawer'
-import Canvas from '../ui/canvas'
-import Generation from './generation'
-import * as GridService from './grid'
-import RandomSpawner from './spawner/random-spawner'
-import PatternSpawner from './spawner/pattern-spawner'
+import Canvas from '../app/ui/canvas'
+import Generation from '../core/generation/generation'
+import * as GridService from '../core/grid'
+import RandomSpawner from '../core/spawner/random-spawner'
+import PatternSpawner from '../core/spawner/pattern-spawner'
 
-import { Options } from './utility/options'
+import { Options } from './options'
 import { Point } from '../common/types'
 
 class Game {

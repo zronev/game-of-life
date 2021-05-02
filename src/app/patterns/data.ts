@@ -1,4 +1,4 @@
-import { GridType } from '../core/grid/types'
+import { GridType } from '../../core/grid/types'
 
 type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
 

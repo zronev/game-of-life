@@ -1,5 +1,5 @@
 import { GridType } from './types'
-import { GridOptions } from '../utility/options'
+import { GridOptions } from '../../game'
 import { createMatrix } from '../../common/utils'
 
 class Grid {
