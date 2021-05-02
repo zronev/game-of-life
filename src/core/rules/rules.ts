@@ -1,8 +1,6 @@
-import { RulesResult } from './types'
+import { Rules, RulesResult } from './types'
 
-class Rules {
-  constructor() {}
-
+class ClassicRules implements Rules {
   public applyRules(cell: boolean, neighbours: number): RulesResult {
     if (cell && (neighbours < 2 || neighbours > 3)) return 'dead'
     if (!cell && neighbours === 3) return 'alive'
@@ -10,4 +8,4 @@ class Rules {
   }
 }
 
-export default Rules
+export default ClassicRules

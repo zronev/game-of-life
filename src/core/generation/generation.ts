@@ -1,15 +1,13 @@
 import Grid from '../grid'
 import * as GridService from '../grid'
-import Rules, { RulesResult } from '../rules'
+import { RulesResult, Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
 
 class Generation {
   private _count: number
-  private _rules: Rules
 
-  constructor(private _gridInstance: Grid) {
+  constructor(private _gridInstance: Grid, private _rules: Rules) {
     this._count = 0
-    this._rules = new Rules()
   }
 
   get count(): number {
