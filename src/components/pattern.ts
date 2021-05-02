@@ -1,6 +1,6 @@
 import UIElement from './element'
 import Grid, { GridType } from '../core/grid'
-import { Drawer, createOptions, Options } from '../game'
+import { CanvasDrawer, createOptions, Options } from '../game'
 
 type PatternType = { name: string; grid: GridType }
 
@@ -17,7 +17,7 @@ class Pattern extends UIElement<HTMLDivElement> {
     const options = this.getOptions()
 
     const grid = new Grid(options.grid, pattern.grid)
-    const drawer = new Drawer(options)
+    const drawer = new CanvasDrawer(options)
     drawer.update(grid)
   }
 

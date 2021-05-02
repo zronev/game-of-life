@@ -1,8 +1,9 @@
-import Grid from '../core/grid'
-import Canvas from '../components/canvas'
-import { Options } from './options'
+import Grid from '../../core/grid'
+import Canvas from '../../components/canvas'
+import { Drawer } from './types'
+import { Options } from '../options'
 
-class Drawer {
+class CanvasDrawer implements Drawer {
   private canvas: Canvas
 
   constructor(private options: Options) {
@@ -51,4 +52,4 @@ class Drawer {
   }
 }
 
-export default Drawer
+export default CanvasDrawer

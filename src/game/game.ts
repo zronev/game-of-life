@@ -1,5 +1,5 @@
 import Grid from '../core/grid'
-import Drawer from './drawer'
+import { CanvasDrawer } from './drawer'
 import ClassicRules from '../core/rules'
 import Generation from '../core/generation'
 import * as GridService from '../core/grid'
@@ -10,14 +10,14 @@ import { Point } from '../common/types'
 
 class Game {
   private grid: Grid
-  private drawer: Drawer
+  private drawer: CanvasDrawer
   private generation: Generation
   private randomSpawner: RandomSpawner
   private patternSpawner: PatternSpawner
 
   constructor(options: Options) {
     this.grid = new Grid(options.grid)
-    this.drawer = new Drawer(options)
+    this.drawer = new CanvasDrawer(options)
     this.generation = new Generation(this.grid, new ClassicRules())
     this.randomSpawner = new RandomSpawner(this.grid)
     this.patternSpawner = new PatternSpawner(this.grid)
