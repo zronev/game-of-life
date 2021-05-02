@@ -1,10 +1,9 @@
 import Grid from '../core/grid'
 import Drawer from './drawer'
-import Canvas from '../app/ui/canvas'
-import Generation from '../core/generation/generation'
+import ClassicRules from '../core/rules'
+import Generation from '../core/generation'
 import * as GridService from '../core/grid'
-import RandomSpawner from '../core/spawner/random-spawner'
-import PatternSpawner from '../core/spawner/pattern-spawner'
+import { RandomSpawner, PatternSpawner } from '../core/spawner'
 
 import { Options } from './options'
 import { Point } from '../common/types'
@@ -17,11 +16,9 @@ class Game {
   private patternSpawner: PatternSpawner
 
   constructor(options: Options) {
-    const canvas = new Canvas(options.canvas)
-
     this.grid = new Grid(options.grid)
-    this.drawer = new Drawer(options, canvas)
-    this.generation = new Generation(this.grid)
+    this.drawer = new Drawer(options)
+    this.generation = new Generation(this.grid, new ClassicRules())
     this.randomSpawner = new RandomSpawner(this.grid)
     this.patternSpawner = new PatternSpawner(this.grid)
   }
