@@ -19,5 +19,3 @@ export interface Options {
   grid: GridOptions
   cell: CellOptions
 }
-
-export const createOptions = (options: Options): Options => options
