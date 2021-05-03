@@ -2,8 +2,12 @@ import { Grid } from './types'
 import { Point } from '../../common/types'
 import { createMatrix } from '../../common/utils'
 
-export const getEmptyGrid = (rows: number, columns: number): Grid => {
-  return createMatrix(rows, columns, false)
+export const getEmptyGrid = (
+  rows: number,
+  columns: number,
+  value = false
+): Grid => {
+  return createMatrix(rows, columns, value)
 }
 
 export const getUsedCellsCount = (grid: Grid): number => {
