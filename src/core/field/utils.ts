@@ -8,7 +8,7 @@ export const getEmptyGrid = (field: Field): Grid => {
   return emptyGrid
 }
 
-export const getUsedCellsCount = (field: Field): number => {
+export const getUsedCells = (field: Field): number => {
   const { grid } = field
   const countRow = (row: boolean[]) =>
     row.reduce((count, cell) => (cell ? count + 1 : count), 0)
@@ -19,7 +19,7 @@ export const getUsedCellsCount = (field: Field): number => {
 export const getAvailableCells = (field: Field): number => {
   const { rows, columns } = field
   const maxAmount = rows * columns
-  const usedCellsCount = getUsedCellsCount(field)
+  const usedCellsCount = getUsedCells(field)
 
   return maxAmount - usedCellsCount
 }
