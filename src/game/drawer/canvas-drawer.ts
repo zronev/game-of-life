@@ -1,16 +1,16 @@
 import Grid from '../../core/grid'
 import Canvas from '../../components/canvas'
-import { Drawer } from './types'
 import { Options } from '../options'
+import { EventTarget } from '../../common/types'
 
-class CanvasDrawer implements Drawer {
+class CanvasDrawer implements EventTarget {
   private canvas: Canvas
 
   constructor(private options: Options) {
     this.canvas = new Canvas(options.canvas)
   }
 
-  public draw(gridInstance: Grid) {
+  public update(gridInstance: Grid) {
     this.clearScreen()
     this.drawGrid(gridInstance)
   }

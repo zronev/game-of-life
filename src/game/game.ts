@@ -20,8 +20,10 @@ class Game {
   private _patternSpawner: PatternSpawner
 
   constructor(options: Options) {
-    this._drawer = new CanvasDrawer(options)
     this._gridInstance = new Grid(options.grid)
+    this._drawer = new CanvasDrawer(options)
+    this._gridInstance.subscribe(this._drawer)
+
     this._generation = new Generation(this._gridInstance, new ClassicRules())
     this._randomSpawner = new RandomSpawner(this._gridInstance)
     this._patternSpawner = new PatternSpawner(this._gridInstance)
@@ -31,27 +33,19 @@ class Game {
 
   public step() {
     this._generation.next()
-    this.updateGrid()
   }
 
   public randomSpawn(amount?: number) {
     const defaultAmount = GridService.getDefaultAmount(this._gridInstance)
     this._randomSpawner.spawn(amount || defaultAmount)
-    this.updateGrid()
   }
 
   public patternSpawn(pattern: boolean[][], offset?: Point) {
     this._patternSpawner.spawn(pattern, offset)
-    this.updateGrid()
   }
 
   public clearGrid() {
     this._gridInstance.grid = GridService.clearGrid(this._gridInstance)
-    this.updateGrid()
-  }
-
-  private updateGrid() {
-    this._drawer.draw(this._gridInstance)
   }
 }
 
