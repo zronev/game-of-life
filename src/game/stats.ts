@@ -9,7 +9,7 @@ class Stats {
   }
 
   public get population(): number {
-    return FieldUtils.getUsedCellsCount(this._field)
+    return FieldUtils.getUsedCellsCount(this._field.grid)
   }
 
   public isColonyDead(): boolean {

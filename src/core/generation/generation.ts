@@ -1,4 +1,4 @@
-import Field, * as FieldService from '../field'
+import Field, * as FieldUtils from '../field'
 import { Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
 
@@ -23,7 +23,12 @@ class Generation {
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
-        const neighbours = FieldService.countNeighbours(this._field, x, y)
+        const neighbours = FieldUtils.countNeighbours({
+          cell: { x, y },
+          rows,
+          columns,
+          grid,
+        })
         gridCopy[y][x] = this._applyRules(cell, neighbours)
       }
     }
