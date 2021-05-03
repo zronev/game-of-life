@@ -9,11 +9,13 @@ class Field implements EventSource {
   private _grid: Grid
   private _eventTargets: EventTarget[] = []
 
-  constructor(options: GridOptions, prepared?: Grid) {
-    this._rows = options.rows
-    this._columns = options.columns
-    this._grid =
-      prepared || createMatrix<boolean>(this.rows, this.columns, false)
+  constructor(
+    { rows, columns }: GridOptions,
+    grid: Grid = createMatrix<boolean>(rows, columns, false)
+  ) {
+    this._rows = rows
+    this._columns = columns
+    this._grid = grid
   }
 
   public subscribe(target: EventTarget): void {
