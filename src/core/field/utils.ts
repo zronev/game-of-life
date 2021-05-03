@@ -1,6 +1,7 @@
 import Field from './field'
 import { Grid } from './types'
 import { createMatrix } from '../../common/utils'
+import { Point } from '../../common/types'
 
 export const getEmptyGrid = (field: Field): Grid => {
   const { rows, columns } = field
@@ -30,7 +31,7 @@ export const getDefaultAmount = (field: Field): number => {
   return Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
 }
 
-export const countNeighbours = (field: Field, x: number, y: number): number => {
+export const getNeighbours = (field: Field, x: number, y: number): number => {
   const { grid, rows, columns } = field
 
   let neighbours = 0

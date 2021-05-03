@@ -23,7 +23,7 @@ class Generation {
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
-        const neighbours = FieldService.countNeighbours(this._field, x, y)
+        const neighbours = FieldService.getNeighbours(this._field, x, y)
         gridCopy[y][x] = this._applyRules(cell, neighbours)
       }
     }
