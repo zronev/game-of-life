@@ -51,7 +51,7 @@ class Game {
   }
 
   private updateGrid() {
-    this._drawer.update(this._gridInstance)
+    this._drawer.draw(this._gridInstance)
   }
 }
 

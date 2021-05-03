@@ -10,7 +10,7 @@ class CanvasDrawer implements Drawer {
     this.canvas = new Canvas(options.canvas)
   }
 
-  public update(gridInstance: Grid) {
+  public draw(gridInstance: Grid) {
     this.clearScreen()
     this.drawGrid(gridInstance)
   }
