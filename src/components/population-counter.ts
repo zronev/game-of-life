@@ -7,10 +7,11 @@ class PopulationCounter extends Counter {
   }
 
   public updatePopulation() {
-    const population = this.game.getPopulation()
-    const isColonyDead = population === 0
+    const count = this.game.stats.isColonyDead()
+      ? 'your colony is dead'
+      : this.game.stats.population
 
-    this.update('population', isColonyDead ? 'your colony is dead' : population)
+    this.update('population', count)
   }
 }
 

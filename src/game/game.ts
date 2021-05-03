@@ -1,7 +1,9 @@
-import Grid from '../core/grid'
+import Stats from './stats'
 import { CanvasDrawer } from './drawer'
+
 import ClassicRules from '../core/rules'
 import Generation from '../core/generation'
+import Grid from '../core/grid'
 import * as GridService from '../core/grid'
 import { RandomSpawner, PatternSpawner } from '../core/spawner'
 
@@ -9,51 +11,47 @@ import { Options } from './options'
 import { Point } from '../common/types'
 
 class Game {
-  private grid: Grid
-  private drawer: CanvasDrawer
-  private generation: Generation
-  private randomSpawner: RandomSpawner
-  private patternSpawner: PatternSpawner
+  public stats: Stats
+
+  private _gridInstance: Grid
+  private _drawer: CanvasDrawer
+  private _generation: Generation
+  private _randomSpawner: RandomSpawner
+  private _patternSpawner: PatternSpawner
 
   constructor(options: Options) {
-    this.grid = new Grid(options.grid)
-    this.drawer = new CanvasDrawer(options)
-    this.generation = new Generation(this.grid, new ClassicRules())
-    this.randomSpawner = new RandomSpawner(this.grid)
-    this.patternSpawner = new PatternSpawner(this.grid)
+    this._drawer = new CanvasDrawer(options)
+    this._gridInstance = new Grid(options.grid)
+    this._generation = new Generation(this._gridInstance, new ClassicRules())
+    this._randomSpawner = new RandomSpawner(this._gridInstance)
+    this._patternSpawner = new PatternSpawner(this._gridInstance)
+
+    this.stats = new Stats(this._generation, this._gridInstance)
   }
 
   public step() {
-    this.generation.next()
+    this._generation.next()
     this.updateGrid()
   }
 
   public randomSpawn(amount?: number) {
-    const defaultAmount = GridService.getDefaultAmount(this.grid)
-    this.randomSpawner.spawn(amount || defaultAmount)
+    const defaultAmount = GridService.getDefaultAmount(this._gridInstance)
+    this._randomSpawner.spawn(amount || defaultAmount)
     this.updateGrid()
   }
 
   public patternSpawn(pattern: boolean[][], offset?: Point) {
-    this.patternSpawner.spawn(pattern, offset)
+    this._patternSpawner.spawn(pattern, offset)
     this.updateGrid()
   }
 
-  public getGeneration(): number {
-    return this.generation.count
-  }
-
-  public getPopulation(): number {
-    return GridService.getUsedCellsCount(this.grid)
-  }
-
   public clearGrid() {
-    this.grid.grid = GridService.clearGrid(this.grid)
+    this._gridInstance.grid = GridService.clearGrid(this._gridInstance)
     this.updateGrid()
   }
 
   private updateGrid() {
-    this.drawer.update(this.grid)
+    this._drawer.update(this._gridInstance)
   }
 }
 
