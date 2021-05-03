@@ -10,7 +10,7 @@ export const getEmptyGrid = (
   return createMatrix(rows, columns, value)
 }
 
-export const getUsedCellsCount = (grid: Grid): number => {
+export const countUsedCells = (grid: Grid): number => {
   const countRow = (row: boolean[]) =>
     row.reduce((count, cell) => (cell ? count + 1 : count), 0)
 
@@ -23,7 +23,7 @@ export const getAvailableCells = (
   grid: Grid
 ): number => {
   const maxAmount = rows * columns
-  const usedCellsCount = getUsedCellsCount(grid)
+  const usedCellsCount = countUsedCells(grid)
 
   return maxAmount - usedCellsCount
 }
