@@ -1,7 +1,5 @@
 import Game, { Loop, createOptions } from '../game'
 import Info from '../ui/info/info'
-
-import createPatterns from '../ui/patterns'
 import createControls from '../ui/controls'
 
 const options = createOptions({
@@ -28,8 +26,7 @@ const step = () => {
   info.updateAllCounters()
 }
 
-game.randomSpawn()
+game.spawners.randomSpawn()
 loop.start(step)
 
 createControls(game, info, loop, step)
-createPatterns(game, info)

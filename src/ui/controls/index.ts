@@ -11,7 +11,7 @@ const createControls = (
   const spawnButton = new Button('#controls', 'button--success')
   spawnButton.setTextContent('spawn')
   spawnButton.onClick(() => {
-    game.randomSpawn()
+    game.spawners.randomSpawn()
     info.updateAllCounters()
   })
 
