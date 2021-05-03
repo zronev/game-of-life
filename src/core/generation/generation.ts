@@ -4,13 +4,13 @@ import { RulesResult, Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
 
 class Generation {
-  private _count: number
+  constructor(
+    private _gridInstance: Grid,
+    private _rules: Rules,
+    private _count = 0
+  ) {}
 
-  constructor(private _gridInstance: Grid, private _rules: Rules) {
-    this._count = 0
-  }
-
-  get count(): number {
+  public get count(): number {
     return this._count
   }
 
@@ -28,24 +28,21 @@ class Generation {
         const cell = gridCopy[y][x]
         const neighbours = GridService.countNeighbours(this._gridInstance, x, y)
         const rulesState = this._rules.applyRules(cell, neighbours)
-        gridCopy[y][x] = this.getCellState(cell, rulesState)
+        gridCopy[y][x] = this.isCellAlive(cell, rulesState)
       }
     }
 
     this._gridInstance.grid = gridCopy
   }
 
-  private getCellState(
-    currentCellState: boolean,
-    rulesResult: RulesResult
-  ): boolean {
+  private isCellAlive(cell: boolean, rulesResult: RulesResult): boolean {
     switch (rulesResult) {
       case 'alive':
         return true
       case 'dead':
         return false
       default:
-        return currentCellState
+        return cell
     }
   }
 }
