@@ -1,13 +1,11 @@
 import Field, * as FieldService from '../field'
-import { RulesResult, Rules } from '../rules'
+import { Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
 
 class Generation {
-  constructor(
-    private _field: Field,
-    private _rules: Rules,
-    private _count = 0
-  ) {}
+  private _count = 0
+
+  constructor(private _field: Field, private _applyRules: Rules) {}
 
   public get count(): number {
     return this._count
@@ -26,23 +24,11 @@ class Generation {
       for (let x = 0; x < rows; x++) {
         const cell = gridCopy[y][x]
         const neighbours = FieldService.countNeighbours(this._field, x, y)
-        const rulesState = this._rules.applyRules(cell, neighbours)
-        gridCopy[y][x] = this.isCellAlive(cell, rulesState)
+        gridCopy[y][x] = this._applyRules(cell, neighbours)
       }
     }
 
     this._field.grid = gridCopy
-  }
-
-  private isCellAlive(cell: boolean, rulesResult: RulesResult): boolean {
-    switch (rulesResult) {
-      case 'alive':
-        return true
-      case 'dead':
-        return false
-      default:
-        return cell
-    }
   }
 }
 

@@ -2,11 +2,11 @@ import Stats from './stats'
 import Spawners from './spawners'
 import { CanvasDrawer } from './drawer'
 
-import ClassicRules from '../core/rules'
 import Generation from '../core/generation'
 import Field, * as FieldService from '../core/field'
 
 import { Options } from './options'
+import { applyClassicRules } from '../core/rules'
 
 class Game {
   public stats: Stats
@@ -18,10 +18,11 @@ class Game {
 
   constructor(options: Options) {
     this._drawer = new CanvasDrawer(options)
-    this._field = new Field(options.grid)
-    this._generation = new Generation(this._field, new ClassicRules())
 
+    this._field = new Field(options.grid)
     this._field.subscribe(this._drawer)
+
+    this._generation = new Generation(this._field, applyClassicRules)
 
     this.stats = new Stats(this._generation, this._field)
     this.spawners = new Spawners(this._field)

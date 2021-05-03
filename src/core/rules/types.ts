@@ -1,5 +1,2 @@
 export type RulesResult = 'alive' | 'dead' | 'skip'
-
-export interface Rules {
-  applyRules(cell: boolean, neighbours: number): RulesResult
-}
+export type Rules = (cell: boolean, neighbours: number) => boolean
