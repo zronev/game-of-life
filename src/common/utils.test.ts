@@ -1,4 +1,4 @@
-import { arrayClone, clamp, createMatrix } from '../../src/common/utils'
+import { arrayClone, clamp, createMatrix } from './utils'
 
 describe('arrayClone', () => {
   describe('1d array', () => {

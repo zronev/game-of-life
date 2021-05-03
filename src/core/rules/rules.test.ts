@@ -1,4 +1,4 @@
-import { applyClassicRules } from '../../src/core/rules'
+import { applyClassicRules } from './rules'
 
 describe('when applies classic rules', () => {
   describe('when cell is alive', () => {
