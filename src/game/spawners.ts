@@ -1,4 +1,4 @@
-import Field, * as FieldUtils from '../core/field'
+import Field, * as FieldService from '../core/field'
 import { PatternSpawner, RandomSpawner } from '../core/spawner'
 
 import { Point } from '../common/types'
@@ -14,8 +14,7 @@ class Spawners {
   }
 
   public randomSpawn(amount?: number) {
-    const { rows, columns } = this._field
-    const defaultAmount = FieldUtils.getDefaultAmount(rows, columns)
+    const defaultAmount = FieldService.getDefaultAmount(this._field)
     this._randomSpawner.spawn(amount || defaultAmount)
   }
 
