@@ -1,24 +1,24 @@
-import Grid, * as GridService from '../core/grid'
+import Field, * as FieldService from '../core/field'
 import { PatternSpawner, RandomSpawner } from '../core/spawner'
 
 import { Point } from '../common/types'
-import { GridType } from '../core/grid'
+import { Grid } from '../core/field'
 
 class Spawners {
   private _randomSpawner: RandomSpawner
   private _patternSpawner: PatternSpawner
 
-  constructor(private _gridInstance: Grid) {
-    this._randomSpawner = new RandomSpawner(_gridInstance)
-    this._patternSpawner = new PatternSpawner(_gridInstance)
+  constructor(private _field: Field) {
+    this._randomSpawner = new RandomSpawner(_field)
+    this._patternSpawner = new PatternSpawner(_field)
   }
 
   public randomSpawn(amount?: number) {
-    const defaultAmount = GridService.getDefaultAmount(this._gridInstance)
+    const defaultAmount = FieldService.getDefaultAmount(this._field)
     this._randomSpawner.spawn(amount || defaultAmount)
   }
 
-  public patternSpawn(pattern: GridType, offset?: Point) {
+  public patternSpawn(pattern: Grid, offset?: Point) {
     this._patternSpawner.spawn(pattern, offset)
   }
 }

@@ -1,8 +1,8 @@
-import { GridType } from '../../core/grid/types'
+import { Grid } from '../../core/field/types'
 
 type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
 
-const patterns: Record<PatternKey, GridType> = {
+const patterns: Record<PatternKey, Grid> = {
   block: [
     [true, true],
     [true, true],

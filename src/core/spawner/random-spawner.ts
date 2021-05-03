@@ -1,20 +1,19 @@
-import Grid from '../grid'
 import Spawner from './spawner'
-import * as GridService from '../grid'
+import Field, * as FieldService from '../field'
 
 import { Point } from '../../common/types'
 import { arrayClone, clamp, getRandomValue } from '../../common/utils'
 
 class RandomSpawner extends Spawner {
-  constructor(protected gridInstance: Grid) {
-    super(gridInstance)
+  constructor(protected _field: Field) {
+    super(_field)
   }
 
   public spawn(amount: number) {
-    const { grid } = this.gridInstance
+    const { grid } = this._field
     const gridCopy = arrayClone(grid)
 
-    const availableCells = GridService.getAvailableCells(this.gridInstance)
+    const availableCells = FieldService.getAvailableCells(this._field)
     const resultAmount = clamp(amount, 0, availableCells)
 
     let count = 0
@@ -28,11 +27,11 @@ class RandomSpawner extends Spawner {
       count++
     }
 
-    this.gridInstance.grid = gridCopy
+    this._field.grid = gridCopy
   }
 
   private getRandomCellCoordinate(): Point {
-    const { rows, columns } = this.gridInstance
+    const { rows, columns } = this._field
 
     return {
       x: getRandomValue(0, rows - 1),

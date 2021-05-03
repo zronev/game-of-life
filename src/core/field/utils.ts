@@ -1,41 +1,37 @@
-import Grid from './grid'
-import { GridType } from './types'
+import Field from './field'
+import { Grid } from './types'
 import { createMatrix } from '../../common/utils'
 
-export const clearGrid = (gridInstance: Grid): GridType => {
-  const { rows, columns } = gridInstance
+export const getEmptyGrid = (field: Field): Grid => {
+  const { rows, columns } = field
   const emptyGrid = createMatrix(rows, columns, false)
   return emptyGrid
 }
 
-export const getUsedCellsCount = (gridInstance: Grid): number => {
-  const { grid } = gridInstance
+export const getUsedCellsCount = (field: Field): number => {
+  const { grid } = field
   const countRow = (row: boolean[]) =>
     row.reduce((count, cell) => (cell ? count + 1 : count), 0)
 
   return grid.reduce((count, row) => count + countRow(row), 0)
 }
 
-export const getAvailableCells = (gridInstance: Grid): number => {
-  const { rows, columns } = gridInstance
+export const getAvailableCells = (field: Field): number => {
+  const { rows, columns } = field
   const maxAmount = rows * columns
-  const usedCellsCount = getUsedCellsCount(gridInstance)
+  const usedCellsCount = getUsedCellsCount(field)
 
   return maxAmount - usedCellsCount
 }
 
-export const getDefaultAmount = (gridInstance: Grid): number => {
-  const { rows, columns } = gridInstance
+export const getDefaultAmount = (field: Field): number => {
+  const { rows, columns } = field
   const GRID_OCCUPANCY_RATE = 0.25
   return Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
 }
 
-export const countNeighbours = (
-  gridInstance: Grid,
-  x: number,
-  y: number
-): number => {
-  const { grid, rows, columns } = gridInstance
+export const countNeighbours = (field: Field, x: number, y: number): number => {
+  const { grid, rows, columns } = field
 
   let neighbours = 0
 

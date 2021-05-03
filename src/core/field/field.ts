@@ -1,15 +1,15 @@
-import { GridType } from './types'
+import { Grid } from './types'
 import { GridOptions } from '../../game'
 import { createMatrix } from '../../common/utils'
 import { EventSource, EventTarget } from '../../common/types'
 
-class Grid implements EventSource {
+class Field implements EventSource {
   private _rows: number
   private _columns: number
-  private _grid: GridType
+  private _grid: Grid
   private _eventTargets: EventTarget[] = []
 
-  constructor(options: GridOptions, prepared?: GridType) {
+  constructor(options: GridOptions, prepared?: Grid) {
     this._rows = options.rows
     this._columns = options.columns
     this._grid =
@@ -34,11 +34,11 @@ class Grid implements EventSource {
     }
   }
 
-  public get grid(): GridType {
+  public get grid(): Grid {
     return this._grid
   }
 
-  public set grid(newGrid: GridType) {
+  public set grid(newGrid: Grid) {
     this._grid = newGrid
     this.notify()
   }
@@ -52,4 +52,4 @@ class Grid implements EventSource {
   }
 }
 
-export default Grid
+export default Field

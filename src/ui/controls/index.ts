@@ -18,7 +18,7 @@ const createControls = (
   const clearButton = new Button('#controls', 'button--danger')
   clearButton.setTextContent('clear')
   clearButton.onClick(() => {
-    game.clearGrid()
+    game.clearField()
     info.updateAllCounters()
   })
 

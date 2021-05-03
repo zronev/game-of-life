@@ -1,7 +1,7 @@
-import Grid from '../grid'
+import Field from '../field'
 
 abstract class Spawner {
-  constructor(protected gridInstance: Grid) {}
+  constructor(protected _field: Field) {}
 
   public abstract spawn(...args: any): void
 }

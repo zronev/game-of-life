@@ -4,7 +4,7 @@ import { CanvasDrawer } from './drawer'
 
 import ClassicRules from '../core/rules'
 import Generation from '../core/generation'
-import Grid, * as GridService from '../core/grid'
+import Field, * as FieldService from '../core/field'
 
 import { Options } from './options'
 
@@ -12,27 +12,27 @@ class Game {
   public stats: Stats
   public spawners: Spawners
 
-  private _gridInstance: Grid
+  private _field: Field
   private _drawer: CanvasDrawer
   private _generation: Generation
 
   constructor(options: Options) {
     this._drawer = new CanvasDrawer(options)
-    this._gridInstance = new Grid(options.grid)
-    this._generation = new Generation(this._gridInstance, new ClassicRules())
+    this._field = new Field(options.grid)
+    this._generation = new Generation(this._field, new ClassicRules())
 
-    this._gridInstance.subscribe(this._drawer)
+    this._field.subscribe(this._drawer)
 
-    this.stats = new Stats(this._generation, this._gridInstance)
-    this.spawners = new Spawners(this._gridInstance)
+    this.stats = new Stats(this._generation, this._field)
+    this.spawners = new Spawners(this._field)
   }
 
   public step() {
     this._generation.next()
   }
 
-  public clearGrid() {
-    this._gridInstance.grid = GridService.clearGrid(this._gridInstance)
+  public clearField() {
+    this._field.grid = FieldService.getEmptyGrid(this._field)
   }
 }
 

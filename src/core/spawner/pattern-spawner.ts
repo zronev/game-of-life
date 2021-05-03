@@ -10,7 +10,7 @@ class PatternSpawner extends Spawner {
   }
 
   private isValidPattern(pattern: boolean[][]): boolean {
-    const { rows, columns } = this.gridInstance
+    const { rows, columns } = this._field
     const patternRows = pattern[0].length
     const patternColumns = pattern.length
 
@@ -24,7 +24,7 @@ class PatternSpawner extends Spawner {
       y: 0,
     }
   ) {
-    const gridCopy = arrayClone(this.gridInstance.grid)
+    const gridCopy = arrayClone(this._field.grid)
     const patternRows = pattern[0].length
     const patternColumns = pattern.length
 
@@ -34,7 +34,7 @@ class PatternSpawner extends Spawner {
       }
     }
 
-    this.gridInstance.grid = gridCopy
+    this._field.grid = gridCopy
   }
 }
 

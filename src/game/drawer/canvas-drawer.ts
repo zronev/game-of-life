@@ -1,4 +1,4 @@
-import Grid from '../../core/grid'
+import Field from '../../core/field'
 import Canvas from '../../components/canvas'
 import { Options } from '../options'
 import { EventTarget } from '../../common/types'
@@ -10,9 +10,9 @@ class CanvasDrawer implements EventTarget {
     this.canvas = new Canvas(options.canvas)
   }
 
-  public update(gridInstance: Grid) {
+  public update(_field: Field) {
     this.clearScreen()
-    this.drawGrid(gridInstance)
+    this.drawGrid(_field)
   }
 
   private clearScreen() {
@@ -20,9 +20,9 @@ class CanvasDrawer implements EventTarget {
     ctx.clearRect(0, 0, domElement.width, domElement.height)
   }
 
-  private drawGrid(gridInstance: Grid) {
+  private drawGrid(_field: Field) {
     const rectSize = this.getRectSize()
-    const { grid, rows, columns } = gridInstance
+    const { grid, rows, columns } = _field
 
     for (let y = 0; y < columns; y++) {
       for (let x = 0; x < rows; x++) {
