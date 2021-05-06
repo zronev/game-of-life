@@ -1,35 +1,45 @@
-import Stats from './stats'
 import Spawners from './spawners'
 import { CanvasDrawer } from './drawer'
 
 import Generation from '../core/generation'
+import Population from '../core/population'
 import Field, * as FieldService from '../core/field'
 
 import { Options } from './options'
 import { applyClassicRules } from '../core/rules'
 
 class Game {
-  public stats: Stats
   public spawners: Spawners
 
   private _field: Field
   private _drawer: CanvasDrawer
   private _generation: Generation
+  private _population: Population
 
   constructor(options: Options) {
     this._drawer = new CanvasDrawer(options)
-
     this._field = new Field(options.grid)
     this._field.subscribe(this._drawer)
-
     this._generation = new Generation(this._field, applyClassicRules)
+    this._population = new Population(this._field)
 
-    this.stats = new Stats(this._generation, this._field)
     this.spawners = new Spawners(this._field)
   }
 
+  public get generation(): number {
+    return this._generation.count
+  }
+
+  public get population(): number {
+    return this._population.count
+  }
+
+  public isColonyDead(): boolean {
+    return this._population.isColonyDead()
+  }
+
   public step() {
-    this._generation.next()
+    if (!this.isColonyDead()) this._generation.next()
   }
 
   public clearField() {

@@ -7,7 +7,7 @@ class GenerationCounter extends Counter {
   }
 
   public updateGeneration() {
-    this.update('generation', this.game.stats.generation)
+    this.update('generation', this.game.generation)
   }
 }
 
