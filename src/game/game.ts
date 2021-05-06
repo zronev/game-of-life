@@ -3,7 +3,7 @@ import { CanvasDrawer } from './drawer'
 
 import Generation from '../core/generation'
 import Population from '../core/population'
-import Field, * as FieldService from '../core/field'
+import Field, * as FieldUtils from '../core/field'
 
 import { Options } from './options'
 import { applyClassicRules } from '../core/rules'
@@ -43,7 +43,7 @@ class Game {
   }
 
   public clearField() {
-    this._field.grid = FieldService.getEmptyGrid(this._field)
+    this._field.grid = FieldUtils.getEmptyGrid(this._field)
   }
 }
 

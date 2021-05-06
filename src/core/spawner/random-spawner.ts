@@ -1,5 +1,5 @@
 import Spawner from './spawner'
-import Field, * as FieldService from '../field'
+import Field, * as FieldUtils from '../field'
 
 import { Point } from '../../common/types'
 import { arrayClone, clamp, getRandomValue } from '../../common/utils'
@@ -13,7 +13,7 @@ class RandomSpawner extends Spawner {
     const { grid } = this._field
     const gridCopy = arrayClone(grid)
 
-    const availableCells = FieldService.getAvailableCells(this._field)
+    const availableCells = FieldUtils.getAvailableCells(this._field)
     const resultAmount = clamp(amount, 0, availableCells)
 
     let count = 0
