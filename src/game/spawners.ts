@@ -1,4 +1,4 @@
-import Field, * as FieldUtils from '../core/field'
+import Field, { FieldUtils } from '../core/field'
 import { PatternSpawner, RandomSpawner } from '../core/spawner'
 
 import { Point } from '../common/types'

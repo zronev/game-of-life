@@ -1,4 +1,4 @@
-import Field, * as FieldUtils from '../field'
+import Field, { FieldUtils } from '../field'
 
 class Population {
   constructor(private _field: Field) {}

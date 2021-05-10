@@ -3,7 +3,7 @@ import { CanvasDrawer } from './drawer'
 
 import Generation from '../core/generation'
 import Population from '../core/population'
-import Field, * as FieldUtils from '../core/field'
+import Field, { FieldUtils } from '../core/field'
 
 import { Options } from './options'
 import { applyClassicRules } from '../core/rules'

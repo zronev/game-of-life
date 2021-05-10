@@ -1,4 +1,4 @@
-import Field, * as FieldUtils from '../field'
+import Field, { FieldUtils } from '../field'
 import { Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
 

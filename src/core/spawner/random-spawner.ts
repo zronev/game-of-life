@@ -1,5 +1,5 @@
 import Spawner from './spawner'
-import Field, * as FieldUtils from '../field'
+import Field, { FieldUtils } from '../field'
 
 import { Point } from '../../common/types'
 import { arrayClone, clamp, getRandomValue } from '../../common/utils'
