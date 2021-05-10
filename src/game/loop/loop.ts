@@ -1,3 +1,5 @@
+import { clamp } from '../../common/utils'
+
 class Loop {
   private _fps: number
   private _requestId: number | null = null
@@ -30,6 +32,14 @@ class Loop {
     if (!this._requestId) return
     window.cancelAnimationFrame(this._requestId)
     this._requestId = null
+  }
+
+  public set fps(value: number) {
+    this._fps = clamp(value, 1, 60)
+  }
+
+  public get fps() {
+    return this._fps
   }
 }
 

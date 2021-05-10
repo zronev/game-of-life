@@ -1,4 +1,5 @@
-import Game, { Loop, createOptions } from '../game'
+import Game, { createOptions } from '../game'
+import { Loop } from '../game/loop'
 import Info from '../ui/info/info'
 import createControls from '../ui/controls'
 

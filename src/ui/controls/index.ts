@@ -1,6 +1,7 @@
-import Game, { Loop } from '../../game'
+import Game from '../../game'
 import Info from '../info/info'
 import Button from '../../components/button'
+import { Loop, LoopUtils } from '../../game/loop'
 
 const createControls = (
   game: Game,
@@ -29,6 +30,14 @@ const createControls = (
   const pauseButton = new Button('#controls')
   pauseButton.setTextContent('pause')
   pauseButton.onClick(() => loop.stop())
+
+  const fpsIncButton = new Button('#controls')
+  fpsIncButton.setTextContent('inc fps')
+  fpsIncButton.onClick(() => LoopUtils.changeFps(loop, 5))
+
+  const fpsDecButton = new Button('#controls')
+  fpsDecButton.setTextContent('dec fps')
+  fpsDecButton.onClick(() => LoopUtils.changeFps(loop, -5))
 }
 
 export default createControls
