@@ -1,9 +1,9 @@
 class Loop {
-  private interval: number
+  private fps: number
   private requestId: number | null = null
 
-  constructor(interval: number) {
-    this.interval = interval
+  constructor(fps: number) {
+    this.fps = fps
   }
 
   public start(fn: () => void) {
@@ -12,7 +12,7 @@ class Loop {
     let lastFrameTimeMs = 0
 
     const gameLoop = (timestamp: number) => {
-      if (timestamp < lastFrameTimeMs + 1000 / this.interval) {
+      if (timestamp < lastFrameTimeMs + 1000 / this.fps) {
         this.requestId = window.requestAnimationFrame(gameLoop)
         return
       }
