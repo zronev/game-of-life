@@ -1,6 +1,6 @@
 import Game from '../../game'
 import Info from '../info/info'
-import Button from '../../components/button'
+import Button from '../components/button'
 import { Loop, LoopUtils } from '../../game/loop'
 
 const createControls = (

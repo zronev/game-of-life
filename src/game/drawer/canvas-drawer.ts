@@ -1,7 +1,7 @@
 import Field from '../../core/field'
-import Canvas from '../../components/canvas'
+import Canvas from '../../ui/components/canvas'
 import { Options } from '../options'
-import { EventTarget } from '../../common/types'
+import { EventTarget } from '../../common/event-source'
 
 class CanvasDrawer implements EventTarget {
   private canvas: Canvas

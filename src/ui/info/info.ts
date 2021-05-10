@@ -1,6 +1,6 @@
 import Game from '../../game'
-import GenerationCounter from '../../components/generation-counter'
-import PopulationCounter from '../../components/population-counter'
+import GenerationCounter from '../components/generation-counter'
+import PopulationCounter from '../components/population-counter'
 
 class Info {
   private generationCounter: GenerationCounter
