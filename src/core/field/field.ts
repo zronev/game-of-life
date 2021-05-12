@@ -8,15 +8,11 @@ class Field extends EventSource {
   private _columns: number
   private _grid: Grid
 
-  constructor(
-    { rows, columns }: GridOptions,
-    grid: Grid = createMatrix<boolean>(rows, columns, false)
-  ) {
+  constructor(options: GridOptions, grid: Grid) {
     super()
-
-    this._rows = rows
-    this._columns = columns
-    this._grid = grid
+    this._rows = options.rows
+    this._columns = options.columns
+    this._grid = grid || this.getDefaultGrid(options)
   }
 
   public get grid(): Grid {
@@ -35,6 +31,10 @@ class Field extends EventSource {
 
   public get columns(): number {
     return this._columns
+  }
+
+  private getDefaultGrid({ rows, columns }: GridOptions): Grid {
+    return createMatrix<boolean>(rows, columns, false)
   }
 }
 
