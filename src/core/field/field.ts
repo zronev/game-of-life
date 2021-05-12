@@ -8,7 +8,7 @@ class Field extends EventSource {
   private _columns: number
   private _grid: Grid
 
-  constructor(options: GridOptions, grid: Grid) {
+  constructor(options: GridOptions, grid?: Grid) {
     super()
     this._rows = options.rows
     this._columns = options.columns
