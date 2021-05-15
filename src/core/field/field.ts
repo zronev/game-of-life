@@ -1,7 +1,8 @@
 import { Grid } from './types'
 import { GridOptions } from '../../game'
-import { createMatrix } from '../../common/utils'
+import { FieldUtils } from '.'
 import EventSource from '../../common/event-source'
+import { createMatrix } from '../../common/utils'
 
 class Field extends EventSource {
   private _rows: number
@@ -33,8 +34,12 @@ class Field extends EventSource {
     return this._columns
   }
 
+  public clear() {
+    this.grid = FieldUtils.getEmptyGrid(this)
+  }
+
   private getDefaultGrid({ rows, columns }: GridOptions): Grid {
-    return createMatrix<boolean>(rows, columns, false)
+    return createMatrix(rows, columns, false)
   }
 }
 

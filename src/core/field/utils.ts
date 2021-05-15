@@ -1,12 +1,10 @@
 import Field from './field'
 import { Grid } from './types'
 import { createMatrix } from '../../common/utils'
-import { Point } from '../../common/types'
 
 export const getEmptyGrid = (field: Field): Grid => {
   const { rows, columns } = field
-  const emptyGrid = createMatrix(rows, columns, false)
-  return emptyGrid
+  return createMatrix(rows, columns, false)
 }
 
 export const getUsedCells = (field: Field): number => {
@@ -27,7 +25,7 @@ export const getAvailableCells = (field: Field): number => {
 
 export const getDefaultAmount = (field: Field): number => {
   const { rows, columns } = field
-  const GRID_OCCUPANCY_RATE = 0.25
+  const GRID_OCCUPANCY_RATE = 0.15
   return Math.floor(rows * columns * GRID_OCCUPANCY_RATE)
 }
 
