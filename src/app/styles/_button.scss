@@ -10,15 +10,14 @@
   padding: 0.5rem 1rem;
   border: var(--border);
   background: none;
-
-  transition: all 175ms ease-out;
+  transition: var(--transition-ease-out);
 
   &:hover,
   &:active {
     color: var(--color-on-hover);
     border: 2px solid var(--default-hover-color);
     background: var(--default-hover-color);
-    transition-timing-function: ease-in;
+    transition: var(--transition-ease-in);
   }
 
   &--success {

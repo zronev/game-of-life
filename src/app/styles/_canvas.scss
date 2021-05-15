@@ -1,5 +1,34 @@
 .canvas {
   border: var(--border);
+  max-width: 640px;
+  transition: opacity var(--transition-ease-out);
+
+  &:hover {
+    transition: opacity var(--transition-ease-in);
+  }
+}
+
+.colony-canvas {
   image-rendering: crisp-edges; // for Firefox
   image-rendering: pixelated;
+  z-index: 1;
+}
+
+.grid-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  opacity: 0;
+
+  &--droppable,
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+
+    & ~ .colony-canvas {
+      opacity: 0.5;
+    }
+  }
 }

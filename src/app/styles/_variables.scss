@@ -9,4 +9,7 @@
   --warning-hover-color: #ffeaa7;
   --gap-size: 2rem;
   --button-min-width: 10rem;
+  --transition-time: 175ms;
+  --transition-ease-out: var(--transition-time) ease-out;
+  --transition-ease-in: var(--transition-time) ease-out;
 }
