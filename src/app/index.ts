@@ -1,5 +1,7 @@
 import Game, { createOptions } from '../game'
 import { Loop } from '../game/loop'
+
+import app from '../ui/app'
 import createControls from '../ui/controls'
 
 const options = createOptions({
@@ -19,6 +21,8 @@ const options = createOptions({
 
 const game = new Game(options)
 const loop = new Loop(60)
+
+app(game)
 
 const step = () => {
   game.step()

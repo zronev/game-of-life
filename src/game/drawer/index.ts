@@ -1,1 +1,2 @@
-export { default as CanvasDrawer } from './canvas-drawer'
+export { default as GridDrawer } from './grid-drawer'
+export { default as ColonyDrawer } from './colony-drawer'

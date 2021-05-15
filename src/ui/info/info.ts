@@ -1,29 +1,18 @@
 import Game from '../../game'
-import GenerationCounter from '../components/generation-counter'
-import PopulationCounter from '../components/population-counter'
+import CounterView from './counter-view'
 
-class Info {
-  private generationCounter: GenerationCounter
-  private populationCounter: PopulationCounter
+const buildInfo = (game: Game) => {
+  const counters = Object.entries(game.counters).map(([name, counter]) => {
+    const view = new CounterView(name)
+    counter.subscribe(view)
+    return view.element
+  })
 
-  constructor(game: Game) {
-    this.generationCounter = new GenerationCounter(game)
-    this.populationCounter = new PopulationCounter(game)
-    this.updateAllCounters()
-  }
+  const container = document.createElement('section')
+  container.classList.add('info', 'main__info')
+  container.append(...counters)
 
-  public updateAllCounters() {
-    this.updateGenerationCounter()
-    this.updatePopulationCounter()
-  }
-
-  public updateGenerationCounter() {
-    this.generationCounter.updateGeneration()
-  }
-
-  public updatePopulationCounter() {
-    this.populationCounter.updatePopulation()
-  }
+  return container
 }
 
-export default Info
+export default buildInfo

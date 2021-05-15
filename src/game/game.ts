@@ -1,49 +1,71 @@
-import Spawners from './spawners'
-import { CanvasDrawer } from './drawer'
-
+import Field from '../core/field'
 import Generation from '../core/generation'
-import Population from '../core/population'
-import Field, { FieldUtils } from '../core/field'
+import { applyClassicRules } from '../core/rules'
+
+import Spawners from './spawners'
+import { ColonyDrawer, GridDrawer } from './drawer'
+import { PopulationCounter, GenerationCounter, Counter } from './counters'
 
 import { Options } from './options'
-import { applyClassicRules } from '../core/rules'
+import { EventTarget } from '../common/event-source'
 
 class Game {
   public spawners: Spawners
 
   private _field: Field
-  private _drawer: CanvasDrawer
   private _generation: Generation
-  private _population: Population
+  private _counters: Record<string, Counter>
+  private _gridDrawer: GridDrawer
+  private _colonyDrawer: ColonyDrawer
 
   constructor(options: Options) {
-    this._drawer = new CanvasDrawer(options)
+    // TODO: Move to view logic
+    this._gridDrawer = new GridDrawer(options)
+    this._colonyDrawer = new ColonyDrawer(options)
+
     this._field = new Field(options.grid)
-    this._field.subscribe(this._drawer)
     this._generation = new Generation(this._field, applyClassicRules)
-    this._population = new Population(this._field)
 
+    this._counters = {
+      population: new PopulationCounter(),
+      generation: new GenerationCounter(),
+    }
+
+    // TODO: Move to view logic -- public method `setFieldGrid`
     this.spawners = new Spawners(this._field)
-  }
 
-  public get generation(): number {
-    return this._generation.count
-  }
-
-  public get population(): number {
-    return this._population.count
-  }
-
-  public isColonyDead(): boolean {
-    return this._population.isColonyDead()
+    this._subscribeDependencies()
+    this._gridDrawer.draw()
   }
 
   public step() {
-    if (!this.isColonyDead()) this._generation.next()
+    if (!this._isColonyDead()) this._generation.next()
+  }
+
+  public get counters() {
+    return this._counters
   }
 
   public clearField() {
-    this._field.grid = FieldUtils.getEmptyGrid(this._field)
+    this._field.clear()
+  }
+
+  public subscribeToField(target: EventTarget) {
+    this._field.subscribe(target)
+  }
+
+  public subscribeToGeneration(target: EventTarget) {
+    this._generation.subscribe(target)
+  }
+
+  private _subscribeDependencies() {
+    this.subscribeToField(this._colonyDrawer)
+    this.subscribeToField(this._counters.population)
+    this.subscribeToGeneration(this._counters.generation)
+  }
+
+  private _isColonyDead(): boolean {
+    return this._counters.population.count === 0
   }
 }
 

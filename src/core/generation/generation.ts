@@ -1,19 +1,16 @@
 import Field, { FieldUtils } from '../field'
 import { Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
+import EventSource from '../../common/event-source'
 
-class Generation {
-  private _count = 0
-
-  constructor(private _field: Field, private _applyRules: Rules) {}
-
-  public get count(): number {
-    return this._count
+class Generation extends EventSource {
+  constructor(private _field: Field, private _applyRules: Rules) {
+    super()
   }
 
   public next() {
     this.changeGenerationOnGrid()
-    this._count++
+    this.notify()
   }
 
   private changeGenerationOnGrid() {
