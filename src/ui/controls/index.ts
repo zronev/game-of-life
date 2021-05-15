@@ -5,7 +5,6 @@ import { Loop, LoopUtils } from '../../game/loop'
 
 const createControls = (
   game: Game,
-  info: Info,
   loop: Loop,
   loopStep: () => void
 ) => {
@@ -13,14 +12,12 @@ const createControls = (
   spawnButton.setTextContent('spawn')
   spawnButton.onClick(() => {
     game.spawners.randomSpawn()
-    info.updateAllCounters()
   })
 
   const clearButton = new Button('#controls', 'button--danger')
   clearButton.setTextContent('clear')
   clearButton.onClick(() => {
     game.clearField()
-    info.updateAllCounters()
   })
 
   const playButton = new Button('#controls')
