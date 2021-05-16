@@ -8,10 +8,8 @@ export type GridOptions = {
 }
 
 export type CanvasOptions = {
-  parentSelectors: string
   width: number
   height: number
-  className?: string
 }
 
 export interface Options {

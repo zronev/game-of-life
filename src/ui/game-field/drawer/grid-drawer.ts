@@ -1,13 +1,9 @@
-import { Options } from '../options'
-import Canvas from '../../ui/components/canvas'
-import { Point } from '../../common/types'
+import { Options } from '../../../game/options'
+import { Point } from '../../../common/types'
+import CanvasView from '../canvas'
 
 class GridDrawer {
-  private _canvas: Canvas
-
-  constructor(private _options: Options) {
-    this._canvas = new Canvas({ ..._options.canvas, className: 'grid-canvas' })
-  }
+  constructor(private _canvas: CanvasView, private _options: Options) {}
 
   public draw() {
     const { rows, columns } = this._options.grid
@@ -38,8 +34,8 @@ class GridDrawer {
   }
 
   private _getCellSize(): number {
-    const { domElement } = this._canvas
-    return Math.floor(domElement.width / this._options.grid.rows)
+    const { element } = this._canvas
+    return Math.floor(element.width / this._options.grid.rows)
   }
 }
 

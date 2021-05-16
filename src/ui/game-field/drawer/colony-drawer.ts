@@ -1,18 +1,13 @@
-import Field from '../../core/field'
-import Canvas from '../../ui/components/canvas'
-import { Options } from '../options'
-import { EventTarget } from '../../common/event-source'
+import CanvasView from '../canvas'
+import Field from '../../../core/field'
+import { Options } from '../../../game/options'
+import { EventTarget } from '../../../common/event-source'
 import { Cell } from './types'
 
 class ColonyDrawer implements EventTarget {
-  private _canvas: Canvas
   private _cellSize: number
 
-  constructor(private _options: Options) {
-    this._canvas = new Canvas({
-      ..._options.canvas,
-      className: 'colony-canvas',
-    })
+  constructor(private _canvas: CanvasView, private _options: Options) {
     this._cellSize = this._getCellSize()
   }
 
@@ -22,8 +17,8 @@ class ColonyDrawer implements EventTarget {
   }
 
   private _clearScreen() {
-    const { ctx, domElement } = this._canvas
-    ctx.clearRect(0, 0, domElement.width, domElement.height)
+    const { ctx, element } = this._canvas
+    ctx.clearRect(0, 0, element.width, element.height)
   }
 
   private _drawGrid(_field: Field) {
@@ -46,8 +41,8 @@ class ColonyDrawer implements EventTarget {
   }
 
   private _getCellSize(): number {
-    const { domElement } = this._canvas
-    return Math.floor(domElement.width / this._options.grid.rows)
+    const { element } = this._canvas
+    return Math.floor(element.width / this._options.grid.rows)
   }
 
   private _drawCell({ x, y, side, color = '' }: Cell) {
