@@ -10,13 +10,12 @@ import { Options } from './options'
 import { EventTarget } from '../common/event-source'
 
 class Game {
-  public spawners: Spawners
-
   private _field: Field
+  private _spawners: Spawners
   private _generation: Generation
-  private _counters: Record<string, Counter>
   private _gridDrawer: GridDrawer
   private _colonyDrawer: ColonyDrawer
+  private _counters: Record<string, Counter>
 
   constructor(options: Options) {
     // TODO: Move to view logic
@@ -31,8 +30,7 @@ class Game {
       generation: new GenerationCounter(),
     }
 
-    // TODO: Move to view logic -- public method `setFieldGrid`
-    this.spawners = new Spawners(this._field)
+    this._spawners = new Spawners(this._field)
 
     this._subscribeDependencies()
     this._gridDrawer.draw()
@@ -40,6 +38,10 @@ class Game {
 
   public step() {
     if (!this._isColonyDead()) this._generation.next()
+  }
+
+  public get spawners() {
+    return this._spawners
   }
 
   public get counters() {
