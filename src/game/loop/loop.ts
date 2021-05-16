@@ -1,12 +1,10 @@
 import { clamp } from '../../common/utils'
 
 class Loop {
-  private _fps: number
+  private _running: boolean = false
   private _requestId: number | null = null
 
-  constructor(fps: number) {
-    this._fps = fps
-  }
+  constructor(private _fps: number) {}
 
   public start(fn: () => void) {
     if (this._requestId) return
@@ -26,12 +24,14 @@ class Loop {
     }
 
     this._requestId = window.requestAnimationFrame(gameLoop)
+    this._running = true
   }
 
-  public stop() {
+  public pause() {
     if (!this._requestId) return
     window.cancelAnimationFrame(this._requestId)
     this._requestId = null
+    this._running = false
   }
 
   public set fps(value: number) {
@@ -40,6 +40,10 @@ class Loop {
 
   public get fps() {
     return this._fps
+  }
+
+  public get running() {
+    return this._running
   }
 }
 

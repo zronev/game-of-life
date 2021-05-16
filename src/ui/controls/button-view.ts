@@ -1,6 +1,6 @@
 export type ButtonProps = {
   text: string
-  onClick: () => void
+  onClick: (button: HTMLButtonElement, e: MouseEvent) => void
   className?: string
 }
 
@@ -9,9 +9,11 @@ type MakeButton = (props: ButtonProps) => HTMLButtonElement
 const makeButton: MakeButton = ({ text, onClick, className = '' }) => {
   const button = document.createElement('button')
   button.textContent = text
+
   button.classList.add('button')
   if (className) button.classList.add(...className.split(' '))
-  button.addEventListener('click', onClick)
+  
+  button.addEventListener('click', e => onClick(button, e))
   return button
 }
 
