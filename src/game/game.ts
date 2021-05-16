@@ -4,7 +4,6 @@ import { applyClassicRules } from '../core/rules'
 
 import Spawners from './spawners'
 import { ColonyDrawer, GridDrawer } from './drawer'
-import { PopulationCounter, GenerationCounter, Counter } from './counters'
 
 import { Options } from './options'
 import { EventTarget } from '../common/event-source'
@@ -15,7 +14,6 @@ class Game {
   private _generation: Generation
   private _gridDrawer: GridDrawer
   private _colonyDrawer: ColonyDrawer
-  private _counters: Record<string, Counter>
 
   constructor(options: Options) {
     // TODO: Move to view logic
@@ -25,11 +23,6 @@ class Game {
     this._field = new Field(options.grid)
     this._generation = new Generation(this._field, applyClassicRules)
 
-    this._counters = {
-      population: new PopulationCounter(),
-      generation: new GenerationCounter(),
-    }
-
     this._spawners = new Spawners(this._field)
 
     this._subscribeDependencies()
@@ -37,15 +30,11 @@ class Game {
   }
 
   public step() {
-    if (!this._isColonyDead()) this._generation.next()
+    this._generation.next()
   }
 
   public get spawners() {
     return this._spawners
-  }
-
-  public get counters() {
-    return this._counters
   }
 
   public clearField() {
@@ -62,12 +51,6 @@ class Game {
 
   private _subscribeDependencies() {
     this.subscribeToField(this._colonyDrawer)
-    this.subscribeToField(this._counters.population)
-    this.subscribeToGeneration(this._counters.generation)
-  }
-
-  private _isColonyDead(): boolean {
-    return this._counters.population.count === 0
   }
 }
 
