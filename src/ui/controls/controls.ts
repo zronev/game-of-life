@@ -1,18 +1,18 @@
 import Game from '../../game'
-import { Loop, LoopUtils } from '../../game/loop'
+import { Loop } from '../../game/loop'
 import makeButton from './button-view'
 
 export const buildControls = (game: Game, loop: Loop): HTMLElement => {
   const spawn = makeButton({
     text: 'spawn',
-    onClick: () => game.spawners.randomSpawn(),
     className: 'button--success',
+    onClick: () => game.spawners.randomSpawn(),
   })
 
   const clear = makeButton({
     text: 'clear',
-    onClick: () => game.clearField(),
     className: 'button--danger',
+    onClick: () => game.clearField(),
   })
 
   const playback = makeButton({
@@ -31,26 +31,26 @@ export const buildControls = (game: Game, loop: Loop): HTMLElement => {
   const fpsInc = makeButton({
     text: 'fps +',
     onClick: button => {
-      if (loop.fps === 60) {
+      if (loop.fps === loop.maxFps) {
         button.disabled = true
         return
       }
 
       button.disabled = false
-      LoopUtils.changeFps(loop, 5)
+      loop.changeFpsBy(5)
     },
   })
 
   const fpsDec = makeButton({
     text: 'fps -',
     onClick: button => {
-      if (loop.fps === 1) {
+      if (loop.fps === loop.minFps) {
         button.disabled = true
         return
       }
 
       button.disabled = false
-      LoopUtils.changeFps(loop, -5)
+      loop.changeFpsBy(-5)
     },
   })
 

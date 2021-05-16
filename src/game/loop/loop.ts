@@ -1,7 +1,9 @@
 import { clamp } from '../../common/utils'
 
 class Loop {
-  private _running: boolean = false
+  private _minFps = 1
+  private _maxFps = 60
+  private _running = false
   private _requestId: number | null = null
 
   constructor(private _fps: number) {}
@@ -34,16 +36,28 @@ class Loop {
     this._running = false
   }
 
+  public get running() {
+    return this._running
+  }
+
+  public get minFps() {
+    return this._minFps
+  }
+
+  public get maxFps() {
+    return this._maxFps
+  }
+
   public set fps(value: number) {
-    this._fps = clamp(value, 1, 60)
+    this._fps = clamp(value, this.minFps, this.maxFps)
   }
 
   public get fps() {
     return this._fps
   }
 
-  public get running() {
-    return this._running
+  public changeFpsBy(value: number) {
+    this.fps = this.fps + value
   }
 }
 
