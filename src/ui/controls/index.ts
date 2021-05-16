@@ -1,40 +1,44 @@
 import Game from '../../game'
-import Info from '../info/info'
-import Button from '../components/button'
 import { Loop, LoopUtils } from '../../game/loop'
+import makeButton, { ButtonProps } from './control-button'
 
-const createControls = (
-  game: Game,
-  loop: Loop,
-  loopStep: () => void
-) => {
-  const spawnButton = new Button('#controls', 'button--success')
-  spawnButton.setTextContent('spawn')
-  spawnButton.onClick(() => {
-    game.spawners.randomSpawn()
-  })
+const buildControls = (game: Game, loop: Loop): HTMLElement => {
+  const buttonsProps: ButtonProps[] = [
+    {
+      text: 'spawn',
+      onClick: () => game.spawners.randomSpawn(),
+      className: 'button--success',
+    },
+    {
+      text: 'clear',
+      onClick: () => game.clearField(),
+      className: 'button--danger',
+    },
+    {
+      text: 'play',
+      onClick: () => loop.start(() => game.step()),
+    },
+    {
+      text: 'pause',
+      onClick: () => loop.stop(),
+    },
+    {
+      text: 'fps +',
+      onClick: () => LoopUtils.changeFps(loop, 5),
+    },
+    {
+      text: 'fps -',
+      onClick: () => LoopUtils.changeFps(loop, -5),
+    },
+  ]
 
-  const clearButton = new Button('#controls', 'button--danger')
-  clearButton.setTextContent('clear')
-  clearButton.onClick(() => {
-    game.clearField()
-  })
+  const buttonsElements = buttonsProps.map(props => makeButton(props))
 
-  const playButton = new Button('#controls')
-  playButton.setTextContent('play')
-  playButton.onClick(() => loop.start(loopStep))
+  const container = document.createElement('section')
+  container.classList.add('controls', 'main__controls')
+  container.append(...buttonsElements)
 
-  const pauseButton = new Button('#controls')
-  pauseButton.setTextContent('pause')
-  pauseButton.onClick(() => loop.stop())
-
-  const fpsIncButton = new Button('#controls')
-  fpsIncButton.setTextContent('inc fps')
-  fpsIncButton.onClick(() => LoopUtils.changeFps(loop, 5))
-
-  const fpsDecButton = new Button('#controls')
-  fpsDecButton.setTextContent('dec fps')
-  fpsDecButton.onClick(() => LoopUtils.changeFps(loop, -5))
+  return container
 }
 
-export default createControls
+export default buildControls
