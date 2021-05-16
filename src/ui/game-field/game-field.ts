@@ -1,6 +1,6 @@
 import Game, { Options } from '../../game'
 import CanvasView from './canvas'
-import { ColonyDrawer, GridDrawer } from './drawer'
+import { ColonyDrawer, GridDrawer } from '../drawers'
 
 const buildHelperGrid = (options: Options): HTMLElement => {
   const { width, height } = options.canvas

@@ -1,6 +1,6 @@
-import { Options } from '../../../game/options'
-import { Point } from '../../../common/types'
-import CanvasView from '../canvas'
+import { Options } from '../../game/options'
+import { Point } from '../../common/types'
+import CanvasView from '../game-field/canvas'
 
 class GridDrawer {
   constructor(private _canvas: CanvasView, private _options: Options) {}

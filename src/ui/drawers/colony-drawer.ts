@@ -1,7 +1,7 @@
-import CanvasView from '../canvas'
-import Field from '../../../core/field'
-import { Options } from '../../../game/options'
-import { EventTarget } from '../../../common/event-source'
+import CanvasView from '../game-field/canvas'
+import Field from '../../core/field'
+import { Options } from '../../game/options'
+import { EventTarget } from '../../common/event-source'
 import { Cell } from './types'
 
 class ColonyDrawer implements EventTarget {
