@@ -1,7 +1,8 @@
 import Game, { Options } from '../game'
 import { Loop } from '../game/loop'
-import buildControls from './controls'
-import buildInfo from './info/info'
+
+import { buildInfo } from './info'
+import { buildControls } from './controls'
 
 const app = (options: Options) => {
   const game = new Game(options)

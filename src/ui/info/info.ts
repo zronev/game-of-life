@@ -1,7 +1,7 @@
 import Game from '../../game'
 import CounterView from './counter-view'
 
-const buildInfo = (game: Game): HTMLElement => {
+export const buildInfo = (game: Game): HTMLElement => {
   const counters = Object.entries(game.counters).map(([name, counter]) => {
     const view = new CounterView(name)
     counter.subscribe(view)
@@ -14,5 +14,3 @@ const buildInfo = (game: Game): HTMLElement => {
 
   return container
 }
-
-export default buildInfo
