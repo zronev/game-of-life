@@ -1,4 +1,4 @@
-import app from '../ui/app'
+import { app } from '../ui/app'
 import { createOptions } from '../game'
 
 const options = createOptions({

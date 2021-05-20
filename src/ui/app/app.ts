@@ -1,10 +1,10 @@
-import Game, { Options } from '../game'
-import { Loop } from '../game/loop'
+import Game, { Options } from '../../game'
+import { Loop } from '../../game/loop'
 
-import { buildInfo } from './info'
-import { buildControls } from './controls'
-import { buildGameField } from './game-field'
-import { buildPatterns } from './patterns'
+import { buildInfo } from '../info'
+import { buildControls } from '../controls'
+import { buildGameField } from '../game-field'
+import { buildPatterns } from '../patterns'
 
 const app = (options: Options): void => {
   const game = new Game(options)
