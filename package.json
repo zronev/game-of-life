@@ -4,10 +4,15 @@
     "dev": "parcel src/app/index.html --open",
     "build": "parcel build src/app/index.html",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.26.0",
     "jest": "^26.6.3",
     "sass": "^1.32.8",
     "ts-jest": "^26.5.4",
