@@ -2,9 +2,9 @@ import CanvasView from '../game-field/canvas'
 import Field from '../../core/field'
 import { Options } from '../../game/options'
 import { EventTarget } from '../../common/event-source'
-import { Cell } from './types'
+import { Cell, Drawer } from './types'
 
-class ColonyDrawer implements EventTarget {
+class ColonyDrawer implements EventTarget, Drawer {
   private _cellSize: number
 
   constructor(private _canvas: CanvasView, private _options: Options) {
@@ -12,20 +12,20 @@ class ColonyDrawer implements EventTarget {
   }
 
   public update(_field: Field) {
-    this._clearScreen()
-    this._drawGrid(_field)
+    this.clear()
+    this.draw(_field)
   }
 
-  private _clearScreen() {
+  public clear() {
     const { ctx, element } = this._canvas
     ctx.clearRect(0, 0, element.width, element.height)
   }
 
-  private _drawGrid(_field: Field) {
+  public draw(_field: Field) {
     const { grid, rows, columns } = _field
 
-    for (let y = 0; y < columns; y++) {
-      for (let x = 0; x < rows; x++) {
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < columns; x++) {
         const isCellAlive = grid[y][x]
 
         if (!isCellAlive) continue
@@ -41,8 +41,9 @@ class ColonyDrawer implements EventTarget {
   }
 
   private _getCellSize(): number {
-    const { element } = this._canvas
-    return Math.floor(element.width / this._options.grid.rows)
+    const width = this._canvas.element.width
+    const columns = this._options.grid.columns
+    return Math.floor(width / columns)
   }
 
   private _drawCell({ x, y, side, color = '' }: Cell) {

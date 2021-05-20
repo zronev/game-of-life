@@ -4,3 +4,8 @@ export type Cell = {
   side: number
   color?: string
 }
+
+export interface Drawer {
+  draw(...args: any): void
+  clear(): void
+}

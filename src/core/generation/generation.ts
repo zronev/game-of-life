@@ -17,8 +17,8 @@ class Generation extends EventSource {
     const { grid, rows, columns } = this._field
     const gridCopy = arrayClone(grid)
 
-    for (let y = 0; y < columns; y++) {
-      for (let x = 0; x < rows; x++) {
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < columns; x++) {
         const cell = gridCopy[y][x]
         const neighbours = FieldUtils.getNeighbours(this._field, x, y)
         gridCopy[y][x] = this._applyRules(cell, neighbours)
