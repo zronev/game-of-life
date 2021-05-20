@@ -11,17 +11,17 @@ class ColonyDrawer implements EventTarget, Drawer {
     this._cellSize = this._getCellSize()
   }
 
-  public update(_field: Field) {
+  public update(_field: Field): void {
     this.clear()
     this.draw(_field)
   }
 
-  public clear() {
+  public clear(): void {
     const { ctx, element } = this._canvas
     ctx.clearRect(0, 0, element.width, element.height)
   }
 
-  public draw(_field: Field) {
+  public draw(_field: Field): void {
     const { grid, rows, columns } = _field
 
     for (let y = 0; y < rows; y++) {

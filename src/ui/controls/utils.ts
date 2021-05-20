@@ -5,7 +5,7 @@ export const downloadScreenshot = (
     quality: number
     fileName: string
   }
-) => {
+): void => {
   const dataURL = canvas.toDataURL(options.imageType, options.quality)
   const link = document.createElement('a')
 

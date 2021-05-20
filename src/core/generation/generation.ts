@@ -8,20 +8,20 @@ class Generation extends EventSource {
     super()
   }
 
-  public next() {
-    this.changeGenerationOnGrid()
+  public next(): void {
+    this._changeGenerationOnGrid()
     this.notify()
   }
 
-  private changeGenerationOnGrid() {
+  private _changeGenerationOnGrid() {
     const { grid, rows, columns } = this._field
     const gridCopy = arrayClone(grid)
 
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
-        const cell = gridCopy[y][x]
+        const isCellAlive = gridCopy[y][x]
         const neighbours = FieldUtils.getNeighbours(this._field, x, y)
-        gridCopy[y][x] = this._applyRules(cell, neighbours)
+        gridCopy[y][x] = this._applyRules(isCellAlive, neighbours)
       }
     }
 

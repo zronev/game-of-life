@@ -17,23 +17,23 @@ class Game {
     this._spawners = new Spawners(this._field)
   }
 
-  public step() {
+  public step(): void {
     this._generation.next()
   }
 
-  public get spawners() {
+  public get spawners(): Spawners {
     return this._spawners
   }
 
-  public clearField() {
+  public clearField(): void {
     this._field.clear()
   }
 
-  public subscribeToField(target: EventTarget) {
+  public subscribeToField(target: EventTarget): void {
     this._field.subscribe(target)
   }
 
-  public subscribeToGeneration(target: EventTarget) {
+  public subscribeToGeneration(target: EventTarget): void {
     this._generation.subscribe(target)
   }
 }

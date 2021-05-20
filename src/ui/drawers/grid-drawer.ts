@@ -6,20 +6,20 @@ import CanvasView from '../game-field/canvas'
 class GridDrawer implements Drawer {
   constructor(private _canvas: CanvasView, private _options: Options) {}
 
-  public draw() {
+  public draw(): void {
     const { rows, columns } = this._options.grid
     const cellSize = this._getCellSize()
 
     for (let y = 1; y < rows; y++) {
       const start: Point = { x: 0, y: y * cellSize }
       const end: Point = { x: columns * cellSize, y: y * cellSize }
-      this.drawLine(start, end)
+      this._drawLine(start, end)
     }
 
     for (let x = 1; x < columns; x++) {
       const start: Point = { x: x * cellSize, y: 0 }
       const end: Point = { x: x * cellSize, y: rows * cellSize }
-      this.drawLine(start, end)
+      this._drawLine(start, end)
     }
   }
 
@@ -28,7 +28,7 @@ class GridDrawer implements Drawer {
     ctx.clearRect(0, 0, element.width, element.height)
   }
 
-  private drawLine(start: Point, end: Point) {
+  private _drawLine(start: Point, end: Point) {
     const { ctx } = this._canvas
 
     ctx.beginPath()

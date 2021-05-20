@@ -8,7 +8,7 @@ class Loop {
 
   constructor(private _fps: number) {}
 
-  public start(fn: () => void) {
+  public start(fn: () => void): void {
     if (this._requestId) return
 
     let lastFrameTimeMs = 0
@@ -29,22 +29,22 @@ class Loop {
     this._running = true
   }
 
-  public pause() {
+  public pause(): void {
     if (!this._requestId) return
     window.cancelAnimationFrame(this._requestId)
     this._requestId = null
     this._running = false
   }
 
-  public get running() {
+  public get running(): boolean {
     return this._running
   }
 
-  public get minFps() {
+  public get minFps(): number {
     return this._minFps
   }
 
-  public get maxFps() {
+  public get maxFps(): number {
     return this._maxFps
   }
 
@@ -52,11 +52,11 @@ class Loop {
     this._fps = clamp(value, this.minFps, this.maxFps)
   }
 
-  public get fps() {
+  public get fps(): number {
     return this._fps
   }
 
-  public changeFpsBy(value: number) {
+  public changeFpsBy(value: number): void {
     this.fps = this.fps + value
   }
 }

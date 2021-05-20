@@ -13,14 +13,13 @@ class Field extends EventSource {
     super()
     this._rows = options.rows
     this._columns = options.columns
-    this._grid = grid || this.getDefaultGrid(options)
+    this._grid = grid || this._getDefaultGrid(options)
   }
 
   public get grid(): Grid {
     return this._grid
   }
 
-  // TODO: maybe try to use a decorator here?
   public set grid(newGrid: Grid) {
     this._grid = newGrid
     this.notify()
@@ -34,11 +33,11 @@ class Field extends EventSource {
     return this._columns
   }
 
-  public clear() {
+  public clear(): void {
     this.grid = FieldUtils.getEmptyGrid(this)
   }
 
-  private getDefaultGrid({ rows, columns }: GridOptions): Grid {
+  private _getDefaultGrid({ rows, columns }: GridOptions): Grid {
     return createGrid(rows, columns, false)
   }
 }

@@ -4,21 +4,21 @@ import { EventTarget } from '../../common/event-source'
 class CounterView implements EventTarget {
   private _element: HTMLElement
 
-  constructor(private caption: string, defaultValue = 0) {
+  constructor(private _caption: string, defaultValue = 0) {
     this._element = document.createElement('p')
-    this._element.textContent = this.getText(defaultValue)
+    this._element.textContent = this._getText(defaultValue)
   }
 
-  get element() {
+  get element(): HTMLElement {
     return this._element
   }
 
   update(counter: Counter): void {
-    this._element.textContent = this.getText(counter.count)
+    this._element.textContent = this._getText(counter.count)
   }
 
-  private getText(value: number) {
-    return `${this.caption} ${value}`
+  private _getText(value: number) {
+    return `${this._caption} ${value}`
   }
 }
 

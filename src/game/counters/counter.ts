@@ -1,7 +1,7 @@
 import EventSource, { EventTarget } from '../../common/event-source'
 
 abstract class Counter extends EventSource implements EventTarget {
-  protected _count: number = 0
+  protected _count = 0
 
   get count(): number {
     return this._count

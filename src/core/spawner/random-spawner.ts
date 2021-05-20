@@ -9,7 +9,7 @@ class RandomSpawner extends Spawner {
     super(_field)
   }
 
-  public spawn(amount: number) {
+  public spawn(amount: number): void {
     const { grid } = this._field
     const gridCopy = arrayClone(grid)
 
@@ -18,7 +18,7 @@ class RandomSpawner extends Spawner {
 
     let count = 0
     while (count < resultAmount) {
-      const point = this.getRandomCellCoordinate()
+      const point = this._getRandomCellCoordinate()
       const isCellUsed = gridCopy[point.y][point.x]
 
       if (isCellUsed) continue
@@ -30,7 +30,7 @@ class RandomSpawner extends Spawner {
     this._field.grid = gridCopy
   }
 
-  private getRandomCellCoordinate(): Point {
+  private _getRandomCellCoordinate(): Point {
     const { rows, columns } = this._field
 
     return {

@@ -3,13 +3,13 @@ import { Point } from '../../common/types'
 import { arrayClone } from '../../common/utils'
 
 class PatternSpawner extends Spawner {
-  public spawn(pattern: boolean[][], offset?: Point) {
-    const isValidPattern = this.isValidPattern(pattern)
-
-    if (isValidPattern) this.placeInGrid(pattern, offset)
+  public spawn(pattern: boolean[][], offset?: Point): void {
+    if (this._isValidPattern(pattern)) {
+      this._placeInGrid(pattern, offset)
+    }
   }
 
-  private isValidPattern(pattern: boolean[][]): boolean {
+  private _isValidPattern(pattern: boolean[][]): boolean {
     const { rows, columns } = this._field
     const patternRows = pattern[0].length
     const patternColumns = pattern.length
@@ -17,7 +17,7 @@ class PatternSpawner extends Spawner {
     return patternRows <= rows && patternColumns <= columns
   }
 
-  private placeInGrid(
+  private _placeInGrid(
     pattern: boolean[][],
     offset: Point = {
       x: 0,

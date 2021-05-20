@@ -13,12 +13,12 @@ class Spawners {
     this._patternSpawner = new PatternSpawner(_field)
   }
 
-  public randomSpawn(amount?: number) {
+  public randomSpawn(amount?: number): void {
     const defaultAmount = FieldUtils.getDefaultAmount(this._field)
     this._randomSpawner.spawn(amount || defaultAmount)
   }
 
-  public patternSpawn(pattern: Grid, offset?: Point) {
+  public patternSpawn(pattern: Grid, offset?: Point): void {
     this._patternSpawner.spawn(pattern, offset)
   }
 }

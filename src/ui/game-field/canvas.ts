@@ -4,8 +4,13 @@ class CanvasView {
 
   constructor(width: number, height: number, className = '') {
     this._element = document.createElement('canvas')
-    this._ctx = this._element.getContext('2d')!
+    const ctx = this._element.getContext('2d')
 
+    if (ctx === null) {
+      throw new Error("Can't get a 2d context")
+    }
+
+    this._ctx = ctx
     this._element.width = width
     this._element.height = height
     this._element.classList.add('canvas')

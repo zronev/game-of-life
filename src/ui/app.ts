@@ -6,7 +6,7 @@ import { buildControls } from './controls'
 import { buildGameField } from './game-field'
 import { buildPatterns } from './patterns'
 
-const app = (options: Options) => {
+const app = (options: Options): void => {
   const game = new Game(options)
   game.spawners.randomSpawn()
 
