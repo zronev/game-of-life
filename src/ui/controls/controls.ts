@@ -29,7 +29,7 @@ export const buildControls = (game: Game, loop: Loop): HTMLElement => {
   })
 
   const fpsInc = makeButton({
-    text: 'fps +',
+    text: 'speed +',
     onClick: button => {
       if (loop.fps === loop.maxFps) {
         button.disabled = true
@@ -42,7 +42,7 @@ export const buildControls = (game: Game, loop: Loop): HTMLElement => {
   })
 
   const fpsDec = makeButton({
-    text: 'fps -',
+    text: 'speed -',
     onClick: button => {
       if (loop.fps === loop.minFps) {
         button.disabled = true
