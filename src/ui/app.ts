@@ -4,6 +4,7 @@ import { Loop } from '../game/loop'
 import { buildInfo } from './info'
 import { buildControls } from './controls'
 import { buildGameField } from './game-field'
+import { buildPatterns } from './patterns'
 
 const app = (options: Options) => {
   const game = new Game(options)
@@ -22,14 +23,11 @@ const buildMain = (game: Game, loop: Loop, options: Options): HTMLElement => {
   const info = buildInfo(game)
   const controls = buildControls(game, loop)
   const gameField = buildGameField(game, options)
-
-  // colonyGrid()
-  // helperGrid()
-  // patterns()
+  const patterns = buildPatterns(game)
 
   const container = document.createElement('main')
   container.classList.add('main')
-  container.append(info, gameField, controls)
+  container.append(info, gameField, controls, patterns)
 
   return container
 }

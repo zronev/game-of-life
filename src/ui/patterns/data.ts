@@ -1,8 +1,10 @@
 import { Grid } from '../../core/field/types'
 
-type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
+export type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
 
-const patterns: Record<PatternKey, Grid> = {
+export type PatternsList = Record<PatternKey, Grid>
+
+export const patterns: PatternsList = {
   block: [
     [true, true],
     [true, true],
@@ -31,4 +33,22 @@ const patterns: Record<PatternKey, Grid> = {
   ],
 }
 
-export default patterns
+export type Sides = {
+  rows: number
+  columns: number
+}
+
+export const getMaxSides = (patterns: PatternsList): Sides => {
+  return Object.values(patterns).reduce(
+    (acc, pattern) => {
+      const rows = pattern.length
+      const columns = pattern[0].length
+
+      return {
+        rows: rows > acc.rows ? rows : acc.rows,
+        columns: columns > acc.columns ? columns : acc.columns,
+      }
+    },
+    { rows: -Infinity, columns: -Infinity }
+  )
+}
