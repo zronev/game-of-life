@@ -1,10 +1,10 @@
 import Field from './field'
 import { Grid } from './types'
-import { createMatrix } from '../../common/utils'
+import { createGrid } from '../../common/utils'
 
 export const getEmptyGrid = (field: Field): Grid => {
   const { rows, columns } = field
-  return createMatrix(rows, columns, false)
+  return createGrid(rows, columns, false)
 }
 
 export const getUsedCells = (field: Field): number => {

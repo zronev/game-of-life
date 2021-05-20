@@ -1,4 +1,4 @@
-import { arrayClone, clamp, createMatrix } from './utils'
+import { arrayClone, clamp, createGrid, fillGridWithAnotherGrid } from './utils'
 
 describe('arrayClone', () => {
   describe('1d array', () => {
@@ -42,14 +42,35 @@ describe('clamp', () => {
   })
 })
 
-describe('createMatrix', () => {
-  it('should return matrix with right numbers of rows and columns and filled with given value', () => {
-    const matrix = createMatrix(2, 2, 'value')
+describe('createGrid', () => {
+  it('should return a grid with right numbers of rows and columns and filled with given value', () => {
+    const grid = createGrid(2, 2, 'value')
     const expected = [
       ['value', 'value'],
       ['value', 'value'],
     ]
 
-    expect(matrix).toEqual(expected)
+    expect(grid).toEqual(expected)
+  })
+})
+
+describe('fillGridWithAnotherGrid', () => {
+  it('should return a grid filled with a passed grid and blank values', () => {
+    const grid = [
+      [true, true, true],
+      [true, true, true],
+    ]
+
+    const actual = fillGridWithAnotherGrid(grid, 5, 4)
+
+    const expected = [
+      [true, true, true, undefined],
+      [true, true, true, undefined],
+      [undefined, undefined, undefined, undefined],
+      [undefined, undefined, undefined, undefined],
+      [undefined, undefined, undefined, undefined],
+    ]
+
+    expect(actual).toEqual(expected)
   })
 })

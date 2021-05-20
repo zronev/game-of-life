@@ -1,32 +1,42 @@
+import { Grid } from './types'
+
 export const getRandomValue = (min: number, max: number): number => {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min + 1)) + min
+  const ceiledMin = Math.ceil(min)
+  const flooredMax = Math.floor(max)
+  return Math.floor(Math.random() * (flooredMax - ceiledMin + 1)) + ceiledMin
 }
 
-export const arrayClone = <T>(arr: T[]): T[] => JSON.parse(JSON.stringify(arr))
+export const arrayClone = <T>(arr: T[]): T[] => {
+  return JSON.parse(JSON.stringify(arr))
+}
 
-export const clamp = (value: number, min: number, max: number): number =>
-  Math.max(min, Math.min(value, max))
+export const clamp = (value: number, min: number, max: number): number => {
+  return Math.max(min, Math.min(value, max))
+}
 
-export const createMatrix = <T>(
+export const createGrid = <T>(
   rows: number,
   columns: number,
-  value: T
-): T[][] => {
+  value?: T
+): Grid<T> => {
   return Array<T[]>(rows)
     .fill([])
     .map(() => Array(columns).fill(value))
 }
 
-// export const transposeMatrix = <T>(matrix: T[][]): T[][] => {
-//   const clone = arrayClone(matrix)
+export const fillGridWithAnotherGrid = <T>(
+  grid: Grid<T>,
+  rows: number,
+  columns: number
+): Grid<T> => {
+  const newGrid = createGrid<T>(rows, columns)
 
-//   for (let y = 0; y < matrix.length; y++) {
-//     for (let x = 0; x < matrix[0].length; x++) {
-//       const cell = matrix[y][x]
-//     }
-//   }
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < columns; x++) {
+      const cellValue = grid?.[y]?.[x]
+      newGrid[y][x] = cellValue
+    }
+  }
 
-//   return clone
-// }
+  return newGrid
+}
