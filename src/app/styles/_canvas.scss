@@ -1,11 +1,15 @@
 .canvas {
-  border: var(--border);
-  max-width: 640px;
   transition: opacity var(--transition-ease-out);
 
   &:hover {
     transition: opacity var(--transition-ease-in);
   }
+}
+
+.grid-canvas,
+.colony-canvas {
+  border: var(--border);
+  max-width: 640px;
 }
 
 .colony-canvas {

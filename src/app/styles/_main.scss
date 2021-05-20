@@ -5,16 +5,12 @@
     'game patterns'
     'controls .';
   grid-template-columns: auto calc(
-      2 * var(--button-min-width) + var(--gap-size)
+      3 * var(--button-min-width) + var(--gap-size)
     );
   gap: var(--gap-size);
-  max-width: 64rem;
+  max-width: 90rem;
   margin: 2rem auto 0;
   position: relative;
-
-  @media (min-width: 90rem) {
-    max-width: 68rem;
-  }
 
   @media (max-width: 64rem) {
     grid-template-areas:
