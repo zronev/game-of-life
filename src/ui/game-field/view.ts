@@ -1,6 +1,5 @@
 import Field, { Grid } from '../../core/field'
-import Layer from '../layers/layer'
-import LayerFactory, { DrawerTypes } from '../layers/layer-factory'
+import { Layer, LayerFactory, DrawerTypes } from '../layers'
 
 import { Options } from '../../game'
 import { Point } from '../../common/types'
