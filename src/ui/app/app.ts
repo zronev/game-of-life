@@ -4,6 +4,7 @@ import { buildInfo } from '../info'
 import { buildControls } from '../controls'
 import { buildGameField } from '../game-field'
 import { buildPatterns } from '../patterns'
+import ShortcutsController from '../../shortcuts/shortcuts'
 
 const app = (options: Options): void => {
   const game = new Game(options)
@@ -12,6 +13,9 @@ const app = (options: Options): void => {
 
   const main = buildMain(game, options)
   const root = buildRoot(main)
+
+  const shortcuts = new ShortcutsController(game)
+  shortcuts.init()
 
   document.body.appendChild(root)
 }
