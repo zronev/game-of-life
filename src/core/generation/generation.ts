@@ -1,16 +1,24 @@
 import Field, { FieldUtils } from '../field'
 import { Rules } from '../rules'
 import { arrayClone } from '../../common/utils'
-import EventSource from '../../common/event-source'
+import { Event } from '../../common/event'
 
-class Generation extends EventSource {
+type GenerationChangeEvent = Event<unknown>
+
+class Generation {
+  private _onGenerationChanged: GenerationChangeEvent
+
   constructor(private _field: Field, private _applyRules: Rules) {
-    super()
+    this._onGenerationChanged = new Event()
   }
 
   public next(): void {
     this._changeGenerationOnGrid()
-    this.notify()
+    this._onGenerationChanged.trigger({})
+  }
+
+  public get onGenerationChanged(): GenerationChangeEvent {
+    return this._onGenerationChanged
   }
 
   private _changeGenerationOnGrid() {

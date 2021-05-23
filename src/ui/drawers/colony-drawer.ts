@@ -1,19 +1,13 @@
 import CanvasView from '../game-field/canvas'
 import Field from '../../core/field'
 import { Options } from '../../game/options'
-import { EventTarget } from '../../common/event-source'
 import { Cell, Drawer } from './types'
 
-class ColonyDrawer implements EventTarget, Drawer {
+class ColonyDrawer implements Drawer {
   private _cellSize: number
 
   constructor(private _canvas: CanvasView, private _options: Options) {
     this._cellSize = this._getCellSize()
-  }
-
-  public update(_field: Field): void {
-    this.clear()
-    this.draw(_field)
   }
 
   public clear(): void {
@@ -38,6 +32,10 @@ class ColonyDrawer implements EventTarget, Drawer {
         })
       }
     }
+  }
+
+  public get cellSize(): number {
+    return this._cellSize
   }
 
   private _getCellSize(): number {

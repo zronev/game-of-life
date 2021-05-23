@@ -6,9 +6,9 @@ class Loop {
   private _running = false
   private _requestId: number | null = null
 
-  constructor(private _fps: number) {}
+  constructor(private _fps: number, private _step: () => void) {}
 
-  public start(fn: () => void): void {
+  public start(): void {
     if (this._requestId) return
 
     let lastFrameTimeMs = 0
@@ -21,7 +21,7 @@ class Loop {
 
       lastFrameTimeMs = timestamp
 
-      fn()
+      this._step()
       this._requestId = window.requestAnimationFrame(gameLoop)
     }
 
@@ -34,6 +34,10 @@ class Loop {
     window.cancelAnimationFrame(this._requestId)
     this._requestId = null
     this._running = false
+  }
+
+  public toggle(): void {
+    this.running ? this.pause() : this.start()
   }
 
   public get running(): boolean {

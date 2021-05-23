@@ -1,5 +1,4 @@
 import Game, { Options } from '../../game'
-import { Loop } from '../../game/loop'
 
 import { buildInfo } from '../info'
 import { buildControls } from '../controls'
@@ -9,19 +8,17 @@ import { buildPatterns } from '../patterns'
 const app = (options: Options): void => {
   const game = new Game(options)
   game.spawners.randomSpawn()
+  game.loop.start()
 
-  const loop = new Loop(10)
-  loop.start(() => game.step())
-
-  const main = buildMain(game, loop, options)
+  const main = buildMain(game, options)
   const root = buildRoot(main)
 
-  if (root) document.body.appendChild(root)
+  document.body.appendChild(root)
 }
 
-const buildMain = (game: Game, loop: Loop, options: Options): HTMLElement => {
+const buildMain = (game: Game, options: Options): HTMLElement => {
   const info = buildInfo(game)
-  const controls = buildControls(game, loop)
+  const controls = buildControls(game)
   const gameField = buildGameField(game, options)
   const patterns = buildPatterns(game)
 
@@ -32,9 +29,14 @@ const buildMain = (game: Game, loop: Loop, options: Options): HTMLElement => {
   return container
 }
 
-const buildRoot = (main: HTMLElement): Element | null => {
+const buildRoot = (main: HTMLElement): Element => {
   const root = document.querySelector('#app')
-  root?.appendChild(main)
+
+  if (!root) {
+    throw new Error('Passed wrong selectors of the root element')
+  }
+
+  root.appendChild(main)
   return root
 }
 

@@ -6,6 +6,7 @@ export type Cell = {
 }
 
 export interface Drawer {
+  cellSize: number
   draw(...args: unknown[]): void
   clear(): void
 }

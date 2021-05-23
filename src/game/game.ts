@@ -1,12 +1,15 @@
-import Field from '../core/field'
+import { Loop } from './loop'
 import Spawners from './spawners'
-import Generation from '../core/generation'
-import { applyClassicRules } from '../core/rules'
 
+import Field from '../core/field'
+import Generation from '../core/generation'
+
+import { applyClassicRules } from '../core/rules'
+import { Listener } from '../common/event'
 import { Options } from './options'
-import { EventTarget } from '../common/event-source'
 
 class Game {
+  private _loop: Loop
   private _field: Field
   private _spawners: Spawners
   private _generation: Generation
@@ -15,10 +18,15 @@ class Game {
     this._field = new Field(options.grid)
     this._generation = new Generation(this._field, applyClassicRules)
     this._spawners = new Spawners(this._field)
+    this._loop = new Loop(15, () => this.step())
   }
 
   public step(): void {
     this._generation.next()
+  }
+
+  public get loop(): Loop {
+    return this._loop
   }
 
   public get spawners(): Spawners {
@@ -29,12 +37,12 @@ class Game {
     this._field.clear()
   }
 
-  public subscribeToField(target: EventTarget): void {
-    this._field.subscribe(target)
+  public subscribeOnGridChanged(listener: Listener<Field>): void {
+    this._field.onGridChanged.addListener(listener)
   }
 
-  public subscribeToGeneration(target: EventTarget): void {
-    this._generation.subscribe(target)
+  public subscribeOnGenerationChanged(listener: Listener): void {
+    this._generation.onGenerationChanged.addListener(listener)
   }
 }
 

@@ -1,19 +1,26 @@
 import { Grid } from './types'
 import { GridOptions } from '../../game'
 import { FieldUtils } from '.'
-import EventSource from '../../common/event-source'
 import { createGrid } from '../../common/utils'
+import { Event } from '../../common/event'
 
-class Field extends EventSource {
+type GridChangeEvent = Event<Field>
+
+class Field {
   private _rows: number
   private _columns: number
   private _grid: Grid
+  private _onGridChanged: GridChangeEvent
 
-  constructor(options: GridOptions, grid?: Grid) {
-    super()
+  constructor(options: GridOptions, customGrid?: Grid) {
     this._rows = options.rows
     this._columns = options.columns
-    this._grid = grid || this._getDefaultGrid(options)
+    this._grid = customGrid || this._getDefaultGrid(options)
+    this._onGridChanged = new Event()
+  }
+
+  public get onGridChanged(): GridChangeEvent {
+    return this._onGridChanged
   }
 
   public get grid(): Grid {
@@ -22,7 +29,7 @@ class Field extends EventSource {
 
   public set grid(newGrid: Grid) {
     this._grid = newGrid
-    this.notify()
+    this._onGridChanged.trigger(this)
   }
 
   public get rows(): number {
