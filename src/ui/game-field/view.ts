@@ -1,5 +1,6 @@
 import Field, { Grid } from '../../core/field'
-import LayerFactory, { DrawerTypes, Layer } from './layer-factory'
+import Layer from '../layers/layer'
+import LayerFactory, { DrawerTypes } from '../layers/layer-factory'
 
 import { Options } from '../../game'
 import { Point } from '../../common/types'
@@ -11,8 +12,8 @@ class View {
   private _container: HTMLElement
 
   private _colonyLayer: Layer
-  private _previewLayer: Layer
   private _gridLayer: Layer
+  private _previewLayer: Layer
 
   private _onAddPattern: CanvasEvent
   private _onPatternPreviewShow: CanvasEvent
@@ -83,9 +84,9 @@ class View {
     const container = document.createElement('section')
     container.classList.add('game-wrapper', 'main__game')
     container.append(
-      this._colonyLayer.canvas.element,
-      this._previewLayer.canvas.element,
-      this._gridLayer.canvas.element
+      this._colonyLayer.canvasElement,
+      this._previewLayer.canvasElement,
+      this._gridLayer.canvasElement
     )
 
     return container
@@ -96,8 +97,8 @@ class View {
   }
 
   private _getPositionOnCanvas(e: MouseEvent, layer: Layer): Point {
-    const rect = layer.canvas.element.getBoundingClientRect()
-    const scale = layer.canvas.element.width / rect.width
+    const rect = layer.canvasElement.getBoundingClientRect()
+    const scale = layer.width / rect.width
 
     const position: Point = {
       x: (e.clientX - rect.left) * scale,
@@ -105,8 +106,8 @@ class View {
     }
 
     const mappedPosition: Point = {
-      x: this._mapCoordinate(position.x, layer.drawer.cellSize),
-      y: this._mapCoordinate(position.y, layer.drawer.cellSize),
+      x: this._mapCoordinate(position.x, layer.cellSize),
+      y: this._mapCoordinate(position.y, layer.cellSize),
     }
 
     return mappedPosition

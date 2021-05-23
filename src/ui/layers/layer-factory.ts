@@ -1,12 +1,7 @@
-import CanvasView from './canvas'
+import Layer from './layer'
+import CanvasView from '../game-field/canvas'
 import { ColonyDrawer, GridDrawer, PreviewDrawer } from '../drawers'
 import { Options } from '../../game'
-import { Drawer } from '../drawers/types'
-
-export type Layer = {
-  canvas: CanvasView
-  drawer: Drawer
-}
 
 export enum DrawerTypes {
   Colony = 'colony',
@@ -33,11 +28,9 @@ class LayerFactory {
     )
 
     const drawer = new LayerFactory._drawers[drawerType](canvas, options)
+    const layer = new Layer(canvas, drawer)
 
-    return {
-      canvas,
-      drawer,
-    }
+    return layer
   }
 }
 
