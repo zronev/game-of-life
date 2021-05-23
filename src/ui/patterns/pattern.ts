@@ -1,5 +1,5 @@
+import { Canvas } from '../canvas'
 import Spawners from '../../game/spawners'
-import CanvasView from '../game-field/canvas'
 import Field, { Grid } from '../../core/field'
 
 import { Sides } from '../../common/types'
@@ -42,7 +42,7 @@ const makeCanvas = (grid: Grid, maxSides: Sides): HTMLCanvasElement => {
     },
   })
 
-  const canvas = new CanvasView(
+  const canvas = new Canvas(
     options.canvas.width,
     options.canvas.height,
     'pattern__canvas'

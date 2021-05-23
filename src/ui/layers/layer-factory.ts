@@ -1,5 +1,5 @@
 import Layer from './layer'
-import CanvasView from '../game-field/canvas'
+import { Canvas } from '../canvas'
 import { ColonyDrawer, GridDrawer, PreviewDrawer } from '../drawers'
 import { Options } from '../../game'
 
@@ -21,7 +21,7 @@ class LayerFactory {
     options: Options,
     className: string
   ): Layer {
-    const canvas = new CanvasView(
+    const canvas = new Canvas(
       options.canvas.width,
       options.canvas.height,
       className

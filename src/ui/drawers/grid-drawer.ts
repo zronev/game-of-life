@@ -1,12 +1,13 @@
+import { Drawer } from './types'
+import { Canvas } from '../canvas'
+
 import { Options } from '../../game/options'
 import { Point } from '../../common/types'
-import { Drawer } from './types'
-import CanvasView from '../game-field/canvas'
 
 class GridDrawer implements Drawer {
   private _cellSize: number
 
-  constructor(private _canvas: CanvasView, private _options: Options) {
+  constructor(private _canvas: Canvas, private _options: Options) {
     this._cellSize = this._getCellSize()
   }
 

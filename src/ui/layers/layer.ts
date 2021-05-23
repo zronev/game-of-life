@@ -1,10 +1,10 @@
+import { Canvas } from '../canvas'
 import { Drawer } from '../drawers/types'
-import CanvasView from '../game-field/canvas'
 
 class Layer {
-  constructor(private _canvas: CanvasView, private _drawer: Drawer) {}
+  constructor(private _canvas: Canvas, private _drawer: Drawer) {}
 
-  public get canvas(): CanvasView {
+  public get canvas(): Canvas {
     return this._canvas
   }
 

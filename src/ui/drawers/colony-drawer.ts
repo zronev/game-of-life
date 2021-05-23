@@ -1,4 +1,4 @@
-import CanvasView from '../game-field/canvas'
+import { Canvas } from '../canvas'
 import Field from '../../core/field'
 import { Options } from '../../game/options'
 import { Cell, Drawer } from './types'
@@ -6,13 +6,8 @@ import { Cell, Drawer } from './types'
 class ColonyDrawer implements Drawer {
   private _cellSize: number
 
-  constructor(private _canvas: CanvasView, private _options: Options) {
+  constructor(private _canvas: Canvas, private _options: Options) {
     this._cellSize = this._getCellSize()
-  }
-
-  public clear(): void {
-    const { ctx, element } = this._canvas
-    ctx.clearRect(0, 0, element.width, element.height)
   }
 
   public draw(_field: Field): void {
@@ -32,6 +27,11 @@ class ColonyDrawer implements Drawer {
         })
       }
     }
+  }
+
+  public clear(): void {
+    const { ctx, element } = this._canvas
+    ctx.clearRect(0, 0, element.width, element.height)
   }
 
   public get cellSize(): number {

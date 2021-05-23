@@ -1,4 +1,4 @@
-import CanvasView from '../game-field/canvas'
+import { Canvas } from '../canvas'
 import { Point } from '../../common/types'
 import { Grid } from '../../core/field'
 import { Options } from '../../game'
@@ -7,7 +7,7 @@ import { Cell, Drawer } from './types'
 class PreviewDrawer implements Drawer {
   private _cellSize: number
 
-  constructor(private _canvas: CanvasView, private _options: Options) {
+  constructor(private _canvas: Canvas, private _options: Options) {
     this._cellSize = this._getCellSize()
   }
 

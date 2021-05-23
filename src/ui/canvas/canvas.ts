@@ -1,4 +1,4 @@
-class CanvasView {
+class Canvas {
   private _element: HTMLCanvasElement
   private _ctx: CanvasRenderingContext2D
 
@@ -26,4 +26,4 @@ class CanvasView {
   }
 }
 
-export default CanvasView
+export default Canvas
