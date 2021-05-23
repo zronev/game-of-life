@@ -2,14 +2,14 @@
   --main-color: #2d3436;
   --border: 2px solid var(--main-color);
   --color-on-hover: #ffffff;
-  --default-hover-color: #dfe6e9;
+  --default-hover-color: #2d3436;
   --success-hover-color: #55efc4;
   --danger-hover-color: #d63031;
   --info-hover-color: #0984e3;
   --warning-hover-color: #ffeaa7;
   --gap-size: 2rem;
   --button-min-width: 10rem;
-  --transition-time: 175ms;
+  --transition-time: 60ms;
   --transition-ease-out: var(--transition-time) ease-out;
   --transition-ease-in: var(--transition-time) ease-out;
 }

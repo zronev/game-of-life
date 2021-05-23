@@ -3,13 +3,14 @@
   grid-template-areas:
     'info .'
     'game patterns'
-    'controls .';
-  grid-template-columns: auto calc(
-      3 * var(--button-min-width) + var(--gap-size)
-    );
+    'controls patterns';
+  grid-template-columns: auto 1fr;
   gap: var(--gap-size);
+
   max-width: 90rem;
-  margin: 2rem auto 0;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
   position: relative;
 
   @media (max-width: 64rem) {
@@ -19,7 +20,7 @@
       'controls'
       'patterns';
     grid-template-columns: auto;
-    max-width: 40rem;
+    max-width: 640px;
   }
 }
 

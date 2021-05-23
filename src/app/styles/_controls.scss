@@ -1,6 +1,15 @@
 .controls {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
   width: 100%;
-  gap: var(--gap-size);
+  max-width: 640px;
+
+  gap: 1rem 1.5rem;
+  padding: 1rem 1.5rem;
+
+  border: var(--border);
+  background: #ffeaa7;
 }

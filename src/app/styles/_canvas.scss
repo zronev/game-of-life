@@ -1,4 +1,7 @@
 .canvas {
+  border: var(--border);
+  max-width: 640px;
+  background: #fff;
   transition: opacity var(--transition-ease-out);
 
   &:hover {
@@ -7,15 +10,32 @@
 }
 
 .grid-canvas,
-.colony-canvas {
-  border: var(--border);
-  max-width: 640px;
+.preview-canvas {
+  background: transparent;
 }
 
-.colony-canvas {
+.colony-canvas,
+.preview-canvas {
   image-rendering: crisp-edges; // for Firefox
   image-rendering: pixelated;
   z-index: 1;
+}
+
+.preview-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+
+    & ~ .colony-canvas {
+      opacity: 0.5;
+    }
+  }
 }
 
 .grid-canvas {
@@ -24,15 +44,5 @@
   left: 0;
   z-index: 2;
   width: 100%;
-  opacity: 0;
-
-  &--droppable,
-  &:hover {
-    opacity: 1;
-    cursor: pointer;
-
-    & ~ .colony-canvas {
-      opacity: 0.5;
-    }
-  }
+  // opacity: 0;
 }
