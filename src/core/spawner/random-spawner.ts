@@ -2,7 +2,7 @@ import Spawner from './spawner'
 import Field, { FieldUtils } from '../field'
 
 import { Point } from '../../common/types'
-import { arrayClone, clamp, getRandomValue } from '../../common/utils'
+import { clone2DArray, clamp, getRandomValue } from '../../common/utils'
 
 class RandomSpawner extends Spawner {
   constructor(protected _field: Field) {
@@ -11,7 +11,7 @@ class RandomSpawner extends Spawner {
 
   public spawn(amount: number): void {
     const { grid } = this._field
-    const gridCopy = arrayClone(grid)
+    const gridCopy = clone2DArray(grid)
 
     const availableCells = FieldUtils.getAvailableCells(this._field)
     const resultAmount = clamp(amount, 0, availableCells)

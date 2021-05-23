@@ -1,6 +1,6 @@
 import Field, { FieldUtils } from '../field'
 import { Rules } from '../rules'
-import { arrayClone } from '../../common/utils'
+import { clone2DArray } from '../../common/utils'
 import { Event } from '../../common/event'
 
 type GenerationChangeEvent = Event<unknown>
@@ -23,7 +23,7 @@ class Generation {
 
   private _changeGenerationOnGrid() {
     const { grid, rows, columns } = this._field
-    const gridCopy = arrayClone(grid)
+    const gridCopy = clone2DArray(grid)
 
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {

@@ -1,36 +1,18 @@
-import { arrayClone, clamp, createGrid, fillGridWithAnotherGrid } from './utils'
+import { clone2DArray, clamp, createGrid, fillGridWithAnotherGrid } from './utils'
 
-describe('arrayClone', () => {
-  describe('1d array', () => {
-    it('should return clone of a given homogeneous array', () => {
-      const testArray = [1, 2, 3]
-      const clone = arrayClone(testArray)
+describe('clone2DArray', () => {
+  it('should return clone of a given homogeneous 2d array', () => {
+    const testArray = [[1, 2], [3]]
+    const clone = clone2DArray(testArray)
 
-      expect(clone).toEqual(testArray)
-    })
-
-    it('should return clone of a given heterogeneous array', () => {
-      const testArray = [1, '2', { key: '3' }]
-      const clone = arrayClone(testArray)
-
-      expect(clone).toEqual(testArray)
-    })
+    expect(clone).toEqual(testArray)
   })
 
-  describe('2d array', () => {
-    it('should return clone of a given homogeneous array', () => {
-      const testArray = [[1, 2], [3]]
-      const clone = arrayClone(testArray)
+  it('should return clone of a given heterogeneous 2d array', () => {
+    const testArray = [[1, '2'], [{ key: '3' }]]
+    const clone = clone2DArray<number | string | { key: string }>(testArray)
 
-      expect(clone).toEqual(testArray)
-    })
-
-    it('should return clone of a given heterogeneous array', () => {
-      const testArray = [[1, '2'], [{ key: '3' }]]
-      const clone = arrayClone(testArray)
-
-      expect(clone).toEqual(testArray)
-    })
+    expect(clone).toEqual(testArray)
   })
 })
 

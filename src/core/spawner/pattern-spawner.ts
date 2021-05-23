@@ -1,6 +1,6 @@
 import Spawner from './spawner'
 import { Point } from '../../common/types'
-import { arrayClone } from '../../common/utils'
+import { clone2DArray } from '../../common/utils'
 
 class PatternSpawner extends Spawner {
   public spawn(pattern: boolean[][], offset?: Point): void {
@@ -24,7 +24,7 @@ class PatternSpawner extends Spawner {
       y: 0,
     }
   ) {
-    const gridCopy = arrayClone(this._field.grid)
+    const gridCopy = clone2DArray(this._field.grid)
     const patternRows = pattern[0].length
     const patternColumns = pattern.length
 
