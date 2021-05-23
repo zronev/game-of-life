@@ -1,10 +1,11 @@
+import Spawners from '../../game/spawners'
 import CanvasView from '../game-field/canvas'
 import Field, { Grid } from '../../core/field'
-import { ColonyDrawer, GridDrawer } from '../drawers'
+
+import { Sides } from '../../common/types'
 import { createOptions } from '../../game'
-import Spawners from '../../game/spawners'
+import { ColonyDrawer, GridDrawer } from '../drawers'
 import { fillGridWithAnotherGrid } from '../../common/utils'
-import { Sides } from './data'
 
 export const makePattern = (
   name: string,
@@ -20,10 +21,10 @@ export const makePattern = (
   title.textContent = name
 
   const canvas = makeCanvas(grid, maxSides)
-  container.append(title, canvas)
+  container.append(canvas, title)
 
   container.addEventListener('click', () => {
-    spawners.patternSpawn(grid, { x: 40, y: 40 })
+    spawners.patternSpawn(grid, { x: 10, y: 10 })
   })
 
   return container

@@ -4,3 +4,8 @@ export type Point = {
 }
 
 export type Grid<T> = T[][]
+
+export type Sides = {
+  rows: number
+  columns: number
+}

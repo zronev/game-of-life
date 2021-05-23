@@ -1,4 +1,4 @@
-import { Grid } from './types'
+import { Grid, Sides } from './types'
 
 export const getRandomValue = (min: number, max: number): number => {
   const ceiledMin = Math.ceil(min)
@@ -39,4 +39,19 @@ export const fillGridWithAnotherGrid = <T>(
   }
 
   return newGrid
+}
+
+export const getMaxSides = (grids: Grid<unknown>[]): Sides => {
+  return grids.reduce(
+    (acc, grid) => {
+      const rows = grid.length
+      const columns = grid[0].length
+
+      return {
+        rows: rows > acc.rows ? rows : acc.rows,
+        columns: columns > acc.columns ? columns : acc.columns,
+      }
+    },
+    { rows: -Infinity, columns: -Infinity }
+  )
 }

@@ -1,24 +1,53 @@
 import { Grid } from '../../core/field/types'
 
-export type PatternKey = 'block' | 'toad' | 'glider' | 'beacon' | 'R pentimo'
+type StillLife = 'block' | 'beehive' | 'loaf' | 'boat' | 'tub'
+type Oscillator = 'blinker' | 'toad' | 'beacon' | 'pulsar' | 'penta-decathlon'
+type Spaceship =
+  | 'glider'
+  | 'light-weight spaceship'
+  | 'middle-weight spaceship'
+  | 'heavy-weight spaceship'
+type Methuselah = 'R pentimo' | 'Diehard' | 'Acorn'
 
-export type PatternsList = Record<PatternKey, Grid>
+// type PatternName = StillLife | Oscillator | Spaceship | Methuselah
+// type PatternType = 'still lifes' | 'oscillators' | 'spaceships' | 'methuselahs'
 
-export const patterns: PatternsList = {
+const stillLifes: Record<string, Grid> = {
   block: [
     [true, true],
     [true, true],
   ],
+  beehive: [
+    [false, true, true, false],
+    [true, false, false, true],
+    [true, false, false, true],
+    [false, true, true, false],
+  ],
+  loaf: [
+    [false, true, true, false],
+    [true, false, false, true],
+    [false, true, false, true],
+    [false, false, true, false],
+  ],
+  boat: [
+    [true, true, false],
+    [true, false, true],
+    [false, true, false],
+  ],
+  tub: [
+    [false, true, false],
+    [true, false, true],
+    [false, true, false],
+  ],
+}
+
+const oscillators: Record<Oscillator, Grid> = {
+  blinker: [[true, true, true]],
   toad: [
     [false, false, true, false],
     [true, false, false, true],
     [true, false, false, true],
     [false, true, false, false],
-  ],
-  glider: [
-    [true, true, true],
-    [true, false, false],
-    [false, true, false],
   ],
   beacon: [
     [false, false, true, true],
@@ -26,6 +55,17 @@ export const patterns: PatternsList = {
     [true, true, false, false],
     [true, true, false, false],
   ],
+}
+
+const spaceships: Record<Spaceship, Grid> = {
+  glider: [
+    [true, true, true],
+    [true, false, false],
+    [false, true, false],
+  ],
+}
+
+const methuselahs: Record<Methuselah, Grid> = {
   'R pentimo': [
     [false, true, true],
     [true, true, false],
@@ -33,22 +73,13 @@ export const patterns: PatternsList = {
   ],
 }
 
-export type Sides = {
-  rows: number
-  columns: number
+export const patterns = {
+  'still lifes': stillLifes,
+  oscillators,
+  spaceships,
+  methuselahs,
 }
 
-export const getMaxSides = (patterns: PatternsList): Sides => {
-  return Object.values(patterns).reduce(
-    (acc, pattern) => {
-      const rows = pattern.length
-      const columns = pattern[0].length
-
-      return {
-        rows: rows > acc.rows ? rows : acc.rows,
-        columns: columns > acc.columns ? columns : acc.columns,
-      }
-    },
-    { rows: -Infinity, columns: -Infinity }
-  )
-}
+export const flattenedPatterns = Object.values(patterns).reduce<
+  Record<string, Grid>
+>((acc, cur) => ({ ...acc, ...cur }), {})

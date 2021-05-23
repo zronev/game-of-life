@@ -1,12 +1,13 @@
 import Game from '../../game'
-import { getMaxSides, patterns } from './data'
 import { makePattern } from './pattern'
+import { flattenedPatterns } from './data'
+import { getMaxSides } from '../../common/utils'
 
 export const buildPatterns = (game: Game): HTMLElement => {
-  const maxSides = getMaxSides(patterns)
+  const maxSides = getMaxSides(Object.values(flattenedPatterns))
 
-  const patternsElements = Object.entries(patterns).map(([name, grid]) =>
-    makePattern(name, grid, game.spawners, maxSides)
+  const patternsElements = Object.entries(flattenedPatterns).map(
+    ([name, grid]) => makePattern(name, grid, game.spawners, maxSides)
   )
 
   const container = document.createElement('section')
