@@ -2,13 +2,13 @@ import Game from '../game'
 
 class ShortcutsController {
   static isKeysPressed: Record<string, boolean> = {
-    p: false,
     s: false,
     c: false,
     '[': false,
     ']': false,
     '{': false,
     '}': false,
+    ' ': false,
   }
 
   constructor(private _game: Game) {}
@@ -22,7 +22,7 @@ class ShortcutsController {
     document.onkeydown = e => {
       ShortcutsController.isKeysPressed[e.key] = true
 
-      if (ShortcutsController.isKeysPressed['p']) {
+      if (ShortcutsController.isKeysPressed[' ']) {
         this._game.loop.toggle()
       }
 
