@@ -1,9 +1,12 @@
 import Game from '../../game'
+import Controller from './controller'
+import Model from './model'
 import View from './view'
 
 export const buildInfo = (game: Game): HTMLElement => {
-  const container = document.createElement('section')
-  container.classList.add('info', 'main__info')
+  const model = new Model(game)
+  const view = new View()
+  const controller = new Controller(model, view)
 
-  return container
+  return controller.createElement()
 }

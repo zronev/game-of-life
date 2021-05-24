@@ -1,24 +1,38 @@
+import Counter from './counter'
 
 class View {
-  private _element: HTMLElement
+  private _container: HTMLElement
+  private _populationCounter: Counter
+  private _generationCounter: Counter
 
-  constructor(private _caption: string, defaultValue = 0) {
-    this._element = document.createElement('p')
-    this._element.classList.add('counter')
-    // this._element.textContent = this._getText(defaultValue)
+  constructor() {
+    this._populationCounter = new Counter('population')
+    this._generationCounter = new Counter('generation')
+    this._container = this._buildContainer()
   }
 
-  // get element(): HTMLElement {
-  //   return this._element
-  // }
+  public createElement(): HTMLElement {
+    return this._container
+  }
 
-  // update(counter: Counter): void {
-  //   this._element.textContent = this._getText(counter.count)
-  // }
+  public updatePopulationCounter(count: number): void {
+    this._populationCounter.count = count
+  }
 
-  // private _getText(value: number) {
-  //   return `${this._caption}: ${value}`
-  // }
+  public updateGenerationCounter(): void {
+    this._generationCounter.count++
+  }
+
+  private _buildContainer(): HTMLElement {
+    const container = document.createElement('section')
+    container.classList.add('info', 'main__info')
+    container.append(
+      this._populationCounter.createElement(),
+      this._generationCounter.createElement()
+    )
+
+    return container
+  }
 }
 
 export default View
