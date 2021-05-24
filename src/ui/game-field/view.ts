@@ -1,11 +1,10 @@
-import Field, { Grid } from '../../core/field'
+import { getPositionOnCanvas } from './position-on-canvas'
 import { Layer, LayerFactory, DrawerTypes } from '../layers'
-
 import { Options } from '../../game'
 import { Point } from '../../common/types'
 import { Event } from '../../common/event'
 
-type CanvasEvent = Event<Point>
+type PositionEvent = Event<Point>
 
 class View {
   private _container: HTMLElement
@@ -14,8 +13,9 @@ class View {
   private _gridLayer: Layer
   private _previewLayer: Layer
 
-  private _onAddPattern: CanvasEvent
-  private _onPatternPreviewShow: CanvasEvent
+  private _onMouseClick: PositionEvent
+  private _onMouseOver: PositionEvent
+  private _onMouseLeave: Event
 
   constructor(private _options: Options) {
     this._colonyLayer = LayerFactory.make(
@@ -36,47 +36,53 @@ class View {
       'preview-canvas'
     )
 
-    this._onAddPattern = new Event()
-    this._onPatternPreviewShow = new Event()
+    this._onMouseClick = new Event()
+    this._onMouseOver = new Event()
+    this._onMouseLeave = new Event()
 
     this._container = this._buildContainer()
   }
 
   public createElement(): HTMLElement {
     this._container.addEventListener('click', e => {
-      const position = this._getPositionOnCanvas(e, this._gridLayer)
-      this._onAddPattern.trigger(position)
+      const position = getPositionOnCanvas(e, this._gridLayer)
+      this._onMouseClick.trigger(position)
     })
 
     this._container.addEventListener('mousemove', e => {
-      const position = this._getPositionOnCanvas(e, this._previewLayer)
-      this._onPatternPreviewShow.trigger(position)
+      const position = getPositionOnCanvas(e, this._previewLayer)
+      this._onMouseOver.trigger(position)
+    })
+
+    this._container.addEventListener('mouseleave', () => {
+      this._onMouseLeave.trigger({})
     })
 
     return this._container
   }
 
-  public get onAddPattern(): CanvasEvent {
-    return this._onAddPattern
+  public get onMouseClick(): PositionEvent {
+    return this._onMouseClick
   }
 
-  public get onPatternPreviewShow(): CanvasEvent {
-    return this._onPatternPreviewShow
+  public get onMouseOver(): PositionEvent {
+    return this._onMouseOver
   }
 
-  public drawColonyLayer(field: Field): void {
-    this._colonyLayer.drawer.clear()
-    this._colonyLayer.drawer.draw(field)
+  public get onMouseLeave(): Event {
+    return this._onMouseLeave
   }
 
-  public drawGridLayer(): void {
-    this._gridLayer.drawer.clear()
-    this._gridLayer.drawer.draw()
+  public get colonyLayer(): Layer {
+    return this._colonyLayer
   }
 
-  public drawPreviewLayer(pattern: Grid, position: Point): void {
-    this._previewLayer.drawer.clear()
-    this._previewLayer.drawer.draw(pattern, position)
+  public get gridLayer(): Layer {
+    return this._gridLayer
+  }
+
+  public get previewLayer(): Layer {
+    return this._previewLayer
   }
 
   private _buildContainer(): HTMLElement {
@@ -84,32 +90,11 @@ class View {
     container.classList.add('game-wrapper', 'main__game')
     container.append(
       this._colonyLayer.canvasElement,
-      this._previewLayer.canvasElement,
-      this._gridLayer.canvasElement
+      this._gridLayer.canvasElement,
+      this._previewLayer.canvasElement
     )
 
     return container
-  }
-
-  private _mapCoordinate(value: number, cellSize: number) {
-    return Math.floor(value / cellSize)
-  }
-
-  private _getPositionOnCanvas(e: MouseEvent, layer: Layer): Point {
-    const rect = layer.canvasElement.getBoundingClientRect()
-    const scale = layer.width / rect.width
-
-    const position: Point = {
-      x: (e.clientX - rect.left) * scale,
-      y: (e.clientY - rect.top) * scale,
-    }
-
-    const mappedPosition: Point = {
-      x: this._mapCoordinate(position.x, layer.cellSize),
-      y: this._mapCoordinate(position.y, layer.cellSize),
-    }
-
-    return mappedPosition
   }
 }
 

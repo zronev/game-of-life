@@ -8,7 +8,7 @@ class Model {
   private _pattern: Grid
 
   constructor(private _game: Game) {
-    this._pattern = patterns.methuselahs['R pentimo']
+    this._pattern = patterns.oscillators.beacon
   }
 
   public get pattern(): Grid {
