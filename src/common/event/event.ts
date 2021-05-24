@@ -13,5 +13,3 @@ export class Event<T = unknown> {
     })
   }
 }
-
-export default EventSource
