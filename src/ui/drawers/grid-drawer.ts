@@ -1,27 +1,16 @@
-import { Drawer } from './types'
+import Drawer from './drawer'
 import { Canvas } from '../canvas'
 
 import { Options } from '../../game/options'
 import { Point } from '../../common/types'
 
-class GridDrawer implements Drawer {
-  private _cellSize: number
-
-  constructor(private _canvas: Canvas, private _options: Options) {
-    this._cellSize = this._getCellSize()
+class GridDrawer extends Drawer {
+  constructor(canvas: Canvas, options: Options) {
+    super(canvas, options)
   }
 
   public draw(): void {
     this._drawGrid()
-  }
-
-  public clear(): void {
-    const { ctx, element } = this._canvas
-    ctx.clearRect(0, 0, element.width, element.height)
-  }
-
-  public get cellSize(): number {
-    return this._cellSize
   }
 
   private _drawGrid() {
@@ -49,11 +38,6 @@ class GridDrawer implements Drawer {
     ctx.lineWidth = 0.25
     ctx.strokeStyle = '#0984e3'
     ctx.stroke()
-  }
-  private _getCellSize(): number {
-    const width = this._canvas.element.width
-    const columns = this._options.grid.columns
-    return Math.floor(width / columns)
   }
 }
 

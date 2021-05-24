@@ -3,9 +3,3 @@ export type Cell = {
   y: number
   side: number
 }
-
-export interface Drawer {
-  cellSize: number
-  draw(...args: unknown[]): void
-  clear(): void
-}

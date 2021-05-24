@@ -1,19 +1,12 @@
+import Drawer from './drawer'
 import { Canvas } from '../canvas'
 import { Point } from '../../common/types'
 import { Grid } from '../../core/field'
 import { Options } from '../../game'
-import { Cell, Drawer } from './types'
 
-class PreviewDrawer implements Drawer {
-  private _cellSize: number
-
-  constructor(private _canvas: Canvas, private _options: Options) {
-    this._cellSize = this._getCellSize()
-    this._canvas.ctx.fillStyle = this._options.cell.color
-  }
-
-  public get cellSize(): number {
-    return this._cellSize
+class PreviewDrawer extends Drawer {
+  constructor(canvas: Canvas, options: Options) {
+    super(canvas, options)
   }
 
   public draw(
@@ -39,21 +32,6 @@ class PreviewDrawer implements Drawer {
         })
       }
     }
-  }
-
-  public clear(): void {
-    const { ctx, element } = this._canvas
-    ctx.clearRect(0, 0, element.width, element.height)
-  }
-
-  private _drawCell({ x, y, side }: Cell) {
-    this._canvas.ctx.fillRect(x, y, side, side)
-  }
-
-  private _getCellSize(): number {
-    const width = this._canvas.element.width
-    const columns = this._options.grid.columns
-    return Math.floor(width / columns)
   }
 }
 
