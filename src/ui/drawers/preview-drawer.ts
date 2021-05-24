@@ -9,6 +9,7 @@ class PreviewDrawer implements Drawer {
 
   constructor(private _canvas: Canvas, private _options: Options) {
     this._cellSize = this._getCellSize()
+    this._canvas.ctx.fillStyle = this._options.cell.color
   }
 
   public get cellSize(): number {
@@ -31,14 +32,11 @@ class PreviewDrawer implements Drawer {
 
         if (!isCellAlive) continue
 
-        const cell = {
+        this._drawCell({
           x: (x + offset.x) * this._cellSize,
           y: (y + offset.y) * this._cellSize,
           side: this._cellSize,
-          color: 'rgba(0, 0, 0, 0.3)',
-        }
-
-        this._drawCell(cell)
+        })
       }
     }
   }
@@ -48,10 +46,8 @@ class PreviewDrawer implements Drawer {
     ctx.clearRect(0, 0, element.width, element.height)
   }
 
-  private _drawCell({ x, y, side, color = '' }: Cell) {
-    const { ctx } = this._canvas
-    ctx.fillStyle = color
-    ctx.fillRect(x, y, side, side)
+  private _drawCell({ x, y, side }: Cell) {
+    this._canvas.ctx.fillRect(x, y, side, side)
   }
 
   private _getCellSize(): number {

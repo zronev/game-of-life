@@ -46,7 +46,7 @@ class GridDrawer implements Drawer {
     ctx.beginPath()
     ctx.moveTo(start.x, start.y)
     ctx.lineTo(end.x, end.y)
-    ctx.lineWidth = 0.3
+    ctx.lineWidth = 0.25
     ctx.strokeStyle = '#0984e3'
     ctx.stroke()
   }

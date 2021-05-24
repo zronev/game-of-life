@@ -8,6 +8,7 @@ class ColonyDrawer implements Drawer {
 
   constructor(private _canvas: Canvas, private _options: Options) {
     this._cellSize = this._getCellSize()
+    this._canvas.ctx.fillStyle = this._options.cell.color
   }
 
   public draw(_field: Field): void {
@@ -23,7 +24,6 @@ class ColonyDrawer implements Drawer {
           x: x * this._cellSize,
           y: y * this._cellSize,
           side: this._cellSize,
-          color: this._options.cell.color,
         })
       }
     }
@@ -38,16 +38,14 @@ class ColonyDrawer implements Drawer {
     return this._cellSize
   }
 
+  private _drawCell({ x, y, side }: Cell) {
+    this._canvas.ctx.fillRect(x, y, side, side)
+  }
+
   private _getCellSize(): number {
     const width = this._canvas.element.width
     const columns = this._options.grid.columns
     return Math.floor(width / columns)
-  }
-
-  private _drawCell({ x, y, side, color = '' }: Cell) {
-    const { ctx } = this._canvas
-    ctx.fillStyle = color
-    ctx.fillRect(x, y, side, side)
   }
 }
 
