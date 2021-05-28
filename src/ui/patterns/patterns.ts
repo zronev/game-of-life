@@ -1,18 +1,12 @@
+import Model from './model'
+import View from './view'
+import Controller from './controller'
 import Game from '../../game'
-import { makePattern } from './pattern'
-import { flattenedPatterns } from './data'
-import { getMaxSides } from '../../common/utils'
 
 export const buildPatterns = (game: Game): HTMLElement => {
-  const maxSides = getMaxSides(Object.values(flattenedPatterns))
+  const model = new Model(game)
+  const view = new View()
+  const controller = new Controller(model, view)
 
-  const patternsElements = Object.entries(flattenedPatterns).map(
-    ([name, grid]) => makePattern(name, grid, game.spawners, maxSides)
-  )
-
-  const container = document.createElement('section')
-  container.classList.add('patterns', 'main__patterns')
-  container.append(...patternsElements)
-
-  return container
+  return controller.createElement()
 }

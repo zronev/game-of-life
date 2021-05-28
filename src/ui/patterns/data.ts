@@ -1,17 +1,5 @@
 import { Grid } from '../../core/field/types'
 
-type StillLife = 'block' | 'beehive' | 'loaf' | 'boat' | 'tub'
-type Oscillator = 'blinker' | 'toad' | 'beacon' | 'pulsar' | 'penta-decathlon'
-type Spaceship =
-  | 'glider'
-  | 'light-weight spaceship'
-  | 'middle-weight spaceship'
-  | 'heavy-weight spaceship'
-type Methuselah = 'R pentimo' | 'Diehard' | 'Acorn'
-
-// type PatternName = StillLife | Oscillator | Spaceship | Methuselah
-// type PatternType = 'still lifes' | 'oscillators' | 'spaceships' | 'methuselahs'
-
 const stillLifes: Record<string, Grid> = {
   block: [
     [true, true],
@@ -41,7 +29,7 @@ const stillLifes: Record<string, Grid> = {
   ],
 }
 
-const oscillators: Record<Oscillator, Grid> = {
+const oscillators: Record<string, Grid> = {
   blinker: [[true, true, true]],
   toad: [
     [false, false, true, false],
@@ -57,7 +45,7 @@ const oscillators: Record<Oscillator, Grid> = {
   ],
 }
 
-const spaceships: Record<Spaceship, Grid> = {
+const spaceships: Record<string, Grid> = {
   glider: [
     [true, true, true],
     [true, false, false],
@@ -65,7 +53,7 @@ const spaceships: Record<Spaceship, Grid> = {
   ],
 }
 
-const methuselahs: Record<Methuselah, Grid> = {
+const methuselahs: Record<string, Grid> = {
   'R pentimo': [
     [false, true, true],
     [true, true, false],
@@ -80,6 +68,7 @@ export const patterns = {
   methuselahs,
 }
 
-export const flattenedPatterns = Object.values(patterns).reduce<
-  Record<string, Grid>
->((acc, cur) => ({ ...acc, ...cur }), {})
+export const flattenedPatterns = Object.values(patterns).reduce(
+  (acc, cur) => ({ ...acc, ...cur }),
+  {}
+)
