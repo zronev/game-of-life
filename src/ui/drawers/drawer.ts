@@ -1,6 +1,5 @@
 import { Options } from '../../game'
-import { Canvas } from '../canvas'
-import { Cell } from './types'
+import { Canvas, Cell } from './types'
 
 abstract class Drawer {
   protected _cellSize: number

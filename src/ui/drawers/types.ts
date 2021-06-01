@@ -3,3 +3,8 @@ export type Cell = {
   y: number
   side: number
 }
+
+export type Canvas = {
+  ctx: CanvasRenderingContext2D
+  element: HTMLCanvasElement
+}

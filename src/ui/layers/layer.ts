@@ -1,5 +1,4 @@
-import { Canvas } from '../canvas'
-import { Drawer } from '../drawers/types'
+import { Drawer, Canvas } from '../drawers'
 
 class Layer {
   constructor(private _canvas: Canvas, private _drawer: Drawer) {}

@@ -1,4 +1,4 @@
-import { Layer } from '../layers'
+import Layer from './layer'
 import { Point } from '../../common/types'
 
 const mapCoordinate = (value: number, cellSize: number): number => {

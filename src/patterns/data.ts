@@ -1,4 +1,4 @@
-import { Grid } from '../../core/field/types'
+import { Grid } from '../core/field/types'
 
 const stillLifes: Record<string, Grid> = {
   block: [
