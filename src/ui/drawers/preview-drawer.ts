@@ -1,5 +1,5 @@
 import Drawer from './drawer'
-import { Canvas } from '../canvas'
+import { Canvas } from './types'
 import { Point } from '../../common/types'
 import { Grid } from '../../core/field'
 import { Options } from '../../game'

@@ -1,6 +1,6 @@
 import Drawer from './drawer'
 import Field from '../../core/field'
-import { Canvas } from '../canvas'
+import { Canvas } from './types'
 import { Options } from '../../game/options'
 
 class ColonyDrawer extends Drawer {
