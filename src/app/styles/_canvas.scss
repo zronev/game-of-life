@@ -32,6 +32,10 @@
   &:hover {
     opacity: 1;
 
+    & ~ .grid-canvas {
+      opacity: 1;
+    }
+
     & ~ .colony-canvas {
       opacity: 0.5;
     }
@@ -44,5 +48,5 @@
   left: 0;
   z-index: 2;
   width: 100%;
-  // opacity: 0;
+  opacity: 0;
 }

@@ -1,7 +1,6 @@
 .patterns {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-self: start;
 
   gap: 1rem 0.5rem;
   padding: 1rem;
@@ -17,18 +16,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: opacity var(--transition-ease-out);
   padding-bottom: 1rem;
+
+  transition: opacity var(--transition-ease-out);
 
   &__title {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    pointer-events: none;
+  }
+
+  &__canvases-wrapper {
+    position: relative;
+    pointer-events: none;
   }
 
   &__canvas {
     image-rendering: crisp-edges; // for Firefox
     image-rendering: pixelated;
     border: var(--border);
+
+    &--grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: transparent;
+    }
   }
 
   &:hover {

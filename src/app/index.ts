@@ -3,8 +3,8 @@ import { createOptions } from '../game'
 
 const options = createOptions({
   canvas: {
-    width: 600,
-    height: 600,
+    width: 1000,
+    height: 1000,
   },
   grid: {
     rows: 50,
