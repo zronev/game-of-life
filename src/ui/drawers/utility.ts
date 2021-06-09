@@ -1,4 +1,4 @@
-import { Cell, Layer } from './types'
+import type { Cell, Layer } from './types'
 
 export const setFillColor = (
   context: CanvasRenderingContext2D,

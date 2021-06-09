@@ -6,7 +6,7 @@ import Field, { FieldEventMap } from '../core/field'
 import { fillCells, GridFromCells, GridFromOptions, Sides } from '../core/grid'
 import Generation, { GenerationEventMap } from '../core/generation'
 
-import { Emitter } from '../common/event-emitter'
+import type { Emitter } from '../common/event-emitter'
 
 type EventsMaps = {
   loop: LoopEventMap
@@ -18,7 +18,7 @@ type EmittersMap = {
   [K in keyof EventsMaps]: Emitter<EventsMaps[K]>
 }
 
-class Game {
+export class Game {
   private _loop: Loop
   private _field: Field
   private _spawners: Spawners
@@ -65,5 +65,3 @@ class Game {
     return this._eventsEmitters[emitterName]
   }
 }
-
-export default Game

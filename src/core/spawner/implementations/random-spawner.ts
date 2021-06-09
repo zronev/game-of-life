@@ -1,5 +1,5 @@
+import type Field from '../../field'
 import Spawner from '../spawner'
-import Field from '../../field'
 import { GridFromCells, getAvailableCells } from '../../grid'
 import { clone2DArray, clamp, getRandomValue } from '../../../common/utils'
 

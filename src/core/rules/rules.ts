@@ -1,4 +1,4 @@
-import { Rules } from './types'
+import type { Rules } from './types'
 
 export const applyClassicRules: Rules = (cell, neighbours) => {
   if (cell && (neighbours < 2 || neighbours > 3)) return false

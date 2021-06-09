@@ -1,6 +1,6 @@
 import React, { CanvasHTMLAttributes } from 'react'
-import { Size } from '../../../../game'
-import { WithClass } from '../../../common/types'
+import type { Size } from '../../../../game'
+import type { WithClass } from '../../../common/types'
 
 type Props = {
   size: Size

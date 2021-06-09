@@ -1,5 +1,5 @@
-import { Sides } from '../../core/grid'
-import { Size } from './types'
+import type { Sides } from '../../core/grid'
+import type { Size } from './types'
 import { FieldSide, FIELD_SIDES } from './constants'
 import { Emitter } from '../../common/event-emitter'
 

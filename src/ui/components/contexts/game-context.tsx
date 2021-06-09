@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import Game, { Options } from '../../../game'
+import type { Game, Options } from '../../../game'
 
 type Context = {
   game: Game

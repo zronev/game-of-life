@@ -1,4 +1,4 @@
-import Field from '../../core/field'
+import type Field from '../../core/field'
 import { Grid, getDefaultAmount } from '../../core/grid'
 import { PatternSpawner, RandomSpawner } from '../../core/spawner'
 

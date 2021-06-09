@@ -13,14 +13,14 @@ const LoopControls: FC = () => {
   const emitter = game.getEmitter('loop')
 
   useEffect(() => {
-    emitter.addListener('FPS_CHANGED', fps => {
+    emitter.addListener('FPS_CHANGED', (fps: number) => {
       setLoopInfo(i => ({
         ...i,
         fps,
       }))
     })
 
-    emitter.addListener('PLAYBACK_CHANGED', isRunning => {
+    emitter.addListener('PLAYBACK_CHANGED', (isRunning: boolean) => {
       setLoopInfo(i => ({
         ...i,
         isRunning: isRunning,

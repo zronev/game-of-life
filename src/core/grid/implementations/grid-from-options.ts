@@ -1,5 +1,5 @@
 import { createCells } from '../utils'
-import { Cells, Grid, Sides } from '../types'
+import type { Cells, Grid, Sides } from '../types'
 
 export class GridFromOptions implements Grid {
   private _rows: number

@@ -1,4 +1,4 @@
-import { Grid } from '../../../../../core/grid'
+import type { Grid } from '../../../../../core/grid'
 
 export const shiftToBottomLeftCorner = (
   { x, y }: Point,

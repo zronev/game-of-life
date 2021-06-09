@@ -5,9 +5,9 @@ import GridLayer from '../game-field/layers/GridLayer'
 import ColonyLayer from '../game-field/layers/ColonyLayer'
 import RelativeWrapper from '../../common/RelativeWrapper'
 
-import { Pattern } from '../../../patterns'
 import { Options } from '../../../game'
 import { CELL_COLOR, CELL_SIZE } from './constants'
+import type { Pattern } from '../../../patterns'
 
 type Props = {
   pattern: Pattern

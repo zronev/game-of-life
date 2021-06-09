@@ -1,4 +1,4 @@
-import { Layer } from '../../../../drawers'
+import type { Layer } from '../../../../drawers'
 import { positionOnElement } from './position-on-element'
 
 export const positionOnLayer = (

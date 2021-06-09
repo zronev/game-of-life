@@ -1,4 +1,4 @@
-import { Cells, Grid } from '../types'
+import type { Cells, Grid } from '../types'
 import { getMaxSides } from '../utils'
 
 export class GridFromCells implements Grid {

@@ -1,6 +1,6 @@
-import { Layer } from '../types'
+import type { Layer } from '../types'
+import type { Grid } from '../../../core/grid'
 import { drawCell } from '../utility'
-import { Grid } from '../../../core/grid'
 
 export const drawColony = (grid: Grid, layer: Layer): void => {
   const { context, cellSize } = layer

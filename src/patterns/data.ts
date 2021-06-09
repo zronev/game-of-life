@@ -1,4 +1,4 @@
-import { Pattern } from './types'
+import type { Pattern } from './types'
 import { Cells, GridFromCells } from '../core/grid'
 
 const custom: Record<string, Cells> = {

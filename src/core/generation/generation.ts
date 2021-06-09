@@ -1,9 +1,9 @@
-import Field from '../field'
-import { Rules } from '../rules'
-import { GridFromCells, getNeighbours } from '../grid'
+import type Field from '../field'
+import type { Rules } from '../rules'
 
-import { Emitter } from '../../common/event-emitter'
 import { clone2DArray } from '../../common/utils'
+import { Emitter } from '../../common/event-emitter'
+import { GridFromCells, getNeighbours } from '../grid'
 
 export type GenerationEventMap = {
   GENERATION_CHANGED: Generation

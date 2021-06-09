@@ -1,6 +1,6 @@
-import { MouseEventHandler } from 'react'
+import type { MouseEventHandler } from 'react'
+import type { Layer } from '../../../../drawers'
 import { positionOnLayer } from './position-on-layer'
-import { Layer } from '../../../../drawers'
 
 type Callback = (position: Point, layer: Layer) => void
 type Handler = (callback: Callback) => MouseEventHandler<HTMLCanvasElement>

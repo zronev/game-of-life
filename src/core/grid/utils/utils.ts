@@ -1,4 +1,4 @@
-import { Cells, Grid, Sides } from '../types'
+import type { Cells, Grid, Sides } from '../types'
 
 export const createCells = ({ rows, columns }: Sides): Cells => {
   return Array(rows)
