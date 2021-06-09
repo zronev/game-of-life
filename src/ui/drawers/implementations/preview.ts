@@ -1,7 +1,6 @@
 import { Layer } from '../types'
 import { drawCell } from '../utility'
 import { Grid } from '../../../core/grid'
-import { Point } from '../../../common/types'
 
 export const drawPreview = (
   pattern: Grid,

@@ -1,4 +1,3 @@
-import { Point } from '../../../../../common/types'
 import { Grid } from '../../../../../core/grid'
 
 export const shiftToBottomLeftCorner = (

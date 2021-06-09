@@ -1,6 +1,5 @@
 import { Layer } from '../types'
 import { OptionsMap } from '../../../game'
-import { Point } from '../../../common/types'
 
 const drawLine = (
   context: CanvasRenderingContext2D,

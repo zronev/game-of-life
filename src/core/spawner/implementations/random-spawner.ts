@@ -1,6 +1,5 @@
 import Spawner from '../spawner'
 import Field from '../../field'
-import { Point } from '../../../common/types'
 import { GridFromCells, getAvailableCells } from '../../grid'
 import { clone2DArray, clamp, getRandomValue } from '../../../common/utils'
 

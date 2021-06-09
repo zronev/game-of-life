@@ -1,5 +1,3 @@
-import { Point } from '../../../../../common/types'
-
 const mapCoordinate = (value: number, cellSize: number): number => {
   return Math.floor(value / cellSize)
 }

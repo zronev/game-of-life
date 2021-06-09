@@ -9,6 +9,6 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*", "./typings/*"],
   "exclude": ["node_modules"]
 }

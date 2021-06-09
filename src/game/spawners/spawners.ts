@@ -2,8 +2,6 @@ import Field from '../../core/field'
 import { Grid, getDefaultAmount } from '../../core/grid'
 import { PatternSpawner, RandomSpawner } from '../../core/spawner'
 
-import { Point } from '../../common/types'
-
 class Spawners {
   private _randomSpawner: RandomSpawner
   private _patternSpawner: PatternSpawner

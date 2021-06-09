@@ -1,5 +1,4 @@
 import { Layer } from '../../../../drawers'
-import { Point } from '../../../../../common/types'
 import { positionOnElement } from './position-on-element'
 
 export const positionOnLayer = (

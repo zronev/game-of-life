@@ -1,5 +1,4 @@
 import Spawner from '../spawner'
-import { Point } from '../../../common/types'
 import { Grid, GridFromCells } from '../../grid'
 import { clone2DArray } from '../../../common/utils'
 
