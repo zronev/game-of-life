@@ -2,7 +2,7 @@ import type Field from '../field'
 import type { Rules } from '../rules'
 
 import { clone2DArray } from '../../common/utils'
-import { Emitter } from '../../common/event-emitter'
+import { Emitter } from '../event-emitter'
 import { GridFromCells, getNeighbours } from '../grid'
 
 export type GenerationEventMap = {

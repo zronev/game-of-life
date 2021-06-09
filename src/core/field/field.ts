@@ -1,5 +1,5 @@
 import { Grid, GridFromOptions } from '../grid'
-import { Emitter } from '../../common/event-emitter'
+import { Emitter } from '../event-emitter'
 
 export type FieldEventMap = {
   GRID_CHANGED: Grid

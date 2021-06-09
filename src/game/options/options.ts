@@ -1,7 +1,7 @@
 import type { Sides } from '../../core/grid'
 import type { Size } from './types'
 import { FieldSide, FIELD_SIDES } from './constants'
-import { Emitter } from '../../common/event-emitter'
+import { Emitter } from '../../core/event-emitter'
 
 type OptionsEvents = {
   FIELD_SIDES_CHANGED: OptionsMap

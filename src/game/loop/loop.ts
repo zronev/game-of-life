@@ -1,4 +1,4 @@
-import { Emitter } from '../../common/event-emitter'
+import { Emitter } from '../../core/event-emitter'
 import { clamp } from '../../common/utils'
 
 export type LoopEventMap = {

@@ -3,10 +3,10 @@ import Spawners from './spawners'
 
 import { applyClassicRules } from '../core/rules'
 import Field, { FieldEventMap } from '../core/field'
-import { fillCells, GridFromCells, GridFromOptions, Sides } from '../core/grid'
 import Generation, { GenerationEventMap } from '../core/generation'
+import { fillCells, GridFromCells, GridFromOptions, Sides } from '../core/grid'
 
-import type { Emitter } from '../common/event-emitter'
+import type { Emitter } from '../core/event-emitter'
 
 type EventsMaps = {
   loop: LoopEventMap
