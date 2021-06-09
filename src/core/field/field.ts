@@ -1,26 +1,19 @@
-import { Grid } from './types'
-import { GridOptions } from '../../game'
-import { FieldUtils } from '.'
-import { createGrid } from '../../common/utils'
-import { Event } from '../../common/event'
+import { Grid, GridFromOptions } from '../grid'
+import { Emitter } from '../../common/event-emitter'
 
-type GridChangeEvent = Event<Field>
+export type FieldEventMap = {
+  GRID_CHANGED: Grid
+}
 
 class Field {
-  private _rows: number
-  private _columns: number
-  private _grid: Grid
-  private _onGridChanged: GridChangeEvent
+  private _eventEmitter: Emitter<FieldEventMap>
 
-  constructor(options: GridOptions, customGrid?: Grid) {
-    this._rows = options.rows
-    this._columns = options.columns
-    this._grid = customGrid || this._getDefaultGrid(options)
-    this._onGridChanged = new Event()
+  constructor(private _grid: Grid) {
+    this._eventEmitter = new Emitter()
   }
 
-  public get onGridChanged(): GridChangeEvent {
-    return this._onGridChanged
+  public get eventEmitter(): Emitter<FieldEventMap> {
+    return this._eventEmitter
   }
 
   public get grid(): Grid {
@@ -29,23 +22,12 @@ class Field {
 
   public set grid(newGrid: Grid) {
     this._grid = newGrid
-    this._onGridChanged.trigger(this)
-  }
-
-  public get rows(): number {
-    return this._rows
-  }
-
-  public get columns(): number {
-    return this._columns
+    this._eventEmitter.dispatch('GRID_CHANGED', this._grid)
   }
 
   public clear(): void {
-    this.grid = FieldUtils.getEmptyGrid(this)
-  }
-
-  private _getDefaultGrid({ rows, columns }: GridOptions): Grid {
-    return createGrid(rows, columns, false)
+    const { rows, columns } = this._grid
+    this.grid = new GridFromOptions({ rows, columns })
   }
 }
 

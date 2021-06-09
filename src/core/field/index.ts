@@ -1,3 +1,2 @@
-export * from './types'
-export * as FieldUtils from './utils'
+export * from './field'
 export { default } from './field'

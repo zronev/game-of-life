@@ -1,24 +1,41 @@
-import { Loop } from './loop'
+import Loop, { LoopEventMap } from './loop'
 import Spawners from './spawners'
 
-import Field from '../core/field'
-import Generation from '../core/generation'
-
 import { applyClassicRules } from '../core/rules'
-import { Listener } from '../common/event'
-import { Options } from './options'
+import Field, { FieldEventMap } from '../core/field'
+import { fillCells, GridFromCells, GridFromOptions, Sides } from '../core/grid'
+import Generation, { GenerationEventMap } from '../core/generation'
+
+import { Emitter } from '../common/event-emitter'
+
+type EventsMaps = {
+  loop: LoopEventMap
+  field: FieldEventMap
+  generation: GenerationEventMap
+}
+
+type EmittersMap = {
+  [K in keyof EventsMaps]: Emitter<EventsMaps[K]>
+}
 
 class Game {
   private _loop: Loop
   private _field: Field
   private _spawners: Spawners
   private _generation: Generation
+  private _eventsEmitters: EmittersMap
 
-  constructor(options: Options) {
-    this._field = new Field(options.grid)
+  constructor(fieldSides: Sides) {
+    this._field = new Field(new GridFromOptions(fieldSides))
     this._generation = new Generation(this._field, applyClassicRules)
     this._spawners = new Spawners(this._field)
-    this._loop = new Loop(15, () => this.step())
+    this._loop = new Loop(30, () => this.step())
+
+    this._eventsEmitters = {
+      loop: this._loop.eventEmitter,
+      field: this._field.eventEmitter,
+      generation: this._generation.eventEmitter,
+    }
   }
 
   public step(): void {
@@ -33,16 +50,19 @@ class Game {
     return this._spawners
   }
 
+  public changeFieldSize(sides: Sides): void {
+    const newCells = fillCells(this._field.grid.cells, sides)
+    this._field.grid = new GridFromCells(newCells)
+  }
+
   public clearField(): void {
     this._field.clear()
   }
 
-  public subscribeOnGridChanged(listener: Listener<Field>): void {
-    this._field.onGridChanged.addListener(listener)
-  }
-
-  public subscribeOnGenerationChanged(listener: Listener): void {
-    this._generation.onGenerationChanged.addListener(listener)
+  public getEmitter<T extends keyof EventsMaps>(
+    emitterName: T
+  ): EmittersMap[T] {
+    return this._eventsEmitters[emitterName]
   }
 }
 

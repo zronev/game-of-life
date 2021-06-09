@@ -1,39 +1,45 @@
-import Field, { FieldUtils } from '../field'
+import Field from '../field'
 import { Rules } from '../rules'
-import { clone2DArray } from '../../common/utils'
-import { Event } from '../../common/event'
+import { GridFromCells, getNeighbours } from '../grid'
 
-type GenerationChangeEvent = Event<unknown>
+import { Emitter } from '../../common/event-emitter'
+import { clone2DArray } from '../../common/utils'
+
+export type GenerationEventMap = {
+  GENERATION_CHANGED: Generation
+}
 
 class Generation {
-  private _onGenerationChanged: GenerationChangeEvent
+  private _eventEmitter: Emitter<GenerationEventMap>
 
   constructor(private _field: Field, private _applyRules: Rules) {
-    this._onGenerationChanged = new Event()
+    this._eventEmitter = new Emitter()
   }
 
   public next(): void {
     this._changeGenerationOnGrid()
-    this._onGenerationChanged.trigger({})
+    this._eventEmitter.dispatch('GENERATION_CHANGED', this)
   }
 
-  public get onGenerationChanged(): GenerationChangeEvent {
-    return this._onGenerationChanged
+  public get eventEmitter(): Emitter<GenerationEventMap> {
+    return this._eventEmitter
   }
 
   private _changeGenerationOnGrid() {
-    const { grid, rows, columns } = this._field
-    const gridCopy = clone2DArray(grid)
+    const { grid } = this._field
+    const { rows, columns, cells } = grid
+
+    const cellsCopy = clone2DArray(cells)
 
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
-        const isCellAlive = gridCopy[y][x]
-        const neighbours = FieldUtils.getNeighbours(this._field, x, y)
-        gridCopy[y][x] = this._applyRules(isCellAlive, neighbours)
+        const isCellAlive = cellsCopy[y][x]
+        const neighbours = getNeighbours(grid, x, y)
+        cellsCopy[y][x] = this._applyRules(isCellAlive, neighbours)
       }
     }
 
-    this._field.grid = gridCopy
+    this._field.grid = new GridFromCells(cellsCopy)
   }
 }
 

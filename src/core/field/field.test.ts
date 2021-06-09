@@ -1,36 +1,19 @@
 import Field from './field'
+import { GridFromOptions } from '../grid'
 
-describe('when passed only a grid options', () => {
-  it('should return a grid with correct number of rows and columns', () => {
-    const actual1 = new Field({ rows: 2, columns: 2 })
-    expect(actual1.grid).toEqual([
-      [false, false],
-      [false, false],
-    ])
+let field: Field
 
-    const actual2 = new Field({ rows: 0, columns: 0 })
-    expect(actual2.grid).toEqual([])
-  })
+beforeEach(() => {
+  const grid = new GridFromOptions({ rows: 4, columns: 4 })
+  field = new Field(grid)
 })
 
-describe('when passed a prepared grid', () => {
-  it('should return a grid with correct number of rows and columns', () => {
-    const actual1 = new Field({ rows: 2, columns: 2 }, [
-      [false, false],
-      [false, false],
-    ])
-    expect(actual1.grid).toEqual([
-      [false, false],
-      [false, false],
-    ])
+describe('when a grid changed', () => {
+  it('should emit event', () => {
+    let counter = 0
+    field.eventEmitter.addListener('GRID_CHANGED', () => counter++)
+    field.grid = new GridFromOptions({ rows: 4, columns: 4 })
 
-    const actual2 = new Field({ rows: 0, columns: 0 }, [
-      [false, false],
-      [false, false],
-    ])
-    expect(actual2.grid).toEqual([
-      [false, false],
-      [false, false],
-    ])
+    expect(counter).toBe(1)
   })
 })

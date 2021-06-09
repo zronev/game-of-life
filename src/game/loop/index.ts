@@ -1,1 +1,2 @@
-export { default as Loop } from './loop'
+export * from './loop'
+export { default } from './loop'
