@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px;
+}
+
 html,
 body {
   font-family: monospace;
@@ -30,7 +34,7 @@ button {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,9 +42,15 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff7675;
+  background: #dfe6e9;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d63031;
+  background: #b2bec3;
+}
+
+@media (max-width: 64rem) {
+  :root {
+    font-size: 12px;
+  }
 }

@@ -3,22 +3,26 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
 
-  min-width: var(--button-min-width);
-  padding: 0.5rem 1rem;
 
   cursor: pointer;
   border: var(--border);
+  padding: 0.5rem 1rem;
   background: #fff;
 
   transition: var(--transition-ease-out);
 
+  &:disabled {
+    color: currentColor;
+    opacity: 0.75;
+  }
+
   &:hover,
   &:active {
     color: var(--color-on-hover);
-    border: 2px solid var(--default-hover-color);
+    border: 0.125rem solid var(--default-hover-color);
     background: var(--default-hover-color);
     transition: var(--transition-ease-in);
   }
@@ -26,7 +30,7 @@
   &--success {
     &:hover,
     &:active {
-      border: 2px solid var(--success-hover-color);
+      border: 0.125rem solid var(--success-hover-color);
       background: var(--success-hover-color);
     }
   }
@@ -34,7 +38,7 @@
   &--danger {
     &:hover,
     &:active {
-      border: 2px solid var(--danger-hover-color);
+      border: 0.125rem solid var(--danger-hover-color);
       background: var(--danger-hover-color);
     }
   }
@@ -42,7 +46,7 @@
   &--info {
     &:hover,
     &:active {
-      border: 2px solid var(--info-hover-color);
+      border: 0.125rem solid var(--info-hover-color);
       background: var(--info-hover-color);
     }
   }
@@ -50,7 +54,7 @@
   &--warning {
     &:hover,
     &:active {
-      border: 2px solid var(--warning-hover-color);
+      border: 0.125rem solid var(--warning-hover-color);
       background: var(--warning-hover-color);
     }
   }

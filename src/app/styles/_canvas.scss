@@ -1,17 +1,25 @@
 .canvas {
   border: var(--border);
-  max-width: 640px;
+  max-width: 36rem;
   background: #fff;
   transition: opacity var(--transition-ease-out);
 
   &:hover {
     transition: opacity var(--transition-ease-in);
   }
+
+  @media (max-width: 64rem) {
+    max-width: 100%;
+  }
 }
 
 .grid-canvas,
 .preview-canvas {
   background: transparent;
+
+  @media (max-width: 64rem) {
+    display: none;
+  }
 }
 
 .colony-canvas,
@@ -32,10 +40,6 @@
   &:hover {
     opacity: 1;
 
-    & ~ .grid-canvas {
-      opacity: 1;
-    }
-
     & ~ .colony-canvas {
       opacity: 0.5;
     }
@@ -48,5 +52,4 @@
   left: 0;
   z-index: 2;
   width: 100%;
-  opacity: 0;
 }

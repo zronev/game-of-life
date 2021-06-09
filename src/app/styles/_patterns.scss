@@ -1,26 +1,43 @@
+.patterns-wrapper {
+  padding: 1rem;
+  background: #ff7675;
+  border: var(--border);
+  overflow: auto;
+  max-width: 36rem;
+  max-height: 50rem;
+}
+
 .patterns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  gap: 1rem 0.5rem;
-  padding: 1rem;
-
-  background: #fab1a0;
-  border: var(--border);
-
-  max-height: 640px;
-  overflow: auto;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 2rem;
 }
 
 .pattern {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  padding-bottom: 1rem;
-
   transition: opacity var(--transition-ease-out);
 
-  &__title {
+  &:not(&--active):hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-ease-in);
+  }
+
+  &--active {
+    opacity: 0.7;
+  }
+
+  &__canvas {
+    width: 120px;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    font-weight: bold;
     text-align: center;
     margin-top: 0.5rem;
     pointer-events: none;
@@ -28,25 +45,15 @@
 
   &__canvases-wrapper {
     position: relative;
+    max-width: 4rem;
     pointer-events: none;
   }
 
-  &__canvas {
-    image-rendering: crisp-edges; // for Firefox
-    image-rendering: pixelated;
-    border: var(--border);
-
-    &--grid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: transparent;
-    }
+  .grid-canvas {
+    opacity: 1;
   }
 
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity var(--transition-ease-in);
+  @media (max-width: 64rem) {
+    max-width: 120%;
   }
 }
