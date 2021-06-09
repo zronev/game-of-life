@@ -1,12 +1,11 @@
-import Loop, { LoopEventMap } from './loop'
-import Spawners from './spawners'
+import { Spawners } from '../spawner'
+import { applyClassicRules } from '../rules'
+import { Loop, LoopEventMap } from '../loop'
+import { Field, FieldEventMap } from '../field'
+import { Generation, GenerationEventMap } from '../generation'
+import { fillCells, GridFromCells, GridFromOptions, Sides } from '../grid'
 
-import { applyClassicRules } from '../core/rules'
-import Field, { FieldEventMap } from '../core/field'
-import Generation, { GenerationEventMap } from '../core/generation'
-import { fillCells, GridFromCells, GridFromOptions, Sides } from '../core/grid'
-
-import type { Emitter } from '../core/event-emitter'
+import type { Emitter } from '../event-emitter'
 
 type EventsMaps = {
   loop: LoopEventMap

@@ -1,4 +1,5 @@
-import type { Game, Options } from '../../game'
+import type { Game } from '../../core/game'
+import type { Options } from '../../core/options'
 
 class ShortcutsController {
   static isKeysPressed: Record<string, boolean> = {

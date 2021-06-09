@@ -1,12 +1,12 @@
-import { Emitter } from '../../core/event-emitter'
-import { clamp } from '../../common/utils'
+import { Emitter } from '../event-emitter'
+import { clamp } from '../utils'
 
 export type LoopEventMap = {
   FPS_CHANGED: number
   PLAYBACK_CHANGED: boolean
 }
 
-class Loop {
+export class Loop {
   private _minFps = 1
   private _maxFps = 60
   private _running = false
@@ -85,5 +85,3 @@ class Loop {
     this._eventEmitter.dispatch('PLAYBACK_CHANGED', this._running)
   }
 }
-
-export default Loop

@@ -1,6 +1,6 @@
 import Spawner from '../spawner'
 import { Grid, GridFromCells } from '../../grid'
-import { clone2DArray } from '../../../common/utils'
+import { clone2DArray } from '../../utils'
 
 class PatternSpawner extends Spawner {
   public spawn(pattern: Grid, offset: Point): void {

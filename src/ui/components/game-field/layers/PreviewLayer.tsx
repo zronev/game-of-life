@@ -3,7 +3,7 @@ import Layer from './Layer'
 import useLayer from './useLayer'
 import { makeLayerHandler, shiftToBottomLeftCorner } from './utility'
 
-import type { OptionsMap } from '../../../../game'
+import type { OptionsMap } from '../../../../core/options'
 import { drawPreview, clear } from '../../../drawers'
 import { GameContext } from '../../contexts/game-context'
 import { PatternContext } from '../../patterns/pattern-context'

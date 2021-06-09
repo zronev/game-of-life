@@ -1,5 +1,5 @@
 import type { Layer } from '../types'
-import type { OptionsMap } from '../../../game'
+import type { OptionsMap } from '../../../core/options'
 
 const drawLine = (
   context: CanvasRenderingContext2D,

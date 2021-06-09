@@ -4,7 +4,7 @@ import useLayer from './useLayer'
 import { drawColony, clear } from '../../../drawers'
 
 import type { Grid } from '../../../../core/grid'
-import type { OptionsMap } from '../../../../game'
+import type { OptionsMap } from '../../../../core/options'
 import type { WithClass } from '../../../common/types'
 
 type Props = {

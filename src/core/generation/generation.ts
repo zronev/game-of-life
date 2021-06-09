@@ -1,7 +1,7 @@
-import type Field from '../field'
+import type { Field } from '../field'
 import type { Rules } from '../rules'
 
-import { clone2DArray } from '../../common/utils'
+import { clone2DArray } from '../utils'
 import { Emitter } from '../event-emitter'
 import { GridFromCells, getNeighbours } from '../grid'
 
@@ -9,7 +9,7 @@ export type GenerationEventMap = {
   GENERATION_CHANGED: Generation
 }
 
-class Generation {
+export class Generation {
   private _eventEmitter: Emitter<GenerationEventMap>
 
   constructor(private _field: Field, private _applyRules: Rules) {
@@ -42,5 +42,3 @@ class Generation {
     this._field.grid = new GridFromCells(cellsCopy)
   }
 }
-
-export default Generation

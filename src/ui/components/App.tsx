@@ -6,7 +6,8 @@ import PatternsList, { PatternProvider } from './patterns'
 import ShortcutsController from '../shortcuts'
 import { GameContext } from './contexts/game-context'
 
-import type { Game, Options } from '../../game'
+import type { Game } from '../../core/game'
+import type { Options } from '../../core/options'
 
 type Props = {
   game: Game

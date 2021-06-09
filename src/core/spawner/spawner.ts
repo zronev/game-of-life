@@ -1,4 +1,4 @@
-import type Field from '../field'
+import type { Field } from '../field'
 
 abstract class Spawner {
   constructor(protected _field: Field) {}

@@ -5,7 +5,7 @@ export type FieldEventMap = {
   GRID_CHANGED: Grid
 }
 
-class Field {
+export class Field {
   private _eventEmitter: Emitter<FieldEventMap>
 
   constructor(private _grid: Grid) {
@@ -30,5 +30,3 @@ class Field {
     this.grid = new GridFromOptions({ rows, columns })
   }
 }
-
-export default Field

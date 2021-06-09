@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { Game } from '../core/game'
+import { Options } from '../core/options'
 import App from '../ui/components/App'
-import { Game, Options } from '../game'
 
 const options = new Options({
   fieldSides: {

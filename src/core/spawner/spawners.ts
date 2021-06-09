@@ -1,8 +1,8 @@
-import type Field from '../../core/field'
-import { Grid, getDefaultAmount } from '../../core/grid'
-import { PatternSpawner, RandomSpawner } from '../../core/spawner'
+import type { Field } from '../field'
+import { Grid, getDefaultAmount } from '../grid'
+import { PatternSpawner, RandomSpawner } from '.'
 
-class Spawners {
+export class Spawners {
   private _randomSpawner: RandomSpawner
   private _patternSpawner: PatternSpawner
 
@@ -20,5 +20,3 @@ class Spawners {
     this._patternSpawner.spawn(pattern, offset)
   }
 }
-
-export default Spawners

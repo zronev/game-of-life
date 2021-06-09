@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
-import type { OptionsMap } from '../../../../game'
+import type { OptionsMap } from '../../../../core/options'
 import { Layer, setFillColor } from '../../../drawers'
 
 type UseLayer = (options: OptionsMap) => {
