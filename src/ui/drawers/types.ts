@@ -4,7 +4,8 @@ export type Cell = {
   side: number
 }
 
-export type Canvas = {
-  ctx: CanvasRenderingContext2D
-  element: HTMLCanvasElement
+export type Layer = {
+  canvas: HTMLCanvasElement
+  context: CanvasRenderingContext2D
+  cellSize: number
 }
