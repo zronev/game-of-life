@@ -1,8 +1,8 @@
-import Spawner from './spawner'
-import Field, { FieldUtils } from '../field'
-
-import { Point } from '../../common/types'
-import { clone2DArray, clamp, getRandomValue } from '../../common/utils'
+import Spawner from '../spawner'
+import Field from '../../field'
+import { Point } from '../../../common/types'
+import { GridFromCells, getAvailableCells } from '../../grid'
+import { clone2DArray, clamp, getRandomValue } from '../../../common/utils'
 
 class RandomSpawner extends Spawner {
   constructor(protected _field: Field) {
@@ -11,27 +11,27 @@ class RandomSpawner extends Spawner {
 
   public spawn(amount: number): void {
     const { grid } = this._field
-    const gridCopy = clone2DArray(grid)
+    const cellsCopy = clone2DArray(grid.cells)
 
-    const availableCells = FieldUtils.getAvailableCells(this._field)
+    const availableCells = getAvailableCells(grid)
     const resultAmount = clamp(amount, 0, availableCells)
 
     let count = 0
     while (count < resultAmount) {
       const point = this._getRandomCellCoordinate()
-      const isCellUsed = gridCopy[point.y][point.x]
+      const isCellUsed = cellsCopy[point.y][point.x]
 
       if (isCellUsed) continue
 
-      gridCopy[point.y][point.x] = true
+      cellsCopy[point.y][point.x] = true
       count++
     }
 
-    this._field.grid = gridCopy
+    this._field.grid = new GridFromCells(cellsCopy)
   }
 
   private _getRandomCellCoordinate(): Point {
-    const { rows, columns } = this._field
+    const { rows, columns } = this._field.grid
 
     return {
       x: getRandomValue(0, rows - 1),
