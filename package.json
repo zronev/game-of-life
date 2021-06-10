@@ -1,8 +1,10 @@
 {
   "name": "game-of-life",
   "scripts": {
-    "dev": "parcel src/app/index.html --open",
-    "build": "parcel build src/app/index.html",
+    "dev-react": "parcel src/app/react/index.html --open",
+    "dev-vanilla": "parcel src/app/vanilla/index.html --open",
+    "build-react": "parcel build src/app/react/index.html",
+    "build-vanilla": "parcel build src/app/vanilla/index.html",
     "test": "jest",
     "coverage": "jest --coverage",
     "type-check": "tsc --noEmit",
