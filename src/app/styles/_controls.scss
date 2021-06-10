@@ -10,6 +10,16 @@
 
   border: var(--border);
   background: #ffeaa7;
+
+  @media (max-width: 30rem) {
+    .row {
+      gap: 0 0.5rem;
+    }
+
+    .button {
+      font-size: 1rem;
+    }
+  }
 }
 
 .row {
