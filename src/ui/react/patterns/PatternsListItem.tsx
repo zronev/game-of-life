@@ -3,10 +3,10 @@ import { PatternContext } from './pattern-context'
 
 import GridLayer from '../game-field/layers/GridLayer'
 import ColonyLayer from '../game-field/layers/ColonyLayer'
-import RelativeWrapper from '../../common/RelativeWrapper'
+import RelativeWrapper from '../common/RelativeWrapper'
 
-import type { Pattern } from '../../../../patterns'
-import { Options } from '../../../../core/options'
+import type { Pattern } from '../../../patterns'
+import { Options } from '../../../core/options'
 import { CELL_COLOR, CELL_SIZE } from './constants'
 
 type Props = {

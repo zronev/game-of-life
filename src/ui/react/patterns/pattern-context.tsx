@@ -5,7 +5,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react'
-import { patterns, Pattern } from '../../../../patterns'
+import { patterns, Pattern } from '../../../patterns'
 
 type Context = [Pattern, Dispatch<SetStateAction<Pattern>>]
 

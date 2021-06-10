@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import App from '../../ui/react/App'
 import { Game } from '../../core/game'
 import { Options } from '../../core/options'
-import App from '../../ui/react/components/App'
 
 const options = new Options({
   fieldSides: {
@@ -16,6 +16,7 @@ const options = new Options({
   },
   color: '#2d3436',
 })
+
 const game = new Game(options.fieldSides)
 
 ReactDOM.render(

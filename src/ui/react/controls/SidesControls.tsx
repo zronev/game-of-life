@@ -1,7 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
-import Button from '../../common/Button'
+import Button from '../common/Button'
 import { GameContext } from '../contexts/game-context'
-import { FieldSide, FIELD_SIDES, OptionsMap } from '../../../../core/options'
+import { FieldSide, FIELD_SIDES, OptionsMap } from '../../../core/options'
 
 const SidesControls: FC = () => {
   const { game, options } = useContext(GameContext)

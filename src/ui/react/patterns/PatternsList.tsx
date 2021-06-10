@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import PatternsListItem from './PatternsListItem'
-import { patterns } from '../../../../patterns'
+import { patterns } from '../../../patterns'
 
 const PatternsList: FC = () => (
   <section className="patterns-wrapper main__patterns">

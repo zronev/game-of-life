@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
-import { getUsedCells, Grid } from '../../../../core/grid'
+import { getUsedCells, Grid } from '../../../core/grid'
 import { GameContext } from '../contexts/game-context'
 
 const Info: FC = () => {

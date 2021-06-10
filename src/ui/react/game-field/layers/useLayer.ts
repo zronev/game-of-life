@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
-import type { OptionsMap } from '../../../../../core/options'
-import { Layer, setFillColor } from '../../../../common/drawers'
+import type { OptionsMap } from '../../../../core/options'
+import { Layer, setFillColor } from '../../../common/drawers'
 
 type UseLayer = (options: OptionsMap) => {
   ref: RefObject<HTMLCanvasElement>

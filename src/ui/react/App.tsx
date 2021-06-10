@@ -3,11 +3,11 @@ import Info from './info'
 import Controls from './controls'
 import GameField from './game-field'
 import PatternsList, { PatternProvider } from './patterns'
-import ShortcutsController from '../../common/shortcuts'
+import ShortcutsController from '../common/shortcuts'
 import { GameContext } from './contexts/game-context'
 
-import type { Game } from '../../../core/game'
-import type { Options } from '../../../core/options'
+import type { Game } from '../../core/game'
+import type { Options } from '../../core/options'
 
 type Props = {
   game: Game

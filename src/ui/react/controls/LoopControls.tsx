@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
-import Button from '../../common/Button'
+import Button from '../common/Button'
 import { GameContext } from '../contexts/game-context'
 
 const LoopControls: FC = () => {
