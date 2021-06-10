@@ -32,7 +32,11 @@ class PatternSpawner extends Spawner {
 
         if (isBeyondBorder) continue
 
-        cellsCopy[cellY][cellX] = cells[y][x]
+        const isCellAlive = cells[y][x]
+
+        if (isCellAlive) {
+          cellsCopy[cellY][cellX] = isCellAlive
+        }
       }
     }
 
