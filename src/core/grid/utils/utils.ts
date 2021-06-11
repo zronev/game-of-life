@@ -52,33 +52,31 @@ export const getDefaultAmount = (grid: Grid, occupancyRate = 0.15): number => {
   return Math.floor(rows * columns * occupancyRate)
 }
 
-export const getNeighbours = (grid: Grid, x: number, y: number): number => {
-  const { cells, rows, columns } = grid
-
+export const countNeighbours = (cells: Cells, x: number, y: number): number => {
   let neighbours = 0
 
-  if (y > 0 && cells[y - 1][x]) {
+  if (cells[y - 1]?.[x]) {
     neighbours++
   }
-  if (y > 0 && x > 0 && cells[y - 1][x - 1]) {
+  if (cells[y - 1]?.[x - 1]) {
     neighbours++
   }
-  if (y > 0 && x < columns - 1 && cells[y - 1][x + 1]) {
+  if (cells[y - 1]?.[x + 1]) {
     neighbours++
   }
-  if (x < columns - 1 && cells[y][x + 1]) {
+  if (cells[y]?.[x + 1]) {
     neighbours++
   }
-  if (x > 0 && cells[y][x - 1]) {
+  if (cells[y]?.[x - 1]) {
     neighbours++
   }
-  if (y < rows - 1 && cells[y + 1][x]) {
+  if (cells[y + 1]?.[x]) {
     neighbours++
   }
-  if (y < rows - 1 && x > 0 && cells[y + 1][x - 1]) {
+  if (cells[y + 1]?.[x - 1]) {
     neighbours++
   }
-  if (y < rows - 1 && x < columns - 1 && cells[y + 1][x + 1]) {
+  if (cells[y + 1]?.[x + 1]) {
     neighbours++
   }
 

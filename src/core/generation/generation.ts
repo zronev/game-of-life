@@ -3,7 +3,7 @@ import type { Rules } from '../rules'
 
 import { clone2DArray } from '../utils'
 import { Emitter } from '../event-emitter'
-import { GridFromCells, getNeighbours } from '../grid'
+import { countNeighbours, GridFromCells } from '../grid'
 
 export type GenerationEventMap = {
   GENERATION_CHANGED: Generation
@@ -34,7 +34,7 @@ export class Generation {
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
         const isCellAlive = cellsCopy[y][x]
-        const neighbours = getNeighbours(grid, x, y)
+        const neighbours = countNeighbours(cells, x, y)
         cellsCopy[y][x] = this._applyRules(isCellAlive, neighbours)
       }
     }
