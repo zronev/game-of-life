@@ -1,7 +1,7 @@
 import React, { FC, MouseEvent, useContext, useRef, useState } from 'react'
 import { GameContext } from '../contexts/game-context'
 import { PatternContext } from '../patterns'
-import { positionOnElement, shiftToBottomLeftCorner } from './layers'
+import { positionOnElement, shiftToBottomLeftCorner } from '../layers'
 
 const ControllerWrapper: FC = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null)

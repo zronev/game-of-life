@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react'
-import { ColonyLayer, GridLayer, PreviewLayer } from './layers'
+import { ColonyLayer, GridLayer, PreviewLayer } from '../layers'
 import ControllerWrapper from './ControllerWrapper'
 import { GameContext } from '../contexts/game-context'
 

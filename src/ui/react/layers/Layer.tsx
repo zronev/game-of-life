@@ -1,6 +1,6 @@
 import React, { CanvasHTMLAttributes } from 'react'
-import type { Size } from '../../../../core/options'
-import type { WithClass } from '../../common/types'
+import type { Size } from '../../../core/options'
+import type { WithClass } from '../common/types'
 
 type Props = {
   size: Size

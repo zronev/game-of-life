@@ -1,5 +1,5 @@
 import type { MouseEventHandler } from 'react'
-import type { Layer } from '../../../../common/drawers'
+import type { Layer } from '../../../common/drawers'
 import { positionOnElement } from './position-on-element'
 
 type Callback = (position: Point, layer: Layer) => void

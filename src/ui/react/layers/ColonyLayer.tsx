@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react'
 import Layer from './Layer'
 import useLayer from './useLayer'
-import { drawColony, clear } from '../../../common/drawers'
+import { drawColony, clear } from '../../common/drawers'
 
-import type { Grid } from '../../../../core/grid'
-import type { OptionsMap } from '../../../../core/options'
-import type { WithClass } from '../../common/types'
+import type { Grid } from '../../../core/grid'
+import type { OptionsMap } from '../../../core/options'
+import type { WithClass } from '../common/types'
 
 type Props = {
   options: OptionsMap

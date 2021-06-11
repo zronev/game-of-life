@@ -1,8 +1,8 @@
 import React, { FC, useContext } from 'react'
 import { PatternContext } from './pattern-context'
 
-import GridLayer from '../game-field/layers/GridLayer'
-import ColonyLayer from '../game-field/layers/ColonyLayer'
+import GridLayer from '../layers/GridLayer'
+import ColonyLayer from '../layers/ColonyLayer'
 import RelativeWrapper from '../common/RelativeWrapper'
 
 import type { Pattern } from '../../../patterns'

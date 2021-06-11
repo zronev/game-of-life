@@ -3,9 +3,9 @@ import Layer from './Layer'
 import useLayer from './useLayer'
 import { makeLayerHandler, shiftToBottomLeftCorner } from './utility'
 
-import type { OptionsMap } from '../../../../core/options'
-import { drawPreview, clear } from '../../../common/drawers'
-import { PatternContext } from '../../patterns/pattern-context'
+import type { OptionsMap } from '../../../core/options'
+import { drawPreview, clear } from '../../common/drawers'
+import { PatternContext } from '../patterns/pattern-context'
 
 type Props = {
   options: OptionsMap
