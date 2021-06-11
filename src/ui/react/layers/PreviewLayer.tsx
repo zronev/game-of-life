@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react'
+import React, { FC, useContext, useEffect, useRef } from 'react'
 import Layer from './Layer'
 import useLayer from './useLayer'
 import { makeLayerHandler, shiftToBottomLeftCorner } from './utility'
@@ -6,14 +6,16 @@ import { makeLayerHandler, shiftToBottomLeftCorner } from './utility'
 import type { OptionsMap } from '../../../core/options'
 import { drawPreview, clear } from '../../common/drawers'
 import { PatternContext } from '../patterns/pattern-context'
+import { isEqualPoints } from './utility/is-equal-points'
 
 type Props = {
   options: OptionsMap
 }
 
 const PreviewLayer: FC<Props> = ({ options }) => {
-  const [pattern] = useContext(PatternContext)
   const { ref, layer } = useLayer(options)
+  const lastPosition = useRef<Point>({ x: -1, y: -1 })
+  const [pattern] = useContext(PatternContext)
 
   useEffect(() => {
     if (!layer) return
@@ -27,7 +29,10 @@ const PreviewLayer: FC<Props> = ({ options }) => {
   const layerHandler = makeLayerHandler(layer)
 
   const handleMouseMove = layerHandler((position, layer) => {
-    const bottomLeftCorner = shiftToBottomLeftCorner(position, pattern.grid)
+    if (isEqualPoints(lastPosition.current, position)) return
+
+    lastPosition.current = position
+
     clear(layer)
     drawPreview({
       pattern: pattern.grid,
