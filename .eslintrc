@@ -8,7 +8,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "rules": {
     "no-console": 2,
@@ -35,6 +37,7 @@
         "format": ["PascalCase"],
         "prefix": ["is", "should", "has", "can", "did", "will"]
       }
-    ]
+    ],
+    "react/prop-types": "off"
   }
 }
