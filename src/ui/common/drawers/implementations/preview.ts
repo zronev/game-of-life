@@ -2,11 +2,17 @@ import type { Layer } from '../types'
 import type { Grid } from '../../../../core/grid'
 import { drawCell } from '../utility'
 
-export const drawPreview = (
-  pattern: Grid,
-  position: Point,
+type DrawPreviewOptions = {
+  pattern: Grid
+  position: Point
   layer: Layer
-): void => {
+}
+
+export const drawPreview = ({
+  pattern,
+  position,
+  layer,
+}: DrawPreviewOptions): void => {
   const { context, cellSize } = layer
   const { rows, columns, cells } = pattern
 

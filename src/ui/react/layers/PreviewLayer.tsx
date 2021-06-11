@@ -29,7 +29,11 @@ const PreviewLayer: FC<Props> = ({ options }) => {
   const handleMouseMove = layerHandler((position, layer) => {
     const bottomLeftCorner = shiftToBottomLeftCorner(position, pattern.grid)
     clear(layer)
-    drawPreview(pattern.grid, bottomLeftCorner, layer)
+    drawPreview({
+      pattern: pattern.grid,
+      position: shiftToBottomLeftCorner(position, pattern.grid),
+      layer,
+    })
   })
 
   const handleMouseLeave = layerHandler((_, layer) => {
