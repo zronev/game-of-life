@@ -1,9 +1,11 @@
 import React, { FC, useEffect } from 'react'
+
 import Info from './info'
 import Controls from './controls'
 import GameField from './game-field'
 import PatternsList, { PatternProvider } from './patterns'
-import ShortcutsController from '../common/shortcuts'
+
+import { useShortcuts } from './adapters/useShortcuts'
 import { GameContext } from './contexts/game-context'
 
 import type { Game } from '../../core/game'
@@ -15,13 +17,12 @@ type Props = {
 }
 
 const App: FC<Props> = ({ game, options }) => {
-  const shortcuts = new ShortcutsController(game, options)
-
   useEffect(() => {
     game.loop.start()
     game.spawners.randomSpawn()
-    shortcuts.init()
   }, [])
+
+  useShortcuts(game, options)
 
   return (
     <GameContext.Provider value={{ game, options }}>
