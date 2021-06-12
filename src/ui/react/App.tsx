@@ -4,6 +4,7 @@ import Info from './info'
 import Controls from './controls'
 import GameField from './game-field'
 import PatternsList, { PatternProvider } from './patterns'
+import ShortCutsInfo from './shortcuts-info'
 
 import { useShortcuts } from './adapters/useShortcuts'
 import { GameContext } from './contexts/game-context'
@@ -32,6 +33,7 @@ const App: FC<Props> = ({ game, options }) => {
           <GameField />
           <PatternsList />
           <Controls />
+          <ShortCutsInfo className="main__shortcuts" />
         </PatternProvider>
       </main>
     </GameContext.Provider>

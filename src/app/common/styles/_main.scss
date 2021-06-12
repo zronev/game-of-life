@@ -3,7 +3,7 @@
   grid-template-areas:
     'info .'
     'game patterns'
-    'controls patterns';
+    'controls shortcuts';
   grid-template-columns: auto 1fr;
   gap: var(--gap-size);
 
@@ -18,7 +18,8 @@
       'info'
       'game'
       'controls'
-      'patterns';
+      'patterns'
+      'shortcuts';
     grid-template-columns: auto;
     max-width: 36rem;
   }
@@ -38,4 +39,12 @@
 
 .main__controls {
   grid-area: controls;
+}
+
+.main__shortcuts {
+  grid-area: shortcuts;
+
+  @media (max-width: 64rem) {
+    display: none;
+  }
 }

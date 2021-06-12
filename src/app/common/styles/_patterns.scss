@@ -4,12 +4,12 @@
   border: var(--border);
   overflow: auto;
   max-width: 36rem;
-  max-height: 50rem;
+  max-height: 36rem;
 }
 
 .patterns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
   gap: 1.5rem;
 
   @media (max-width: 30rem) {
@@ -35,7 +35,7 @@
   }
 
   &__canvas {
-    width: 7.5rem;
+    width: 6.5rem;
   }
 
   &__name {

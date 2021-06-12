@@ -1,0 +1,24 @@
+.shortcuts {
+  padding: 1rem 0.75rem;
+  border: var(--border);
+  background: #74b9ff;
+  max-width: 36rem;
+
+  &__list {
+    font-size: 1.25rem;
+  }
+
+  &__item {
+    line-height: 1.4;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__key {
+    padding: 0.1rem 0.3rem;
+    background: white;
+    border-radius: 4px;
+  }
+}
