@@ -4,57 +4,30 @@ import { GameContext } from '../contexts/game-context'
 
 const LoopControls: FC = () => {
   const { game } = useContext(GameContext)
-
-  const [loopInfo, setLoopInfo] = useState({
-    isRunning: game.loop.running,
-    fps: game.loop.fps,
-  })
+  const [fps, setFps] = useState(game.loop.fps)
+  const [isRunning, setIsRunning] = useState(game.loop.running)
 
   const emitter = game.getEmitter('loop')
 
   useEffect(() => {
-    emitter.addListener('FPS_CHANGED', (fps: number) => {
-      setLoopInfo(i => ({
-        ...i,
-        fps,
-      }))
-    })
-
-    emitter.addListener('PLAYBACK_CHANGED', (isRunning: boolean) => {
-      setLoopInfo(i => ({
-        ...i,
-        isRunning: isRunning,
-      }))
-    })
+    emitter.addListener('FPS_CHANGED', setFps)
+    emitter.addListener('PLAYBACK_CHANGED', setIsRunning)
   }, [])
 
-  const handleSlower = () => {
-    game.loop.changeFpsBy(-5)
-  }
+  const handlePlayback = () => game.loop.toggle()
+  const handleSlower = () => game.loop.changeFpsBy(-5)
+  const handleFaster = () => game.loop.changeFpsBy(5)
 
-  const handleFaster = () => {
-    game.loop.changeFpsBy(5)
-  }
-
-  const handlePlayback = () => {
-    game.loop.toggle()
-  }
+  const isReachedMinFps = fps === game.loop.minFps
+  const isReachedMaxFps = fps === game.loop.maxFps
 
   return (
     <>
-      <Button
-        onClick={handleSlower}
-        disabled={game.loop.minFps === loopInfo.fps}
-      >
+      <Button onClick={handleSlower} disabled={isReachedMinFps}>
         slower
       </Button>
-      <Button onClick={handlePlayback}>
-        {loopInfo.isRunning ? 'pause' : 'play'}
-      </Button>
-      <Button
-        disabled={game.loop.maxFps === loopInfo.fps}
-        onClick={handleFaster}
-      >
+      <Button onClick={handlePlayback}>{isRunning ? 'pause' : 'play'}</Button>
+      <Button onClick={handleFaster} disabled={isReachedMaxFps}>
         faster
       </Button>
     </>

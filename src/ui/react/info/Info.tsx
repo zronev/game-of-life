@@ -1,30 +1,18 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
-import { getUsedCells, Grid } from '../../../core/grid'
 import { GameContext } from '../contexts/game-context'
+import { getUsedCells, Grid } from '../../../core/grid'
 
 const Info: FC = () => {
   const { game } = useContext(GameContext)
-
-  const [info, setInfo] = useState({
-    population: 0,
-    generation: 0,
-  })
+  const [population, setPopulation] = useState(0)
+  const [generation, setGeneration] = useState(0)
 
   useEffect(() => {
     const field = game.getEmitter('field')
     const generation = game.getEmitter('generation')
 
-    const handlePopulation = (grid: Grid) =>
-      setInfo(i => ({
-        ...i,
-        population: getUsedCells(grid),
-      }))
-
-    const handleGeneration = () =>
-      setInfo(i => ({
-        ...i,
-        generation: i.generation + 1,
-      }))
+    const handlePopulation = (grid: Grid) => setPopulation(getUsedCells(grid))
+    const handleGeneration = () => setGeneration(g => g + 1)
 
     field.addListener('GRID_CHANGED', handlePopulation)
     generation.addListener('GENERATION_CHANGED', handleGeneration)
@@ -37,8 +25,8 @@ const Info: FC = () => {
 
   return (
     <section className="info main__info">
-      <p className="counter">population: {info.population}</p>
-      <p className="counter">generation: {info.generation}</p>
+      <p className="counter">population: {population}</p>
+      <p className="counter">generation: {generation}</p>
     </section>
   )
 }
