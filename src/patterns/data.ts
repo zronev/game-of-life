@@ -1,40 +1,10 @@
 import type { Pattern } from './types'
 import { Cells, GridFromCells } from '../core/grid'
 
-const custom: Record<string, Cells> = {
+const data: Record<string, Cells> = {
+  // Custom
   dot: [[true]],
-  brick: [
-    [false, true, true, true, false],
-    [true, false, true, false, true],
-    [false, true, false, true, false],
-    [false, true, true, true, false],
-    [true, false, true, false, true],
-  ],
-  // prettier-ignore
-  mario: [
-    [false, false, false, true, true, true, true, true, false, false, false, false],
-    [false, false, true, true, true, true, true, true, true, true, true, false],
-    [false, false, true, true, true, true, true, true, true, false, false, false],
-    [false, true, true, true, true, true, true, true, true, true, true, false],
-    [false, true, true, true, true, true, true, true, true, true, true, true],
-    [false, true, true, true, true, true, true, true, true, true, true, false],
-    [false, false, true, true, true, true, true, true, true, false, false, false],
-    [false, true, true, true, true, true, true, true, true, true, true, false],
-    [true, true, true, true, true, true, true, true, true, true, true, true],
-    [true, true, true, true, true, true, true, true, true, true, true, true],
-    [true, true, true, true, true, true, true, true, true, true, true, true],
-    [true, true, true, true, true, true, true, true, true, true, true, true],
-    [false, false, true, true, true, false, false, true, true, true, false, false],
-    [false, true, true, true, false, false, false, false, true, true, true, false],
-    [true, true, true, true, false, false, false, false, true, true, true, true],
-  ],
-}
-
-const stillLifes: Record<string, Cells> = {
-  block: [
-    [true, true],
-    [true, true],
-  ],
+  // Still lifes
   beehive: [
     [false, true, true, false],
     [true, false, false, true],
@@ -57,9 +27,16 @@ const stillLifes: Record<string, Cells> = {
     [true, false, true],
     [false, true, false],
   ],
-}
-
-const oscillators: Record<string, Cells> = {
+  block: [
+    [true, true],
+    [true, true],
+  ],
+  ship: [
+    [true, true, false],
+    [true, false, true],
+    [false, true, true],
+  ],
+  // Oscillators
   blinker: [[true, true, true]],
   toad: [
     [false, false, true, false],
@@ -73,17 +50,29 @@ const oscillators: Record<string, Cells> = {
     [true, true, false, false],
     [true, true, false, false],
   ],
-}
-
-const spaceships: Record<string, Cells> = {
+  //prettier-ignore
+  pulsar: [
+    [false, false, true, true, true, false, false, false , true, true , true, false, false],
+    [false, false, false, false, false, false, false, false, false , false, false, false],
+    [true, false, false, false, false, true, false, true, false , false, false, false, true],
+    [true, false, false, false, false, true, false, true, false , false, false, false, true],
+    [true, false, false, false, false, true, false, true, false , false, false, false, true],
+    [false, false, true, true, true, false, false, false, true , true, true, false, false],
+    [false, false, false, false, false, false, false, false, false , false, false, false],
+    [false, false, true, true, true, false, false, false, true, true , true, false, false],
+    [true, false, false, false, false, true, false, true, false, false, false, false, true],
+    [true, false, false, false, false, true, false, true, false, false, false, false, true],
+    [true, false, false, false, false, true, false, true, false, false, false, false, true],
+    [false, false, false, false, false, false, false, false, false, false, false, false, false],
+    [false, false, true, true, true, false, false, false, true, true, true, false, false],
+  ],
+  // Space Ships
   glider: [
     [true, true, true],
     [true, false, false],
     [false, true, false],
   ],
-}
-
-const methuselahs: Record<string, Cells> = {
+  // Special
   'R pentimo': [
     [false, true, true],
     [true, true, false],
@@ -91,15 +80,7 @@ const methuselahs: Record<string, Cells> = {
   ],
 }
 
-const flattenedPatterns = Object.values({
-  custom,
-  'still lifes': stillLifes,
-  oscillators,
-  spaceships,
-  methuselahs,
-}).reduce((acc, cur) => ({ ...acc, ...cur }), {})
-
-export const patterns: Pattern[] = Object.entries(flattenedPatterns).map(
+export const patterns: Pattern[] = Object.entries(data).map(
   ([name, cells]) => ({
     name,
     grid: new GridFromCells(cells),
