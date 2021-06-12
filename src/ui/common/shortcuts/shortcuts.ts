@@ -3,17 +3,17 @@ import type { Options } from '../../../core/options'
 
 class ShortcutsController {
   static isKeysPressed: Record<string, boolean> = {
-    s: false,
-    c: false,
-    '[': false,
-    ']': false,
-    '{': false,
-    '}': false,
-    ' ': false,
-    '1': false,
-    '2': false,
-    '3': false,
-    '4': false,
+    KeyS: false,
+    KeyC: false,
+    BracketLeft: false,
+    BracketRight: false,
+    ShiftLeft: false,
+    ShiftRight: false,
+    Space: false,
+    Digit1: false,
+    Digit2: false,
+    Digit3: false,
+    Digit4: false,
   }
 
   constructor(private _game: Game, private _options: Options) {}
@@ -25,50 +25,50 @@ class ShortcutsController {
 
   private _onKeyDown() {
     document.addEventListener('keydown', e => {
-      ShortcutsController.isKeysPressed[e.key] = true
+      ShortcutsController.isKeysPressed[e.code] = true
 
-      if (ShortcutsController.isKeysPressed[' ']) {
+      const isShiftPressed =
+        ShortcutsController.isKeysPressed.ShiftLeft ||
+        ShortcutsController.isKeysPressed.ShiftRight
+
+      if (ShortcutsController.isKeysPressed.Space) {
         e.preventDefault()
         this._game.loop.toggle()
       }
 
-      if (ShortcutsController.isKeysPressed['s']) {
+      if (ShortcutsController.isKeysPressed.KeyS) {
         this._game.spawners.randomSpawn()
       }
 
-      if (ShortcutsController.isKeysPressed['c']) {
+      if (ShortcutsController.isKeysPressed.KeyC) {
         this._game.clearField()
       }
 
-      if (ShortcutsController.isKeysPressed['[']) {
-        this._game.loop.changeFpsBy(-5)
+      if (ShortcutsController.isKeysPressed.BracketLeft) {
+        isShiftPressed
+          ? this._game.loop.changeFpsBy(-1)
+          : this._game.loop.changeFpsBy(-5)
       }
 
-      if (ShortcutsController.isKeysPressed[']']) {
-        this._game.loop.changeFpsBy(5)
+      if (ShortcutsController.isKeysPressed.BracketRight) {
+        isShiftPressed
+          ? this._game.loop.changeFpsBy(1)
+          : this._game.loop.changeFpsBy(5)
       }
 
-      if (ShortcutsController.isKeysPressed['{']) {
-        this._game.loop.changeFpsBy(-1)
-      }
-
-      if (ShortcutsController.isKeysPressed['}']) {
-        this._game.loop.changeFpsBy(1)
-      }
-
-      if (ShortcutsController.isKeysPressed['1']) {
+      if (ShortcutsController.isKeysPressed.Digit1) {
         this._options.changeFieldSides('small')
       }
 
-      if (ShortcutsController.isKeysPressed['2']) {
+      if (ShortcutsController.isKeysPressed.Digit2) {
         this._options.changeFieldSides('normal')
       }
 
-      if (ShortcutsController.isKeysPressed['3']) {
+      if (ShortcutsController.isKeysPressed.Digit3) {
         this._options.changeFieldSides('big')
       }
 
-      if (ShortcutsController.isKeysPressed['4']) {
+      if (ShortcutsController.isKeysPressed.Digit4) {
         this._options.changeFieldSides('large')
       }
     })
@@ -76,7 +76,7 @@ class ShortcutsController {
 
   private _onKeyUp() {
     document.addEventListener('keyup', e => {
-      ShortcutsController.isKeysPressed[e.key] = false
+      ShortcutsController.isKeysPressed[e.code] = false
     })
   }
 }
