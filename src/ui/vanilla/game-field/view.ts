@@ -6,8 +6,9 @@ import { renderGridLayer } from '../layers/grid'
 import { renderColonyLayer } from '../layers/colony'
 import { renderPreviewLayer } from '../layers/preview'
 
-import type { GameFieldState, MouseEventCallback } from './types'
 import type { Grid } from '../../../core/grid'
+import type { GridHandler } from '../layers/colony/types'
+import type { GameFieldState, MouseEventCallback } from './types'
 
 const PREVIEW_COLOR = 'rgba(45, 52, 54, 0.75)'
 
@@ -61,8 +62,19 @@ export class GameFieldView extends View<GameFieldState> {
     game,
     options,
   }: GameFieldState): HTMLCanvasElement {
+    const onGridChanged = (callback: GridHandler) => {
+      const field = game.getEmitter('field')
+      field.addListener('GRID_CHANGED', callback)
+    }
+
     const colonyCanvas = renderCanvas(options.canvasSize, 'colony-canvas')
-    return renderColonyLayer(colonyCanvas, game, options, this._drawColony)
+    return renderColonyLayer(
+      colonyCanvas,
+      game,
+      options,
+      this._drawColony,
+      onGridChanged
+    )
   }
 
   private _renderGridLayer({

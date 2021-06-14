@@ -1,19 +1,19 @@
-import type { ColonyLayerState } from './types'
 import type { Game } from '../../../../core/game'
-import type { Grid } from '../../../../core/grid'
-
+import type { ColonyLayerState, GridHandler } from './types'
 import { LayerModel } from '../layer/model'
 
 export class ColonyLayerModel extends LayerModel<ColonyLayerState> {
-  constructor(game: Game, initialState: ColonyLayerState) {
+  constructor(
+    game: Game,
+    initialState: ColonyLayerState,
+    onGridChanged?: (callback: GridHandler) => void
+  ) {
     super(game, initialState)
-    this._subscribeToExternalModel(this._game)
-  }
 
-  private _subscribeToExternalModel(game: Game): void {
-    const field = game.getEmitter('field')
-    field.addListener('GRID_CHANGED', (grid: Grid) => {
-      this.state = { ...this.state, grid }
-    })
+    if (onGridChanged) {
+      onGridChanged(grid => {
+        this.state = { ...this.state, grid }
+      })
+    }
   }
 }

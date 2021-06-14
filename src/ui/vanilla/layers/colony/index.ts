@@ -11,14 +11,15 @@ export const renderColonyLayer = (
   canvas: HTMLCanvasElement,
   game: Game,
   options: OptionsMap,
-  draw: (layer: Layer, grid: Grid) => void
+  draw: (layer: Layer, grid: Grid) => void,
+  onGridChanged?: (callback: (grid: Grid) => void) => void
 ): HTMLCanvasElement => {
   const initialState = {
     options,
     grid: new GridFromOptions(options.fieldSides),
   }
 
-  const model = new ColonyLayerModel(game, initialState)
+  const model = new ColonyLayerModel(game, initialState, onGridChanged)
   const view = new ColonyLayerView(canvas, model, draw)
   new ColonyLayerController(model, view)
 

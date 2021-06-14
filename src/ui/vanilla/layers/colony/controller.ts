@@ -4,6 +4,7 @@ import type { ColonyLayerView } from './view'
 export class ColonyLayerController {
   constructor(layerModel: ColonyLayerModel, layerView: ColonyLayerView) {
     layerView.createLayer(layerModel.state.options)
+    layerView.draw(layerModel.state.grid)
     this._subscribeToExternalModels(layerModel, layerView)
   }
 
