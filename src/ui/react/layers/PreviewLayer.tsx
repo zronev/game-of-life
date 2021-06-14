@@ -1,16 +1,11 @@
 import React, { FC, MouseEvent, useContext, useEffect, useRef } from 'react'
 import Layer from './Layer'
 import useLayer from './useLayer'
-
-import {
-  isEqualPoints,
-  positionOnElement,
-  shiftToBottomLeftCorner,
-} from '../../common/utility'
-import { PatternContext } from '../patterns/pattern-context'
-import { drawPreview, clear } from '../../common/drawers'
-
 import type { OptionsMap } from '../../../core/options'
+
+import { clear } from '../../common/drawers'
+import { PatternContext } from '../patterns/pattern-context'
+import { drawPreviewOnMouseMove } from '../../common/layers/draw-preview'
 
 type Props = {
   options: OptionsMap
@@ -31,27 +26,7 @@ const PreviewLayer: FC<Props> = ({ options }) => {
   }, [layer])
 
   const handleMouseMove = (event: MouseEvent) => {
-    if (!layer) return
-
-    const { canvas, cellSize } = layer
-    const { grid } = pattern
-
-    const position = positionOnElement({
-      event,
-      cellSize,
-      element: canvas,
-      targetElementWidth: canvas.width,
-    })
-
-    if (isEqualPoints(lastPosition.current, position)) return
-    lastPosition.current = position
-
-    clear(layer)
-    drawPreview({
-      pattern: grid,
-      position: shiftToBottomLeftCorner(position, grid),
-      layer,
-    })
+    drawPreviewOnMouseMove(event, layer, lastPosition.current, pattern)
   }
 
   const handleMouseLeave = () => {

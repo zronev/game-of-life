@@ -1,8 +1,6 @@
 import type { PreviewLayerView } from './view'
 import type { PreviewLayerModel } from './model'
-
-import { clear, drawPreview } from '../../../common/drawers'
-import { shiftToBottomLeftCorner } from '../../../common/utility'
+import { clear } from '../../../common/drawers'
 
 export class PreviewLayerController {
   constructor(
@@ -15,26 +13,15 @@ export class PreviewLayerController {
   }
 
   private _subscribeToViewEvents() {
-    this._layerView.onMouseMove((layer, position) => {
-      const { patternToSpawn } = this._layerModel.state
-
-      clear(layer)
-      drawPreview({
-        pattern: patternToSpawn.get().grid,
-        position: shiftToBottomLeftCorner(position, patternToSpawn.get().grid),
-        layer,
-      })
-    })
-
-    this._layerView.onMouseLeave(layer => {
-      clear(layer)
-    })
+    const { patternToSpawn } = this._layerModel.state
+    this._layerView.onMouseMove(patternToSpawn)
+    this._layerView.onMouseLeave(clear)
   }
 
   private _subscribeToExternalModels() {
-    const { state } = this._layerModel
+    const { options } = this._layerModel.state
 
-    state.options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
       this._layerModel.changeFieldSize(options.fieldSides)
       this._layerView.createLayer(options)
       this._layerView.clear()

@@ -1,26 +1,21 @@
 import type { PreviewLayerState } from './types'
+import type { PatternToSpawn } from '../../patterns/pattern-to-spawn'
+
 import { LayerView } from '../layer/view'
 import { clear, Layer } from '../../../common/drawers'
-import { isEqualPoints, positionOnElement } from '../../../common/utility'
+import { drawPreviewOnMouseMove } from '../../../common/layers/draw-preview'
 
 export class PreviewLayerView extends LayerView<PreviewLayerState> {
   private _lastPosition: Point = { x: -1, y: -1 }
 
-  public onMouseMove(callback: (layer: Layer, position: Point) => void): void {
+  public onMouseMove(pattern: PatternToSpawn): void {
     const handleMouseMove = (event: MouseEvent) => {
-      if (!this._layer) return
-
-      const position = positionOnElement({
+      drawPreviewOnMouseMove(
         event,
-        cellSize: this._layer.cellSize,
-        element: this._canvas,
-        targetElementWidth: this._canvas.width,
-      })
-
-      if (isEqualPoints(this._lastPosition, position)) return
-
-      this._lastPosition = position
-      callback(this._layer, position)
+        this._layer,
+        this._lastPosition,
+        pattern.get()
+      )
     }
 
     this._canvas.addEventListener('mousemove', handleMouseMove)
