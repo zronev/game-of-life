@@ -1,9 +1,7 @@
+import type { PreviewLayerState } from './types'
 import { LayerView } from '../layer/view'
 import { clear, Layer } from '../../../common/drawers'
-import { positionOnElement } from '../../../react/layers'
-
-import type { PreviewLayerState } from './types'
-import { isEqualPoints } from '../../../react/layers/utility/is-equal-points'
+import { isEqualPoints, positionOnElement } from '../../../common/utility'
 
 export class PreviewLayerView extends LayerView<PreviewLayerState> {
   private _lastPosition: Point = { x: -1, y: -1 }

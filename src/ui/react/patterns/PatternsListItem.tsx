@@ -1,13 +1,17 @@
 import React, { FC, useContext } from 'react'
+import type { Pattern } from '../../../patterns'
 import { PatternContext } from './pattern-context'
 
 import GridLayer from '../layers/GridLayer'
 import ColonyLayer from '../layers/ColonyLayer'
 import RelativeWrapper from '../common/RelativeWrapper'
 
-import type { Pattern } from '../../../patterns'
 import { Options } from '../../../core/options'
-import { CELL_COLOR, CELL_SIZE } from './constants'
+import {
+  CELL_COLOR,
+  CELL_SIZE,
+  GRID_COLOR,
+} from '../../common/patterns/constant'
 
 type Props = {
   pattern: Pattern
@@ -36,10 +40,7 @@ const PatternsListItem: FC<Props> = ({ pattern }) => {
     color: CELL_COLOR,
   }).toMap()
 
-  const gridOptions = {
-    ...options,
-    color: '#0984e3',
-  }
+  const gridOptions = { ...options, color: GRID_COLOR }
 
   return (
     <div

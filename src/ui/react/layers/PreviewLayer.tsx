@@ -1,12 +1,16 @@
 import React, { FC, useContext, useEffect, useRef } from 'react'
 import Layer from './Layer'
 import useLayer from './useLayer'
-import { makeLayerHandler, shiftToBottomLeftCorner } from './utility'
+
+import { PatternContext } from '../patterns/pattern-context'
+import { drawPreview, clear } from '../../common/drawers'
+import {
+  isEqualPoints,
+  makeLayerHandler,
+  shiftToBottomLeftCorner,
+} from '../../common/utility'
 
 import type { OptionsMap } from '../../../core/options'
-import { drawPreview, clear } from '../../common/drawers'
-import { PatternContext } from '../patterns/pattern-context'
-import { isEqualPoints } from './utility/is-equal-points'
 
 type Props = {
   options: OptionsMap

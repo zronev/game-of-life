@@ -4,9 +4,13 @@ import type { Pattern } from '../../../patterns'
 import { Options } from '../../../core/options'
 import { renderGridLayer } from '../layers/grid'
 import { renderColonyLayer } from '../layers/colony'
-import { clear, drawColony, Layer } from '../../common/drawers'
-import { CELL_COLOR, CELL_SIZE } from '../../react/patterns/constants'
 
+import {
+  CELL_COLOR,
+  CELL_SIZE,
+  GRID_COLOR,
+} from '../../common/patterns/constant'
+import { clear, drawColony, Layer } from '../../common/drawers'
 import { renderCanvas, renderParagraph, renderWrapper } from '../common/utility'
 
 export const renderPattern = (pattern: Pattern, game: Game): HTMLElement => {
@@ -30,7 +34,7 @@ export const renderPattern = (pattern: Pattern, game: Game): HTMLElement => {
 
   const gridOptions = {
     ...options,
-    color: '#0984e3',
+    color: GRID_COLOR,
   }
 
   const { canvasSize } = options

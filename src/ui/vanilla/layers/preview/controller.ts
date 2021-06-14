@@ -1,8 +1,8 @@
-import { clear, drawPreview } from '../../../common/drawers'
-import { shiftToBottomLeftCorner } from '../../../react/layers'
-
 import type { PreviewLayerView } from './view'
 import type { PreviewLayerModel } from './model'
+
+import { clear, drawPreview } from '../../../common/drawers'
+import { shiftToBottomLeftCorner } from '../../../common/utility'
 
 export class PreviewLayerController {
   constructor(

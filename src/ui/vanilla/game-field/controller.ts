@@ -1,6 +1,9 @@
-import type { GameFieldModel } from './model'
 import type { GameFieldView } from './view'
-import { positionOnElement, shiftToBottomLeftCorner } from '../../react/layers'
+import type { GameFieldModel } from './model'
+import {
+  positionOnElement,
+  shiftToBottomLeftCorner,
+} from '../../common/utility'
 
 export class GameFieldController {
   constructor(private _model: GameFieldModel, private _view: GameFieldView) {
