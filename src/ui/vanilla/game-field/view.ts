@@ -10,8 +10,7 @@ import { clear, drawColony } from '../../common/drawers'
 import { renderGridLayer } from '../layers/grid'
 import { renderColonyLayer } from '../layers/colony'
 import { renderPreviewLayer } from '../layers/preview'
-
-const PREVIEW_COLOR = 'rgba(45, 52, 54, 0.75)'
+import { PREVIEW_COLOR } from '../../common/layers/constant'
 
 export class GameFieldView extends View<GameFieldState> {
   private _isDrawing = false

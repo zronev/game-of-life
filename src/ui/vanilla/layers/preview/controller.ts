@@ -1,6 +1,7 @@
 import type { PreviewLayerView } from './view'
 import type { PreviewLayerModel } from './model'
 import { clear } from '../../../common/drawers'
+import { PREVIEW_COLOR } from '../../../common/layers/constant'
 
 export class PreviewLayerController {
   constructor(
@@ -22,8 +23,9 @@ export class PreviewLayerController {
     const { options } = this._layerModel.state
 
     options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+      const previewOptions = { ...options, color: PREVIEW_COLOR }
       this._layerModel.changeFieldSize(options.fieldSides)
-      this._layerView.createLayer(options)
+      this._layerView.createLayer(previewOptions)
       this._layerView.clear()
     })
   }

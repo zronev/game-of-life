@@ -1,17 +1,14 @@
 import React, { FC, useContext } from 'react'
-import { ColonyLayer, GridLayer, PreviewLayer } from '../layers'
 import ControllerWrapper from './ControllerWrapper'
 import { GameContext } from '../contexts/game-context'
+import { ColonyLayer, GridLayer, PreviewLayer } from '../layers'
+import { PREVIEW_COLOR } from '../../common/layers/constant'
 
 const GameField: FC = () => {
   const { game, options } = useContext(GameContext)
 
   const emitter = game.getEmitter('field')
-
-  const previewOptions = {
-    ...options.toMap(),
-    color: 'rgba(45, 52, 54, 0.75)',
-  }
+  const previewOptions = { ...options.toMap(), color: PREVIEW_COLOR }
 
   return (
     <section className="game main__game">
