@@ -1,13 +1,8 @@
-import type { Field } from '../../field'
 import Spawner from '../spawner'
 import { GridFromCells, getAvailableCells } from '../../grid'
 import { clone2DArray, clamp, getRandomValue } from '../../utils'
 
 class RandomSpawner extends Spawner {
-  constructor(protected _field: Field) {
-    super(_field)
-  }
-
   public spawn(amount: number): void {
     const { grid } = this._field
     const cellsCopy = clone2DArray(grid.cells)
