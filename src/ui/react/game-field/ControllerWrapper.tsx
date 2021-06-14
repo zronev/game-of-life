@@ -15,7 +15,7 @@ const ControllerWrapper: FC = ({ children }) => {
     const position = positionOnElement({
       event,
       element,
-      cellSize: cellSize,
+      cellSize,
       targetElementWidth: canvasSize.width,
     })
 

@@ -43,8 +43,8 @@ const PatternsListItem: FC<Props> = ({ pattern }) => {
 
   return (
     <div
-      className={`pattern ${isActive ? 'pattern--active' : ''}`}
       onClick={handleClick}
+      className={`pattern ${isActive ? 'pattern--active' : ''}`}
     >
       <RelativeWrapper>
         <ColonyLayer

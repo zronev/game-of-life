@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, FC } from 'react'
+import React, { FC, ButtonHTMLAttributes } from 'react'
 import type { WithClass } from './types'
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & WithClass

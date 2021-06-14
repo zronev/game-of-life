@@ -30,10 +30,7 @@ export class Emitter<T extends EventMap> {
     this._events.get(eventName)?.delete(listener)
   }
 
-  public dispatch<K extends EventKey<T>>(
-    eventName: K,
-    params: T[K]
-  ): void {
+  public dispatch<K extends EventKey<T>>(eventName: K, params: T[K]): void {
     const listeners = this._events.get(eventName)
     listeners?.forEach(listener => {
       listener(params)
