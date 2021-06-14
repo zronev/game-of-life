@@ -55,29 +55,14 @@ export const getDefaultAmount = (grid: Grid, occupancyRate = 0.15): number => {
 export const countNeighbours = (cells: Cells, x: number, y: number): number => {
   let neighbours = 0
 
-  if (cells[y - 1]?.[x]) {
-    neighbours++
-  }
-  if (cells[y - 1]?.[x - 1]) {
-    neighbours++
-  }
-  if (cells[y - 1]?.[x + 1]) {
-    neighbours++
-  }
-  if (cells[y]?.[x + 1]) {
-    neighbours++
-  }
-  if (cells[y]?.[x - 1]) {
-    neighbours++
-  }
-  if (cells[y + 1]?.[x]) {
-    neighbours++
-  }
-  if (cells[y + 1]?.[x - 1]) {
-    neighbours++
-  }
-  if (cells[y + 1]?.[x + 1]) {
-    neighbours++
+  for (let i = -1; i < 2; i++) {
+    for (let j = -1; j < 2; j++) {
+      const isOriginalCell = i === 0 && j === 0
+      if (isOriginalCell) continue
+
+      const isCellAlive = cells[y + i]?.[x + j]
+      if (isCellAlive) neighbours++
+    }
   }
 
   return neighbours
