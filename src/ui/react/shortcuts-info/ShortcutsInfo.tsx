@@ -1,19 +1,12 @@
 import React, { FC } from 'react'
+import { SHORTCUTS } from '../../common/shortcuts'
 import type { WithClass } from '../common/types'
 
-const ShortCutsInfo: FC<WithClass> = ({ className }) => {
-  const shortcuts = [
-    { keys: ['s'], text: 'spawn random cells' },
-    { keys: ['c'], text: 'clear field' },
-    { keys: ['space'], text: 'pause/play' },
-    { keys: ['[', ']'], text: 'faster/slower' },
-    { keys: ['1', '2', '3', '4'], text: 'make field smaller/bigger' },
-  ]
-
+const ShortcutsInfo: FC<WithClass> = ({ className }) => {
   return (
     <section className={`shortcuts ${className}`}>
       <ul className="shortcuts__list">
-        {shortcuts.map(({ keys, text }) => (
+        {SHORTCUTS.map(({ keys, text }) => (
           <li key={text} className="shortcuts__item">
             {keys.map((key, index) => {
               const isLast = index === keys.length - 1
@@ -33,4 +26,4 @@ const ShortCutsInfo: FC<WithClass> = ({ className }) => {
   )
 }
 
-export default ShortCutsInfo
+export default ShortcutsInfo

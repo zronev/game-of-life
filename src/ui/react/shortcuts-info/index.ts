@@ -1,1 +1,1 @@
-export { default } from './ShortCutsInfo'
+export { default } from './ShortcutsInfo'
