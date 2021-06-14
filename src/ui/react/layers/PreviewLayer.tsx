@@ -1,14 +1,14 @@
-import React, { FC, useContext, useEffect, useRef } from 'react'
+import React, { FC, MouseEvent, useContext, useEffect, useRef } from 'react'
 import Layer from './Layer'
 import useLayer from './useLayer'
 
-import { PatternContext } from '../patterns/pattern-context'
-import { drawPreview, clear } from '../../common/drawers'
 import {
   isEqualPoints,
-  makeLayerHandler,
+  positionOnElement,
   shiftToBottomLeftCorner,
 } from '../../common/utility'
+import { PatternContext } from '../patterns/pattern-context'
+import { drawPreview, clear } from '../../common/drawers'
 
 import type { OptionsMap } from '../../../core/options'
 
@@ -30,24 +30,33 @@ const PreviewLayer: FC<Props> = ({ options }) => {
     })
   }, [layer])
 
-  const layerHandler = makeLayerHandler(layer)
+  const handleMouseMove = (event: MouseEvent) => {
+    if (!layer) return
 
-  const handleMouseMove = layerHandler((position, layer) => {
+    const { canvas, cellSize } = layer
+    const { grid } = pattern
+
+    const position = positionOnElement({
+      event,
+      cellSize,
+      element: canvas,
+      targetElementWidth: canvas.width,
+    })
+
     if (isEqualPoints(lastPosition.current, position)) return
-
     lastPosition.current = position
 
     clear(layer)
     drawPreview({
-      pattern: pattern.grid,
-      position: shiftToBottomLeftCorner(position, pattern.grid),
+      pattern: grid,
+      position: shiftToBottomLeftCorner(position, grid),
       layer,
     })
-  })
+  }
 
-  const handleMouseLeave = layerHandler((_, layer) => {
-    clear(layer)
-  })
+  const handleMouseLeave = () => {
+    if (layer) clear(layer)
+  }
 
   return (
     <Layer
