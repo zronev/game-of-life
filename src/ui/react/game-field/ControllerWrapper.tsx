@@ -7,7 +7,7 @@ import {
 } from '../../common/utility'
 
 const ControllerWrapper: FC = ({ children }) => {
-  const ref = useRef<HTMLDivElement>(null)
+  const wrapper = useRef<HTMLDivElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const { game, options } = useContext(GameContext)
   const [pattern] = useContext(PatternContext)
@@ -27,25 +27,29 @@ const ControllerWrapper: FC = ({ children }) => {
   }
 
   const handleMouseClick = (event: MouseEvent<HTMLElement>) => {
-    if (!ref.current) return
-    spawn(event, ref.current)
+    if (!wrapper.current) return
+    spawn(event, wrapper.current)
   }
 
   const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
-    if (!ref.current || !isDrawing) return
-    spawn(event, ref.current)
+    if (!wrapper.current || !isDrawing) return
+    spawn(event, wrapper.current)
   }
 
-  const enableDrawing = () => setIsDrawing(true)
-  const disableDrawing = () => setIsDrawing(false)
+  const handleMouseDown = () => {
+    setIsDrawing(true)
+  }
+
+  const handleMouseUp = () => {
+    setIsDrawing(false)
+  }
 
   return (
     <div
-      ref={ref}
+      ref={wrapper}
       onClick={handleMouseClick}
-      onMouseDown={enableDrawing}
-      onMouseUp={disableDrawing}
-      onMouseLeave={disableDrawing}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
       className="flex game main__game"
     >

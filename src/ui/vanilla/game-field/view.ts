@@ -52,10 +52,6 @@ export class GameFieldView extends View<GameFieldState> {
     this._targetElement.addEventListener('mouseup', () => {
       this._isDrawing = false
     })
-
-    this._targetElement.addEventListener('mouseleave', () => {
-      this._isDrawing = false
-    })
   }
 
   private _renderColonyLayer({
