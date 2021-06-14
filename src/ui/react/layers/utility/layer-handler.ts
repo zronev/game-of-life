@@ -4,7 +4,7 @@ import { positionOnElement } from './position-on-element'
 
 type Callback = (position: Point, layer: Layer) => void
 type Handler = (callback: Callback) => MouseEventHandler<HTMLCanvasElement>
-type HandlerWithLayer = (layer: Layer | null) => Handler
+type HandlerWithLayer = (layer: Nullable<Layer>) => Handler
 
 const layerHandler: HandlerWithLayer = layer => callback => event => {
   if (!layer) return
@@ -22,5 +22,5 @@ const layerHandler: HandlerWithLayer = layer => callback => event => {
   )
 }
 
-export const makeLayerHandler = (layer: Layer | null): Handler =>
+export const makeLayerHandler = (layer: Nullable<Layer>): Handler =>
   layerHandler(layer)

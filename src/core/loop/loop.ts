@@ -10,7 +10,7 @@ export class Loop {
   private _minFps = 1
   private _maxFps = 60
   private _running = false
-  private _requestId: number | null = null
+  private _requestId: Nullable<number> = null
   private _eventEmitter: Emitter<LoopEventMap>
 
   constructor(private _fps: number, private _step: () => void) {

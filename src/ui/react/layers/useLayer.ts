@@ -4,12 +4,12 @@ import { Layer, setFillColor } from '../../common/drawers'
 
 type UseLayer = (options: OptionsMap) => {
   ref: RefObject<HTMLCanvasElement>
-  layer: Layer | null
+  layer: Nullable<Layer>
 }
 
 const useLayer: UseLayer = options => {
   const ref = useRef<HTMLCanvasElement>(null)
-  const [layer, setLayer] = useState<Layer | null>(null)
+  const [layer, setLayer] = useState<Nullable<Layer>>(null)
 
   useEffect(() => {
     const createLayer = (options: OptionsMap) => {

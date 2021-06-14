@@ -9,7 +9,7 @@ export abstract class View<State> {
     this.prepareRender()
   }
 
-  public render(state: State): DocumentFragment | null {
+  public render(state: State): Nullable<DocumentFragment> {
     return null
   }
 
