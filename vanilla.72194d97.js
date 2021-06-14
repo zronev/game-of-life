@@ -179,4 +179,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./info":"PoIi","./game-field":"qhSQ","./patterns":"NCE6","./controls":"EkNR","./shortcuts":"IvgF","./common/utility/render-wrapper":"Edpv","../common/shortcuts":"Gihg","../../patterns/data":"tiI3","./patterns/pattern-to-spawn":"t90u"}],"QCba":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("../../core/game"),i=require("../../core/options"),r=require("../../ui/vanilla/app"),o=new i.Options({fieldSides:{rows:50,columns:50},canvasSize:{width:1e3,height:1e3},color:"#2d3436"}),s=new e.Game(o.fieldSides);r.app(s,o);
 },{"../../core/game":"qVVn","../../core/options":"DDJG","../../ui/vanilla/app":"kFYG"}]},{},["QCba"], null)
-//# sourceMappingURL=/vanilla.72194d97.js.map
+//# sourceMappingURL=/vanilla/vanilla.72194d97.js.map
