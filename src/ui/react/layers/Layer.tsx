@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { CanvasHTMLAttributes } from 'react'
 import type { Size } from '../../../core/options'
 import type { WithClass } from '../common/types'

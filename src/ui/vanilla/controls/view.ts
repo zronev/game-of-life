@@ -4,7 +4,7 @@ import { FIELD_SIDES } from '../../../core/options'
 import type { ControlsState } from './types'
 
 export class ControlsView extends View<ControlsState> {
-  public render(state: ControlsState): DocumentFragment {
+  public override render(state: ControlsState): DocumentFragment {
     const fragment = document.createDocumentFragment()
 
     const fieldRow = this._renderFieldRow()

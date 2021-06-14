@@ -12,7 +12,6 @@ import ShortcutsController from '../common/shortcuts'
 import { patterns } from '../../patterns/data'
 import { PatternToSpawn } from './patterns/pattern-to-spawn'
 
-
 const renderApp = (game: Game, options: Options) => {
   const rootElement = document.getElementById('root')
 
