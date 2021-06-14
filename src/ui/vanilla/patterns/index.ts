@@ -15,7 +15,7 @@ export const renderPatterns = (
   const innerWrapper = document.createElement('div')
   innerWrapper.classList.add('patterns')
 
-  const model = new PatternsModel({ game, patterns })
+  const model = new PatternsModel({ game, patterns, patternToSpawn })
   const view = new PatternsView(innerWrapper, model)
   new PatternsController(model, view, patternToSpawn)
 

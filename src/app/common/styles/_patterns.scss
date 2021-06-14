@@ -10,7 +10,6 @@
 .patterns {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-  gap: 1.5rem;
 
   @media (max-width: 30rem) {
     grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
@@ -22,7 +21,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  transition: opacity var(--transition-ease-out);
+  transition: background var(--transition-ease-out);
   padding: 1rem;
 
   .relative-wrapper {
@@ -31,12 +30,13 @@
 
   &:not(&--active):hover {
     cursor: pointer;
-    background: #d63031;
-    transition: opacity var(--transition-ease-in);
+    background: #fdcb6e;
+    transition: background var(--transition-ease-in);
   }
 
   &--active {
-    background: #d63031;
+    pointer-events: none;
+    background: #ffeaa7;
   }
 
   &__canvas {
