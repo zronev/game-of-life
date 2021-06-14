@@ -1,16 +1,16 @@
-import type { MouseEvent } from 'react'
-
 const mapCoordinate = (value: number, cellSize: number): number => {
   return Math.floor(value / cellSize)
 }
 
-export const positionOnElement = ({
+export const positionOnElement = <
+  T extends { clientX: number; clientY: number }
+>({
   event,
   targetElementWidth,
   element,
   cellSize,
 }: {
-  event: MouseEvent<HTMLElement>
+  event: T
   targetElementWidth: number
   element: HTMLElement
   cellSize: number

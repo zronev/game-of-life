@@ -24,6 +24,10 @@
   align-items: center;
   transition: opacity var(--transition-ease-out);
 
+  .relative-wrapper {
+    pointer-events: none;
+  }
+
   &:not(&--active):hover {
     cursor: pointer;
     opacity: 0.7;

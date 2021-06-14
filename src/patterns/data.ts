@@ -80,6 +80,17 @@ const data: Record<string, Cells> = {
   ],
 }
 
+export const patternsByKey: Record<string, Pattern> = Object.entries(
+  data
+).reduce<Record<string, Pattern>>((acc, [name, cells]) => {
+  acc[name] = {
+    name,
+    grid: new GridFromCells(cells),
+  }
+
+  return acc
+}, {})
+
 export const patterns: Pattern[] = Object.entries(data).map(
   ([name, cells]) => ({
     name,
