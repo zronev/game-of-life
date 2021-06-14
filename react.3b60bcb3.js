@@ -165,4 +165,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./game":"Jbm2"}],"zo2T":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0});var t=e(require("react")),r=e(require("react-dom")),i=e(require("../../ui/react/App")),o=require("../../core/game"),u=require("../../core/options"),a=new u.Options({fieldSides:{rows:50,columns:50},canvasSize:{width:1e3,height:1e3},color:"#2d3436"}),d=new o.Game(a.fieldSides);r.default.render(t.default.createElement(t.default.StrictMode,null,t.default.createElement(i.default,{game:d,options:a})),document.getElementById("root"));
 },{"react":"SAdv","react-dom":"CSY6","../../ui/react/App":"SYXu","../../core/game":"qVVn","../../core/options":"DDJG"}]},{},["zo2T"], null)
-//# sourceMappingURL=react/react.3b60bcb3.js.map
+//# sourceMappingURL=react.3b60bcb3.js.map
