@@ -1,10 +1,12 @@
+import type { Layer } from './types'
 import type { Pattern } from '../../../patterns'
+
 import {
   isEqualPoints,
   positionOnElement,
   shiftToBottomLeftCorner,
 } from '../utility'
-import { clear, drawPreview, Layer } from '../drawers'
+import { clear, drawPreview } from '../drawers'
 
 export const drawPreviewOnMouseMove = (
   event: { clientX: number; clientY: number },

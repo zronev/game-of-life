@@ -1,4 +1,4 @@
-import type { Layer } from '../types'
+import type { Layer } from '../../layers'
 import type { OptionsMap } from '../../../../core/options'
 
 const drawLine = (

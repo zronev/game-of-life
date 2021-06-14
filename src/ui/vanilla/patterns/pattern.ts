@@ -1,5 +1,6 @@
 import type { Game } from '../../../core/game'
 import type { Pattern } from '../../../patterns'
+import type { Layer } from '../../common/layers'
 
 import { Options, OptionsMap } from '../../../core/options'
 import { renderGridLayer } from '../layers/grid'
@@ -10,7 +11,7 @@ import {
   CELL_SIZE,
   GRID_COLOR,
 } from '../../common/patterns/constant'
-import { clear, drawColony, Layer } from '../../common/drawers'
+import { clear, drawColony } from '../../common/drawers'
 import { renderCanvas, renderParagraph, renderWrapper } from '../common/utility'
 
 const renderColony = (game: Game, options: OptionsMap, pattern: Pattern) => {

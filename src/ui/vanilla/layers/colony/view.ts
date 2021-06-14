@@ -1,7 +1,7 @@
 import type { ColonyLayerState } from './types'
 import type { ColonyLayerModel } from './model'
 import type { Grid } from '../../../../core/grid'
-import type { Layer } from '../../../common/drawers'
+import type { Layer } from '../../../common/layers'
 
 import { LayerView } from '../layer/view'
 

@@ -1,4 +1,4 @@
-import type { Layer } from '../types'
+import type { Layer } from '../../layers'
 import type { Grid } from '../../../../core/grid'
 import { drawCell } from '../utility'
 

@@ -1,8 +1,9 @@
 import type { PreviewLayerState } from './types'
+import type { Layer } from '../../../common/layers'
 import type { PatternToSpawn } from '../../patterns/pattern-to-spawn'
 
 import { LayerView } from '../layer/view'
-import { clear, Layer } from '../../../common/drawers'
+import { clear } from '../../../common/drawers'
 import { drawPreviewOnMouseMove } from '../../../common/layers/draw-preview'
 
 export class PreviewLayerView extends LayerView<PreviewLayerState> {

@@ -1,14 +1,15 @@
+import type { Grid } from '../../../core/grid'
+import type { Layer } from '../../common/layers'
+import type { GridHandler } from '../layers/colony/types'
+import type { GameFieldState, MouseEventCallback } from './types'
+
 import { View } from '../common/mvc'
 import { renderCanvas } from '../common/utility'
-import { clear, drawColony, Layer } from '../../common/drawers'
+import { clear, drawColony } from '../../common/drawers'
 
 import { renderGridLayer } from '../layers/grid'
 import { renderColonyLayer } from '../layers/colony'
 import { renderPreviewLayer } from '../layers/preview'
-
-import type { Grid } from '../../../core/grid'
-import type { GridHandler } from '../layers/colony/types'
-import type { GameFieldState, MouseEventCallback } from './types'
 
 const PREVIEW_COLOR = 'rgba(45, 52, 54, 0.75)'
 

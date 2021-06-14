@@ -1,9 +1,10 @@
 import type { LayerModel } from './model'
 import type { LayerState } from './types'
+import type { Layer } from '../../../common/layers'
 import type { OptionsMap } from '../../../../core/options'
 
 import { View } from '../../common/mvc/view'
-import { Layer, setFillColor } from '../../../common/drawers'
+import { setFillColor } from '../../../common/drawers'
 
 export class LayerView<
   State extends LayerState = LayerState

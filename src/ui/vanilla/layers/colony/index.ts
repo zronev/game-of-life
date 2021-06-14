@@ -1,5 +1,5 @@
 import type { Game } from '../../../../core/game'
-import type { Layer } from '../../../common/drawers'
+import type { Layer } from '../../../common/layers'
 import type { OptionsMap } from '../../../../core/options'
 
 import { ColonyLayerView } from './view'
