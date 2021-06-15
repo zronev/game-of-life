@@ -1,8 +1,9 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
+import type { WithClass } from '../common/types'
 import { GameContext } from '../contexts/game-context'
 import { getUsedCells, Grid } from '../../../core/grid'
 
-const Info: FC = () => {
+const Info: FC<WithClass> = ({ className }) => {
   const { game } = useContext(GameContext)
   const [population, setPopulation] = useState(0)
   const [generation, setGeneration] = useState(0)
@@ -24,7 +25,7 @@ const Info: FC = () => {
   }, [])
 
   return (
-    <section className="info section main__info">
+    <section className={`info section ${className}`}>
       <p className="counter">population: {population}</p>
       <p className="counter">generation: {generation}</p>
     </section>

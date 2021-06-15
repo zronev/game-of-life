@@ -1,9 +1,10 @@
 import React, { FC, MouseEvent, useContext, useRef, useState } from 'react'
+import type { WithClass } from '../common/types'
 import { PatternContext } from '../patterns'
 import { GameContext } from '../contexts/game-context'
 import { positionOnElement, shiftToBottomLeftCorner } from '../../common/utils'
 
-const DrawingWrapper: FC = ({ children }) => {
+const DrawingWrapper: FC<WithClass> = ({ children, className }) => {
   const wrapper = useRef<HTMLDivElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const { game, options } = useContext(GameContext)
@@ -48,7 +49,7 @@ const DrawingWrapper: FC = ({ children }) => {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      className="game main__game"
+      className={`game ${className}`}
     >
       {children}
     </section>

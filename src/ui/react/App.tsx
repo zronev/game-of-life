@@ -29,10 +29,10 @@ const App: FC<Props> = ({ game, options }) => {
     <GameContext.Provider value={{ game, options }}>
       <main className="main">
         <PatternProvider>
-          <Info />
-          <GameField />
-          <PatternsList />
-          <Controls />
+          <Info className="main__info" />
+          <GameField className="main__game" />
+          <PatternsList className="main__patterns" />
+          <Controls className="main__controls"/>
           <Shortcuts className="main__shortcuts" />
         </PatternProvider>
       </main>
