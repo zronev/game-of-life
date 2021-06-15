@@ -36,14 +36,6 @@
   z-index: 3;
   width: 100%;
   cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-
-    & ~ .colony-canvas {
-      opacity: 0.5;
-    }
-  }
 }
 
 .grid-canvas {
