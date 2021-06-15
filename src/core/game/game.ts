@@ -22,7 +22,7 @@ export class Game {
   private _field: Field
   private _spawners: Spawners
   private _generation: Generation
-  private _eventsEmitters: EmittersMap
+  private _eventEmitters: EmittersMap
 
   constructor(fieldSides: Sides) {
     this._field = new Field(new GridFromOptions(fieldSides))
@@ -30,7 +30,7 @@ export class Game {
     this._spawners = new Spawners(this._field)
     this._loop = new Loop(30, () => this.step())
 
-    this._eventsEmitters = {
+    this._eventEmitters = {
       loop: this._loop.eventEmitter,
       field: this._field.eventEmitter,
       generation: this._generation.eventEmitter,
@@ -61,6 +61,6 @@ export class Game {
   public getEmitter<T extends keyof EventsMaps>(
     emitterName: T
   ): EmittersMap[T] {
-    return this._eventsEmitters[emitterName]
+    return this._eventEmitters[emitterName]
   }
 }

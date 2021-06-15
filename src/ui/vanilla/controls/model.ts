@@ -13,7 +13,7 @@ export class ControlsModel extends Model<ControlsState> {
     const { game, options } = initialState
 
     const loopEmitter = game.getEmitter('loop')
-    const optionsEmitter = options.eventsEmitter
+    const optionsEmitter = options.eventEmitter
 
     const handleFps = (fps: number) => {
       this.state = { ...this.state, fps }

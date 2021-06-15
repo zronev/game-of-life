@@ -4,7 +4,7 @@ import type { ControlsModel } from './model'
 export class ControlsController {
   constructor(model: ControlsModel, view: ControlsView) {
     view.render(model.state)
-    model.eventsEmitter.addListener('MODEL_CHANGED', view.prepareRender)
+    model.eventEmitter.addListener('MODEL_CHANGED', view.prepareRender)
     this._subscribeToViewEvents(model, view)
   }
 

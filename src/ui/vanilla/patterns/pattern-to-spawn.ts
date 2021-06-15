@@ -6,10 +6,10 @@ type Events = {
 }
 
 export class PatternToSpawn {
-  private _eventsEmitter: Emitter<Events>
+  private _eventEmitter: Emitter<Events>
 
   constructor(private _pattern: Pattern) {
-    this._eventsEmitter = new Emitter()
+    this._eventEmitter = new Emitter()
   }
 
   public get(): Pattern {
@@ -18,10 +18,10 @@ export class PatternToSpawn {
 
   public set(pattern: Pattern): void {
     this._pattern = pattern
-    this._eventsEmitter.dispatch('PATTERN_CHANGED', this._pattern)
+    this._eventEmitter.dispatch('PATTERN_CHANGED', this._pattern)
   }
 
-  public get eventsEmitter(): Emitter<Events> {
-    return this._eventsEmitter
+  public get eventEmitter(): Emitter<Events> {
+    return this._eventEmitter
   }
 }

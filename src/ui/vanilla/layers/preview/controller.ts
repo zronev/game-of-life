@@ -22,7 +22,7 @@ export class PreviewLayerController {
   private _subscribeToExternalModels() {
     const { options } = this._layerModel.state
 
-    options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
       const previewOptions = { ...options, color: PREVIEW_COLOR }
       this._layerModel.changeFieldSize(options.fieldSides)
       this._layerView.createLayer(previewOptions)

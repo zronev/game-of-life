@@ -19,8 +19,8 @@ const PreviewLayer: FC<Props> = ({ options }) => {
   useEffect(() => {
     if (!layer) return
 
-    const { eventsEmitter } = options
-    eventsEmitter.addListener('FIELD_SIDES_CHANGED', () => {
+    const { eventEmitter } = options
+    eventEmitter.addListener('FIELD_SIDES_CHANGED', () => {
       clear(layer)
     })
   }, [layer])

@@ -15,7 +15,7 @@ type OptionsProps = {
 }
 
 export type OptionsMap = {
-  eventsEmitter: Emitter<OptionsEvents>
+  eventEmitter: Emitter<OptionsEvents>
 } & Required<OptionsProps>
 
 export class Options {
@@ -23,18 +23,18 @@ export class Options {
   private _canvasSize: Size
   private _color: string
   private _cellSize: number
-  private _eventsEmitter: Emitter<OptionsEvents>
+  private _eventEmitter: Emitter<OptionsEvents>
 
   constructor({ fieldSides, canvasSize, cellSize, color }: OptionsProps) {
     this._fieldSides = fieldSides
     this._canvasSize = canvasSize
     this._color = color
     this._cellSize = cellSize ?? this._getCellSize()
-    this._eventsEmitter = new Emitter()
+    this._eventEmitter = new Emitter()
   }
 
-  public get eventsEmitter(): Emitter<OptionsEvents> {
-    return this._eventsEmitter
+  public get eventEmitter(): Emitter<OptionsEvents> {
+    return this._eventEmitter
   }
 
   public get fieldSides(): Sides {
@@ -44,7 +44,7 @@ export class Options {
   public set fieldSides(newFieldSides: Sides) {
     this._fieldSides = newFieldSides
     this._cellSize = this._getCellSize()
-    this._eventsEmitter.dispatch('FIELD_SIDES_CHANGED', this.toMap())
+    this._eventEmitter.dispatch('FIELD_SIDES_CHANGED', this.toMap())
   }
 
   public get canvasSize(): Size {
@@ -69,7 +69,7 @@ export class Options {
       canvasSize: this.canvasSize,
       cellSize: this.cellSize,
       color: this.color,
-      eventsEmitter: this.eventsEmitter,
+      eventEmitter: this.eventEmitter,
     }
   }
 

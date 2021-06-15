@@ -15,7 +15,7 @@ export class GridLayerController {
 
     layerView.draw(state.options)
 
-    state.options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    state.options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
       layerModel.changeFieldSize(options.fieldSides)
       layerView.createLayer(options)
       layerView.draw(options)

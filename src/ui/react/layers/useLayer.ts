@@ -30,8 +30,8 @@ const useLayer: UseLayer = options => {
 
     createLayer(options)
 
-    const { eventsEmitter } = options
-    eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    const { eventEmitter } = options
+    eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
       createLayer(options)
     })
   }, [ref])

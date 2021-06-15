@@ -12,14 +12,14 @@ export class ColonyLayerController {
     layerModel: ColonyLayerModel,
     layerView: ColonyLayerView
   ) {
-    const { state, eventsEmitter } = layerModel
+    const { state, eventEmitter } = layerModel
 
-    state.options.eventsEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    state.options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
       layerModel.changeFieldSize(options.fieldSides)
       layerView.createLayer(options)
     })
 
-    eventsEmitter.addListener('MODEL_CHANGED', ({ grid }) =>
+    eventEmitter.addListener('MODEL_CHANGED', ({ grid }) =>
       layerView.draw(grid)
     )
   }

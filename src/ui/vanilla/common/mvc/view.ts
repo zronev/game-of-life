@@ -29,7 +29,7 @@ export abstract class View<State> {
   }
 
   private _unsubscribe(): void {
-    const { eventsEmitter } = this._model
-    eventsEmitter.removeListener('MODEL_CHANGED', this.prepareRender)
+    const { eventEmitter } = this._model
+    eventEmitter.removeListener('MODEL_CHANGED', this.prepareRender)
   }
 }

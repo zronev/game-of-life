@@ -6,11 +6,11 @@ type ModelEvents<S> = {
 
 export class Model<State> {
   private _state: State
-  private _eventsEmitter: Emitter<ModelEvents<State>>
+  private _eventEmitter: Emitter<ModelEvents<State>>
 
   constructor(initialState: State) {
     this._state = initialState
-    this._eventsEmitter = new Emitter()
+    this._eventEmitter = new Emitter()
   }
 
   public get state(): State {
@@ -19,10 +19,10 @@ export class Model<State> {
 
   public set state(state: State) {
     this._state = state
-    this._eventsEmitter.dispatch('MODEL_CHANGED', this.state)
+    this._eventEmitter.dispatch('MODEL_CHANGED', this.state)
   }
 
-  public get eventsEmitter(): Emitter<ModelEvents<State>> {
-    return this._eventsEmitter
+  public get eventEmitter(): Emitter<ModelEvents<State>> {
+    return this._eventEmitter
   }
 }
