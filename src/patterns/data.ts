@@ -5,40 +5,7 @@ import { Cells, GridFromCells } from '../core/grid'
 const data: Record<string, Cells> = {
   // Custom
   'single cell': [[true]],
-  // Still lifes
-  beehive: [
-    [false, true, true, false],
-    [true, false, false, true],
-    [true, false, false, true],
-    [false, true, true, false],
-  ],
-  loaf: [
-    [false, true, true, false],
-    [true, false, false, true],
-    [false, true, false, true],
-    [false, false, true, false],
-  ],
-  boat: [
-    [true, true, false],
-    [true, false, true],
-    [false, true, false],
-  ],
-  tub: [
-    [false, true, false],
-    [true, false, true],
-    [false, true, false],
-  ],
-  block: [
-    [true, true],
-    [true, true],
-  ],
-  ship: [
-    [true, true, false],
-    [true, false, true],
-    [false, true, true],
-  ],
   // Oscillators
-  blinker: [[true, true, true]],
   toad: [
     [false, false, true, false],
     [true, false, false, true],
@@ -51,6 +18,7 @@ const data: Record<string, Cells> = {
     [true, true, false, false],
     [true, true, false, false],
   ],
+  blinker: [[true, true, true]],
   pulsar: [
     [false, false, true, true, true, false, false, false , true, true , true, false, false],
     [false, false, false, false, false, false, false, false, false , false, false, false],
@@ -97,6 +65,38 @@ const data: Record<string, Cells> = {
     [false, true, true],
     [true, true, false],
     [false, true, false],
+  ],
+  // Still lifes
+  beehive: [
+    [false, true, true, false],
+    [true, false, false, true],
+    [true, false, false, true],
+    [false, true, true, false],
+  ],
+  loaf: [
+    [false, true, true, false],
+    [true, false, false, true],
+    [false, true, false, true],
+    [false, false, true, false],
+  ],
+  boat: [
+    [true, true, false],
+    [true, false, true],
+    [false, true, false],
+  ],
+  tub: [
+    [false, true, false],
+    [true, false, true],
+    [false, true, false],
+  ],
+  block: [
+    [true, true],
+    [true, true],
+  ],
+  ship: [
+    [true, true, false],
+    [true, false, true],
+    [false, true, true],
   ],
 }
 
