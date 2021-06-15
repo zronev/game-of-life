@@ -5,7 +5,7 @@ import {
   isEqualPoints,
   positionOnElement,
   shiftToBottomLeftCorner,
-} from '../utility'
+} from '../utils'
 import { clear, drawPreview } from '../drawers'
 
 export const drawPreviewOnMouseMove = (

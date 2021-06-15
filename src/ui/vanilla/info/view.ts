@@ -1,5 +1,5 @@
 import { View } from '../common/mvc/view'
-import { renderParagraph } from '../common/utility'
+import { renderParagraph } from '../common/utils'
 import type { InfoState } from './types'
 
 export class InfoView extends View<InfoState> {

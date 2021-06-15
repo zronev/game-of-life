@@ -1,5 +1,5 @@
 import { View } from '../common/mvc'
-import { renderWrapper } from '../common/utility'
+import { renderWrapper } from '../common/utils'
 import { FIELD_SIDES } from '../../../core/options'
 import type { ControlsState } from './types'
 

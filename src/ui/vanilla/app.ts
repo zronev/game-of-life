@@ -6,7 +6,7 @@ import { renderGameField } from './game-field'
 import { renderPatterns } from './patterns'
 import { renderControls } from './controls'
 import { renderShortcuts } from './shortcuts'
-import { renderWrapper } from './common/utility/render-wrapper'
+import { renderWrapper } from './common/utils'
 
 import ShortcutsController from '../common/shortcuts'
 import { patterns } from '../../patterns/data'

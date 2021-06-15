@@ -1,6 +1,6 @@
 import type { Layer } from '../../layers'
 import type { Grid } from '../../../../core/grid'
-import { drawCell } from '../utility'
+import { drawCell } from '../utils'
 
 type DrawPreviewOptions = {
   pattern: Grid

@@ -1,5 +1,5 @@
 import { SHORTCUTS } from '../../common/shortcuts'
-import { renderWrapper } from '../common/utility'
+import { renderWrapper } from '../common/utils'
 
 const renderListItemContent = (keys: string[]): string => {
   return keys

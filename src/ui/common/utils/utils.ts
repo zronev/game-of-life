@@ -1,3 +1,9 @@
+import type { Grid } from '../../../core/grid'
+
+export const isEqualPoints = (p1: Point, p2: Point): boolean => {
+  return p1.x === p2.x && p1.y === p2.y
+}
+
 const mapCoordinate = (value: number, cellSize: number): number => {
   return Math.floor(value / cellSize)
 }
@@ -30,3 +36,11 @@ export const positionOnElement = <
 
   return mappedPosition
 }
+
+export const shiftToBottomLeftCorner = (
+  { x, y }: Point,
+  { rows }: Grid
+): Point => ({
+  x,
+  y: y - rows + 1,
+})

@@ -12,7 +12,7 @@ import {
   GRID_COLOR,
 } from '../../common/patterns/constant'
 import { clear, drawColony } from '../../common/drawers'
-import { renderCanvas, renderParagraph, renderWrapper } from '../common/utility'
+import { renderCanvas, renderParagraph, renderWrapper } from '../common/utils'
 
 const renderColony = (game: Game, options: OptionsMap, pattern: Pattern) => {
   const { canvasSize } = options

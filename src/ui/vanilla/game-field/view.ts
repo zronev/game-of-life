@@ -4,7 +4,7 @@ import type { GridHandler } from '../layers/colony/types'
 import type { GameFieldState, MouseEventCallback } from './types'
 
 import { View } from '../common/mvc'
-import { renderCanvas } from '../common/utility'
+import { renderCanvas } from '../common/utils'
 import { clear, drawColony } from '../../common/drawers'
 
 import { renderGridLayer } from '../layers/grid'

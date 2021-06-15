@@ -4,7 +4,7 @@ import { GameContext } from '../contexts/game-context'
 import {
   positionOnElement,
   shiftToBottomLeftCorner,
-} from '../../common/utility'
+} from '../../common/utils'
 
 const ControllerWrapper: FC = ({ children }) => {
   const wrapper = useRef<HTMLDivElement>(null)

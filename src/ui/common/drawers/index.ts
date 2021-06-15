@@ -1,3 +1,3 @@
 export * from './implementations'
-export * from './utility'
+export * from './utils'
 export * from './types'

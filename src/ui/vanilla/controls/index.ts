@@ -1,6 +1,6 @@
 import type { Game } from '../../../core/game'
 import type { Options } from '../../../core/options'
-import { renderWrapper } from '../common/utility'
+import { renderWrapper } from '../common/utils'
 import { ControlsController } from './controller'
 import { ControlsModel } from './model'
 import { ControlsView } from './view'
