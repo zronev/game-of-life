@@ -6,56 +6,24 @@
   font-size: 1.25rem;
   font-weight: bold;
 
-
   cursor: pointer;
   border: var(--border);
   padding: 0.5rem 1rem;
-  background: #fff;
+  background: var(--second-color);
 
   transition: var(--transition-ease-out);
 
   &:disabled {
-    color: currentColor;
+    color: var(--disabled-color);
+    background: var(--disabled-background);
     opacity: 0.75;
   }
 
   &:hover,
   &:active {
-    color: var(--color-on-hover);
-    border: 0.125rem solid var(--default-hover-color);
-    background: var(--default-hover-color);
+    color: var(--hover-color);
+    border: var(--border);
+    background: var(--hover-background);
     transition: var(--transition-ease-in);
-  }
-
-  &--success {
-    &:hover,
-    &:active {
-      border: 0.125rem solid var(--success-hover-color);
-      background: var(--success-hover-color);
-    }
-  }
-
-  &--danger {
-    &:hover,
-    &:active {
-      border: 0.125rem solid var(--danger-hover-color);
-      background: var(--danger-hover-color);
-    }
-  }
-
-  &--info {
-    &:hover,
-    &:active {
-      border: 0.125rem solid var(--info-hover-color);
-      background: var(--info-hover-color);
-    }
-  }
-
-  &--warning {
-    &:hover,
-    &:active {
-      border: 0.125rem solid var(--warning-hover-color);
-      background: var(--warning-hover-color);
-    }
   }
 }
