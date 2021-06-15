@@ -2,7 +2,7 @@
 
 Реализация известного [клеточного автомата](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
-[Версия на React](https://zronev.github.io/game-of-life/react/)
+[Версия на React](https://zronev.github.io/game-of-life/react/)  
 [Версия на чистом JS](https://zronev.github.io/game-of-life/vanilla/)
 
 Я отделил доменный, прикладной слои от UI и слоя адаптеров, что позволило переиспользовать логику для обеих версий приложений.
