@@ -5,6 +5,7 @@
     'game patterns'
     'controls shortcuts';
   grid-template-columns: auto 1fr;
+  align-items: start;
   gap: var(--gap-size);
 
   max-width: 74rem;

@@ -1,5 +1,5 @@
 import { SHORTCUTS } from '../../common/shortcuts'
-import { renderWrapper } from '../common/utils'
+import { renderSection, renderWrapper } from '../common/utils'
 
 const renderListItemContent = (keys: string[]): string => {
   return keys
@@ -28,7 +28,7 @@ const renderListItem = ({
 }
 
 export const renderShortcuts = (): HTMLElement => {
-  const wrapper = renderWrapper('section', 'shortcuts main__shortcuts')
+  const wrapper = renderSection('shortcuts main__shortcuts')
   wrapper.innerHTML = `
     <ul class="shortcuts__list">
       ${SHORTCUTS.map(renderListItem).join('')}

@@ -1,4 +1,4 @@
-import type { Size } from "../../../../core/options"
+import type { Size } from '../../../../core/options'
 
 export const renderCanvas = (
   size: Size,
@@ -29,6 +29,13 @@ export const renderWrapper = <K extends keyof HTMLElementTagNameMap>(
 ): HTMLElementTagNameMap[K] => {
   const wrapper = document.createElement(tag)
   wrapper.classList.add(...className.split(' '))
+
+  return wrapper
+}
+
+export const renderSection = (className: string): HTMLElement => {
+  const wrapper = document.createElement('section')
+  wrapper.classList.add('section', ...className.split(' '))
 
   return wrapper
 }

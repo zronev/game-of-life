@@ -1,15 +1,12 @@
 import type { Game } from '../../../core/game'
 import type { Options } from '../../../core/options'
-import { renderWrapper } from '../common/utils'
+import { renderSection } from '../common/utils'
 import { ControlsController } from './controller'
 import { ControlsModel } from './model'
 import { ControlsView } from './view'
 
-export const renderControls = (
-  game: Game,
-  options: Options
-): HTMLElement => {
-  const controlsWrapper = renderWrapper('section', 'controls main__controls')
+export const renderControls = (game: Game, options: Options): HTMLElement => {
+  const controlsWrapper = renderSection('controls main__controls')
 
   const initialState = {
     game,

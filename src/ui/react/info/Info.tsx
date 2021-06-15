@@ -24,7 +24,7 @@ const Info: FC = () => {
   }, [])
 
   return (
-    <section className="info main__info">
+    <section className="info section main__info">
       <p className="counter">population: {population}</p>
       <p className="counter">generation: {generation}</p>
     </section>

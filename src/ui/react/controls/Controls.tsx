@@ -5,7 +5,7 @@ import SidesControls from './SidesControls'
 
 const Controls: FC = () => {
   return (
-    <section className="controls main__controls">
+    <section className="controls section main__controls">
       <div className="row">
         <FieldControls />
       </div>

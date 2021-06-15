@@ -4,7 +4,7 @@ import type { WithClass } from '../common/types'
 
 const ShortcutsInfo: FC<WithClass> = ({ className }) => {
   return (
-    <section className={`shortcuts ${className}`}>
+    <section className={`shortcuts section ${className}`}>
       <ul className="shortcuts__list">
         {SHORTCUTS.map(({ keys, text }) => (
           <li key={text} className="shortcuts__item">
