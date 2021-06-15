@@ -14,13 +14,13 @@
   transition: var(--transition-ease-out);
 
   &:disabled {
+    cursor: default;
     color: var(--disabled-color);
     background: var(--disabled-background);
-    opacity: 0.75;
+    border-color: var(--disabled-background);
   }
 
-  &:hover,
-  &:active {
+  &:not(:disabled):hover {
     color: var(--hover-color);
     border: var(--border);
     background: var(--hover-background);
