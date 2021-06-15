@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { SHORTCUTS } from '../../common/shortcuts'
 import type { WithClass } from '../common/types'
 
-const ShortcutsInfo: FC<WithClass> = ({ className }) => {
+const Shortcuts: FC<WithClass> = ({ className }) => {
   return (
     <section className={`shortcuts section ${className}`}>
       <ul className="shortcuts__list">
@@ -26,4 +26,4 @@ const ShortcutsInfo: FC<WithClass> = ({ className }) => {
   )
 }
 
-export default ShortcutsInfo
+export default Shortcuts

@@ -3,7 +3,7 @@ import React, { FC, useEffect } from 'react'
 import Info from './info'
 import Controls from './controls'
 import GameField from './game-field'
-import ShortcutsInfo from './shortcuts-info'
+import Shortcuts from './shortcuts'
 import PatternsList, { PatternProvider } from './patterns'
 
 import { useShortcuts } from './adapters/useShortcuts'
@@ -33,7 +33,7 @@ const App: FC<Props> = ({ game, options }) => {
           <GameField />
           <PatternsList />
           <Controls />
-          <ShortcutsInfo className="main__shortcuts" />
+          <Shortcuts className="main__shortcuts" />
         </PatternProvider>
       </main>
     </GameContext.Provider>
