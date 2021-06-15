@@ -1,14 +1,12 @@
 :root {
   --main-color: #2d3436;
+  --second-color: #ffffff;
   --border: 2px solid var(--main-color);
-  --color-on-hover: #ffffff;
-  --default-hover-color: #2d3436;
-  --success-hover-color: #55efc4;
-  --danger-hover-color: #d63031;
-  --info-hover-color: #0984e3;
-  --warning-hover-color: #ffeaa7;
+  --hover-color: var(--second-color);
+  --hover-background: var(--main-color);
+  --disabled-color: var(--second-color);
+  --disabled-background: var(--main-color);
   --gap-size: 1rem;
-  --button-min-width: 8rem;
   --transition-time: 100ms;
   --transition-ease-out: var(--transition-time) ease-out;
   --transition-ease-in: var(--transition-time) ease-out;
