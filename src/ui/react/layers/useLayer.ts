@@ -31,8 +31,8 @@ const useLayer: UseLayer = options => {
     createLayer(options)
 
     const { eventEmitter } = options
-    eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
-      createLayer(options)
+    eventEmitter.addListener('FIELD_SIDES_CHANGED', mainOptions => {
+      createLayer({ ...mainOptions, color: options.color })
     })
   }, [ref])
 
