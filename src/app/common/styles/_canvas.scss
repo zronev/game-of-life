@@ -15,7 +15,11 @@
 
 .grid-canvas,
 .preview-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: transparent;
+  width: 100%;
 
   @media (max-width: 64rem) {
     display: none;
@@ -26,22 +30,16 @@
 .preview-canvas {
   image-rendering: crisp-edges; // for Firefox
   image-rendering: pixelated;
+}
+
+.colony-canvas {
   z-index: 1;
 }
 
-.preview-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 100%;
-  cursor: pointer;
+.grid-canvas {
+  z-index: 2;
 }
 
-.grid-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 100%;
+.preview-canvas {
+  z-index: 3;
 }
