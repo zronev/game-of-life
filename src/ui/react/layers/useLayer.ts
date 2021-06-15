@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
 import type { Layer } from '../../common/layers'
 import type { OptionsMap } from '../../../core/options'
-import { setFillColor } from '../../common/drawers'
+import { createLayer } from '../../common/layers/createLayer'
 
 type UseLayer = (options: OptionsMap) => {
   ref: RefObject<HTMLCanvasElement>
@@ -13,26 +13,16 @@ const useLayer: UseLayer = options => {
   const [layer, setLayer] = useState<Nullable<Layer>>(null)
 
   useEffect(() => {
-    const createLayer = (options: OptionsMap) => {
-      if (!ref?.current) return
+    const canvas = ref.current
 
-      const canvas = ref.current
-      const context = canvas.getContext('2d')
+    if (!canvas) return
 
-      if (!context) {
-        throw new Error('Error occurs while getting the 2d context')
-      }
-
-      const { cellSize, color } = options
-      setFillColor(context, color)
-      setLayer({ canvas, context, cellSize })
-    }
-
-    createLayer(options)
+    createLayer(canvas, options, setLayer)
 
     const { eventEmitter } = options
     eventEmitter.addListener('FIELD_SIDES_CHANGED', mainOptions => {
-      createLayer({ ...mainOptions, color: options.color })
+      const mergedOptions = { ...mainOptions, color: options.color }
+      createLayer(canvas, mergedOptions, setLayer)
     })
   }, [ref])
 

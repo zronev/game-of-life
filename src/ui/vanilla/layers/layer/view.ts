@@ -4,7 +4,7 @@ import type { Layer } from '../../../common/layers'
 import type { OptionsMap } from '../../../../core/options'
 
 import { View } from '../../common/mvc/view'
-import { setFillColor } from '../../../common/drawers'
+import { createLayer } from '../../../common/layers/createLayer'
 
 export class LayerView<
   State extends LayerState = LayerState
@@ -18,15 +18,6 @@ export class LayerView<
   }
 
   public createLayer(options: OptionsMap): void {
-    const context = this._canvas.getContext('2d')
-
-    if (!context) {
-      throw new Error('Error occurs while getting the 2d context')
-    }
-
-    const { cellSize, color } = options
-    this._layer = { canvas: this._canvas, context, cellSize }
-
-    setFillColor(context, color)
+    this._layer = createLayer(this._canvas, options)
   }
 }
