@@ -1,23 +1,43 @@
-import React, { FC, MouseEvent, useContext, useRef, useState } from 'react'
+import React, {
+  FC,
+  MouseEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import type { WithClass } from '../common/types'
 import { PatternContext } from '../patterns'
 import { GameContext } from '../contexts/game-context'
 import { positionOnElement, shiftToBottomLeftCorner } from '../../common/utils'
+import type { OptionsMap } from '../../../core/options'
 
 const DrawingWrapper: FC<WithClass> = ({ children, className }) => {
   const wrapper = useRef<HTMLDivElement>(null)
-  const [isDrawing, setIsDrawing] = useState(false)
   const { game, options } = useContext(GameContext)
   const [pattern] = useContext(PatternContext)
+  const [isDrawing, setIsDrawing] = useState(false)
+  const [cellSize, setCellSize] = useState(options.cellSize)
 
-  const { canvasSize, cellSize } = options
+  useEffect(() => {
+    const onFieldSidesChange = ({ cellSize }: OptionsMap) => {
+      setCellSize(cellSize)
+    }
+
+    const { eventEmitter } = options
+    eventEmitter.addListener('FIELD_SIDES_CHANGED', onFieldSidesChange)
+
+    return () => {
+      eventEmitter.removeListener('FIELD_SIDES_CHANGED', onFieldSidesChange)
+    }
+  })
 
   const spawn = (event: MouseEvent<HTMLElement>, element: HTMLDivElement) => {
     const position = positionOnElement({
       event,
       element,
       cellSize,
-      targetElementWidth: canvasSize.width,
+      targetElementWidth: options.canvasSize.width,
     })
 
     const bottomLeftCorner = shiftToBottomLeftCorner(position, pattern.grid)
