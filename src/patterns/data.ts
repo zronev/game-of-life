@@ -1,9 +1,10 @@
 import type { Pattern } from './types'
 import { Cells, GridFromCells } from '../core/grid'
 
+//prettier-ignore
 const data: Record<string, Cells> = {
   // Custom
-  dot: [[true]],
+  'single cell': [[true]],
   // Still lifes
   beehive: [
     [false, true, true, false],
@@ -50,7 +51,6 @@ const data: Record<string, Cells> = {
     [true, true, false, false],
     [true, true, false, false],
   ],
-  //prettier-ignore
   pulsar: [
     [false, false, true, true, true, false, false, false , true, true , true, false, false],
     [false, false, false, false, false, false, false, false, false , false, false, false],
@@ -71,6 +71,26 @@ const data: Record<string, Cells> = {
     [true, true, true],
     [true, false, false],
     [false, true, false],
+  ],
+  'LWSS': [
+    [false, true, true, true, true],
+    [true, false, false, false, true],
+    [false, false, false, false, true],
+    [true, false, false, true, false],
+  ],
+  'MWSS': [
+    [false, true, true, true, true, true],
+    [true, false, false, false, false, true],
+    [false, false, false, false, false, true],
+    [true, false, false, false, true, false],
+    [false, false, true, false, false, false],
+  ],
+  'HWSS': [
+    [false, true, true, true, true, true, true],
+    [true, false, false, false, false, false, true],
+    [false, false, false, false, false, false, true],
+    [true, false, false, false, false, true, false],
+    [false, false, true, true, false, false, false],
   ],
   // Special
   'R pentimo': [
