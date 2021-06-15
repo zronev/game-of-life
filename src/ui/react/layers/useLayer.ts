@@ -17,12 +17,12 @@ const useLayer: UseLayer = options => {
 
     if (!canvas) return
 
-    createLayer(canvas, options, setLayer)
+    setLayer(createLayer(canvas, options))
 
     const { eventEmitter } = options
     eventEmitter.addListener('FIELD_SIDES_CHANGED', mainOptions => {
       const mergedOptions = { ...mainOptions, color: options.color }
-      createLayer(canvas, mergedOptions, setLayer)
+      setLayer(createLayer(canvas, mergedOptions))
     })
   }, [ref])
 

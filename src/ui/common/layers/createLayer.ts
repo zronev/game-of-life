@@ -4,8 +4,7 @@ import type { Layer } from './types'
 
 export const createLayer = (
   canvas: HTMLCanvasElement,
-  options: OptionsMap,
-  onLayerCreated?: (layer: Layer) => void
+  options: OptionsMap
 ): Layer => {
   const context = canvas.getContext('2d')
 
@@ -17,7 +16,6 @@ export const createLayer = (
   const layer = { canvas, context, cellSize }
 
   setFillColor(context, color)
-  if (onLayerCreated) onLayerCreated(layer)
 
   return layer
 }
