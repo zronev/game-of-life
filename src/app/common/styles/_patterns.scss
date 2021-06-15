@@ -3,6 +3,7 @@
   overflow: auto;
   max-width: 36rem;
   max-height: 36rem;
+  scrollbar-color: #dfe6e9 transparent;
 }
 
 .patterns {
@@ -17,7 +18,7 @@
 .pattern {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   transition: background var(--transition-ease-out);
   padding: 1rem;
@@ -28,13 +29,13 @@
 
   &:not(&--active):hover {
     cursor: pointer;
-    background: #fdcb6e;
+    background: #ffeaa7;
     transition: background var(--transition-ease-in);
   }
 
   &--active {
     pointer-events: none;
-    background: #ffeaa7;
+    background: #fdcb6e;
   }
 
   &__canvas {
@@ -46,12 +47,6 @@
     font-weight: bold;
     text-align: center;
     margin-top: 0.5rem;
-    pointer-events: none;
-  }
-
-  &__canvases-wrapper {
-    position: relative;
-    max-width: 4rem;
     pointer-events: none;
   }
 
