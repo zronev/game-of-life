@@ -1,7 +1,7 @@
 import type { Game } from '../../../core/game'
 import type { Options } from '../../../core/options'
 
-class ShortcutsController {
+class Shortcuts {
   static isKeysPressed: Record<string, boolean> = {
     KeyS: false,
     KeyC: false,
@@ -25,50 +25,50 @@ class ShortcutsController {
 
   private _onKeyDown() {
     document.addEventListener('keydown', e => {
-      ShortcutsController.isKeysPressed[e.code] = true
+      Shortcuts.isKeysPressed[e.code] = true
 
       const isShiftPressed =
-        ShortcutsController.isKeysPressed.ShiftLeft ||
-        ShortcutsController.isKeysPressed.ShiftRight
+        Shortcuts.isKeysPressed.ShiftLeft ||
+        Shortcuts.isKeysPressed.ShiftRight
 
-      if (ShortcutsController.isKeysPressed.Space) {
+      if (Shortcuts.isKeysPressed.Space) {
         e.preventDefault()
         this._game.loop.toggle()
       }
 
-      if (ShortcutsController.isKeysPressed.KeyS) {
+      if (Shortcuts.isKeysPressed.KeyS) {
         this._game.spawners.randomSpawn()
       }
 
-      if (ShortcutsController.isKeysPressed.KeyC) {
+      if (Shortcuts.isKeysPressed.KeyC) {
         this._game.clearField()
       }
 
-      if (ShortcutsController.isKeysPressed.BracketLeft) {
+      if (Shortcuts.isKeysPressed.BracketLeft) {
         isShiftPressed
           ? this._game.loop.changeFpsBy(-1)
           : this._game.loop.changeFpsBy(-5)
       }
 
-      if (ShortcutsController.isKeysPressed.BracketRight) {
+      if (Shortcuts.isKeysPressed.BracketRight) {
         isShiftPressed
           ? this._game.loop.changeFpsBy(1)
           : this._game.loop.changeFpsBy(5)
       }
 
-      if (ShortcutsController.isKeysPressed.Digit1) {
+      if (Shortcuts.isKeysPressed.Digit1) {
         this._options.changeFieldSides('small')
       }
 
-      if (ShortcutsController.isKeysPressed.Digit2) {
+      if (Shortcuts.isKeysPressed.Digit2) {
         this._options.changeFieldSides('normal')
       }
 
-      if (ShortcutsController.isKeysPressed.Digit3) {
+      if (Shortcuts.isKeysPressed.Digit3) {
         this._options.changeFieldSides('big')
       }
 
-      if (ShortcutsController.isKeysPressed.Digit4) {
+      if (Shortcuts.isKeysPressed.Digit4) {
         this._options.changeFieldSides('large')
       }
     })
@@ -76,9 +76,9 @@ class ShortcutsController {
 
   private _onKeyUp() {
     document.addEventListener('keyup', e => {
-      ShortcutsController.isKeysPressed[e.code] = false
+      Shortcuts.isKeysPressed[e.code] = false
     })
   }
 }
 
-export default ShortcutsController
+export default Shortcuts

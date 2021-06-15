@@ -8,7 +8,7 @@ import { renderControls } from './controls'
 import { renderShortcuts } from './shortcuts'
 import { renderWrapper } from './common/utils'
 
-import ShortcutsController from '../common/shortcuts'
+import Shortcuts from '../common/shortcuts'
 import { patterns } from '../../patterns/data'
 import { PatternToSpawn } from './patterns/pattern-to-spawn'
 
@@ -38,6 +38,6 @@ export const app = (game: Game, options: Options): void => {
   game.loop.start()
   game.spawners.randomSpawn()
 
-  const shortcuts = new ShortcutsController(game, options)
+  const shortcuts = new Shortcuts(game, options)
   shortcuts.init()
 }
