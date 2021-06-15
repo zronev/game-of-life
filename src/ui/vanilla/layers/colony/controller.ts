@@ -1,26 +1,28 @@
 import type { ColonyLayerModel } from './model'
 import type { ColonyLayerView } from './view'
 
-export class ColonyLayerController {
-  constructor(layerModel: ColonyLayerModel, layerView: ColonyLayerView) {
-    layerView.createLayer(layerModel.state.options)
-    layerView.draw(layerModel.state.grid)
-    this._subscribeToExternalModels(layerModel, layerView)
-  }
+const subscribeToExternalModels = (
+  model: ColonyLayerModel,
+  view: ColonyLayerView
+) => {
+  const { state, eventEmitter } = model
+  const { options } = state
 
-  private _subscribeToExternalModels(
-    layerModel: ColonyLayerModel,
-    layerView: ColonyLayerView
-  ) {
-    const { state, eventEmitter } = layerModel
+  options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    model.changeFieldSize(options.fieldSides)
+    view.createLayer(options)
+  })
 
-    state.options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
-      layerModel.changeFieldSize(options.fieldSides)
-      layerView.createLayer(options)
-    })
+  eventEmitter.addListener('MODEL_CHANGED', ({ grid }) => {
+    view.draw(grid)
+  })
+}
 
-    eventEmitter.addListener('MODEL_CHANGED', ({ grid }) =>
-      layerView.draw(grid)
-    )
-  }
+export const colonyLayerController = (
+  model: ColonyLayerModel,
+  view: ColonyLayerView
+): void => {
+  view.createLayer(model.state.options)
+  view.draw(model.state.grid)
+  subscribeToExternalModels(model, view)
 }

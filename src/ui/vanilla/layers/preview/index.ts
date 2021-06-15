@@ -1,6 +1,6 @@
 import { PreviewLayerView } from './view'
 import { PreviewLayerModel } from './model'
-import { PreviewLayerController } from './controller'
+import { previewLayerController } from './controller'
 
 import type { Game } from '../../../../core/game'
 import type { OptionsMap } from '../../../../core/options'
@@ -15,7 +15,7 @@ export const renderPreviewLayer = (
   const initialState = { options, patternToSpawn }
   const model = new PreviewLayerModel(game, initialState)
   const view = new PreviewLayerView(canvas, model)
-  new PreviewLayerController(model, view)
+  previewLayerController(model, view)
 
   return canvas
 }

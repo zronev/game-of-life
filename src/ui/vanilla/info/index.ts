@@ -2,7 +2,7 @@ import type { Game } from '../../../core/game'
 
 import { InfoView } from './view'
 import { InfoModel } from './model'
-import { InfoController } from './controller'
+import { infoController } from './controller'
 import { renderSection } from '../common/utils'
 
 export const renderInfo = (game: Game): HTMLElement => {
@@ -10,7 +10,7 @@ export const renderInfo = (game: Game): HTMLElement => {
 
   const model = new InfoModel(game)
   const view = new InfoView(infoWrapper, model)
-  new InfoController(model, view)
+  infoController(model, view)
 
   return infoWrapper
 }

@@ -4,7 +4,7 @@ import type { OptionsMap } from '../../../../core/options'
 
 import { ColonyLayerView } from './view'
 import { ColonyLayerModel } from './model'
-import { ColonyLayerController } from './controller'
+import { colonyLayerController } from './controller'
 import { Grid, GridFromOptions } from '../../../../core/grid'
 
 export const renderColonyLayer = (
@@ -21,7 +21,7 @@ export const renderColonyLayer = (
 
   const model = new ColonyLayerModel(game, initialState, onGridChanged)
   const view = new ColonyLayerView(canvas, model, draw)
-  new ColonyLayerController(model, view)
+  colonyLayerController(model, view)
 
   return canvas
 }

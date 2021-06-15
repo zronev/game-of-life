@@ -1,39 +1,42 @@
 import type { GameFieldView } from './view'
 import type { GameFieldModel } from './model'
-import {
-  positionOnElement,
-  shiftToBottomLeftCorner,
-} from '../../common/utils'
+import { positionOnElement, shiftToBottomLeftCorner } from '../../common/utils'
 
-export class GameFieldController {
-  constructor(private _model: GameFieldModel, private _view: GameFieldView) {
-    this._spawn = this._spawn.bind(this)
+const spawn = (
+  event: MouseEvent,
+  element: HTMLElement,
+  model: GameFieldModel
+): void => {
+  const { game, options, patternToSpawn } = model.state
+  const { cellSize, canvasSize } = options
 
-    this._view.render(this._model.state)
-    this._subscribeToViewEvents()
-  }
+  const position = positionOnElement({
+    event,
+    element,
+    cellSize,
+    targetElementWidth: canvasSize.width,
+  })
 
-  private _subscribeToViewEvents() {
-    this._view.onClick(this._spawn)
-    this._view.onMouseMove((event, element) => {
-      if (this._view.isDrawing) this._spawn(event, element)
-    })
-  }
+  const patternGrid = patternToSpawn.get().grid
+  const bottomLeftCorner = shiftToBottomLeftCorner(position, patternGrid)
 
-  private _spawn(event: MouseEvent, element: HTMLElement) {
-    const { game, options, patternToSpawn } = this._model.state
-    const { cellSize, canvasSize } = options
+  game.spawners.patternSpawn(patternGrid, bottomLeftCorner)
+}
 
-    const position = positionOnElement({
-      event,
-      element,
-      cellSize,
-      targetElementWidth: canvasSize.width,
-    })
+const subscribeToViewEvents = (model: GameFieldModel, view: GameFieldView) => {
+  view.onClick((event, element) => {
+    spawn(event, element, model)
+  })
 
-    const patternGrid = patternToSpawn.get().grid
-    const bottomLeftCorner = shiftToBottomLeftCorner(position, patternGrid)
+  view.onMouseMove((event, element) => {
+    if (view.isDrawing) spawn(event, element, model)
+  })
+}
 
-    game.spawners.patternSpawn(patternGrid, bottomLeftCorner)
-  }
+export const gameFieldController = (
+  model: GameFieldModel,
+  view: GameFieldView
+): void => {
+  view.render(model.state)
+  subscribeToViewEvents(model, view)
 }

@@ -1,6 +1,6 @@
 import { GridLayerView } from './view'
 import { GridLayerModel } from './model'
-import { GridLayerController } from './controller'
+import { gridLayerController } from './controller'
 
 import type { Game } from '../../../../core/game'
 import type { OptionsMap } from '../../../../core/options'
@@ -12,7 +12,7 @@ export const renderGridLayer = (
 ): HTMLCanvasElement => {
   const model = new GridLayerModel(game, { options })
   const view = new GridLayerView(canvas, model)
-  new GridLayerController(model, view)
+  gridLayerController(model, view)
 
   return canvas
 }

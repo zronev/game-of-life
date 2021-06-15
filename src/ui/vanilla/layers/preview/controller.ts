@@ -3,30 +3,34 @@ import type { PreviewLayerModel } from './model'
 import { clear } from '../../../common/drawers'
 import { PREVIEW_COLOR } from '../../../common/layers/constant'
 
-export class PreviewLayerController {
-  constructor(
-    private _layerModel: PreviewLayerModel,
-    private _layerView: PreviewLayerView
-  ) {
-    this._layerView.createLayer(this._layerModel.state.options)
-    this._subscribeToExternalModels()
-    this._subscribeToViewEvents()
-  }
+const subscribeToExternalModels = (
+  model: PreviewLayerModel,
+  view: PreviewLayerView
+) => {
+  const { options } = model.state
 
-  private _subscribeToViewEvents() {
-    const { patternToSpawn } = this._layerModel.state
-    this._layerView.onMouseMove(patternToSpawn)
-    this._layerView.onMouseLeave(clear)
-  }
+  options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    const previewOptions = { ...options, color: PREVIEW_COLOR }
+    model.changeFieldSize(options.fieldSides)
+    view.createLayer(previewOptions)
+    view.clear()
+  })
+}
 
-  private _subscribeToExternalModels() {
-    const { options } = this._layerModel.state
+const subscribeToViewEvents = (
+  model: PreviewLayerModel,
+  view: PreviewLayerView
+) => {
+  const { patternToSpawn } = model.state
+  view.onMouseMove(patternToSpawn)
+  view.onMouseLeave(clear)
+}
 
-    options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
-      const previewOptions = { ...options, color: PREVIEW_COLOR }
-      this._layerModel.changeFieldSize(options.fieldSides)
-      this._layerView.createLayer(previewOptions)
-      this._layerView.clear()
-    })
-  }
+export const previewLayerController = (
+  model: PreviewLayerModel,
+  view: PreviewLayerView
+): void => {
+  view.createLayer(model.state.options)
+  subscribeToExternalModels(model, view)
+  subscribeToViewEvents(model, view)
 }

@@ -1,24 +1,24 @@
 import type { GridLayerModel } from './model'
 import type { GridLayerView } from './view'
 
-export class GridLayerController {
-  constructor(layerModel: GridLayerModel, layerView: GridLayerView) {
-    layerView.createLayer(layerModel.state.options)
-    this._subscribeToExternalModels(layerModel, layerView)
-  }
+const subscribeToExternalModels = (
+  model: GridLayerModel,
+  view: GridLayerView
+) => {
+  const { options } = model.state
 
-  private _subscribeToExternalModels(
-    layerModel: GridLayerModel,
-    layerView: GridLayerView
-  ) {
-    const { state } = layerModel
+  options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
+    model.changeFieldSize(options.fieldSides)
+    view.createLayer(options)
+    view.draw(options)
+  })
+}
 
-    layerView.draw(state.options)
-
-    state.options.eventEmitter.addListener('FIELD_SIDES_CHANGED', options => {
-      layerModel.changeFieldSize(options.fieldSides)
-      layerView.createLayer(options)
-      layerView.draw(options)
-    })
-  }
+export const gridLayerController = (
+  model: GridLayerModel,
+  view: GridLayerView
+): void => {
+  view.createLayer(model.state.options)
+  view.draw(model.state.options)
+  subscribeToExternalModels(model, view)
 }

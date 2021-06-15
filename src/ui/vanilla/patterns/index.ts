@@ -3,7 +3,7 @@ import type { PatternToSpawn } from './pattern-to-spawn'
 
 import { PatternsView } from './view'
 import { PatternsModel } from './model'
-import { PatternsController } from './controller'
+import { patternsController } from './controller'
 
 import { patterns } from '../../../patterns'
 import { renderSection } from '../common/utils'
@@ -17,7 +17,7 @@ export const renderPatterns = (
 
   const model = new PatternsModel({ game, patterns, patternToSpawn })
   const view = new PatternsView(innerWrapper, model)
-  new PatternsController(model, view, patternToSpawn)
+  patternsController(model, view, patternToSpawn)
 
   const patternsWrapper = renderSection('patterns-wrapper main__patterns')
   patternsWrapper.appendChild(innerWrapper)

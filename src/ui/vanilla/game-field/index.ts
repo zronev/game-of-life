@@ -4,7 +4,7 @@ import type { PatternToSpawn } from '../patterns/pattern-to-spawn'
 
 import { GameFieldView } from './view'
 import { GameFieldModel } from './model'
-import { GameFieldController } from './controller'
+import { gameFieldController } from './controller'
 import { renderWrapper } from '../common/utils'
 
 export const renderGameField = (
@@ -16,7 +16,7 @@ export const renderGameField = (
 
   const model = new GameFieldModel({ game, options, patternToSpawn })
   const view = new GameFieldView(gameFieldWrapper, model)
-  new GameFieldController(model, view)
+  gameFieldController(model, view)
 
   return gameFieldWrapper
 }
