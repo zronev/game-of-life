@@ -8,17 +8,16 @@ const SidesControls: FC = () => {
   const [currentSides, setCurrentSides] = useState(options.fieldSides)
 
   useEffect(() => {
-    const { eventEmitter } = options
-
-    const onFieldSizeChange = ({ fieldSides }: OptionsMap) => {
+    const onFieldSidesChange = ({ fieldSides }: OptionsMap) => {
       game.changeFieldSize(fieldSides)
       setCurrentSides(fieldSides)
     }
 
-    eventEmitter.addListener('FIELD_SIDES_CHANGED', onFieldSizeChange)
+    const { eventEmitter } = options
+    eventEmitter.addListener('FIELD_SIDES_CHANGED', onFieldSidesChange)
 
     return () => {
-      eventEmitter.removeListener('FIELD_SIDES_CHANGED', onFieldSizeChange)
+      eventEmitter.removeListener('FIELD_SIDES_CHANGED', onFieldSidesChange)
     }
   }, [])
 
