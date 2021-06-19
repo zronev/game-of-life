@@ -1,28 +1,23 @@
 import React, { FC, useContext } from 'react'
 import type { WithClass } from '../common/types'
+
+import GameFieldGrid from './GameFieldGrid'
 import DrawingWrapper from './DrawingWrapper'
-import { GameContext } from '../contexts/game-context'
 import { ColonyLayer, GridLayer, PreviewLayer } from '../layers'
+
+import { GameContext } from '../contexts/game-context'
 import { PREVIEW_COLOR } from '../../common/layers/constant'
 
 const GameField: FC<WithClass> = ({ className }) => {
-  const { game, options } = useContext(GameContext)
-
-  const emitter = game.getEmitter('field')
-  const previewOptions = { ...options.toMap(), color: PREVIEW_COLOR }
+  const { options: fieldOptions } = useContext(GameContext)
+  const previewOptions = { ...fieldOptions.toMap(), color: PREVIEW_COLOR }
 
   return (
     <DrawingWrapper className={className}>
-      <ColonyLayer
-        options={options}
-        onLayerReady={draw => {
-          emitter.addListener('GRID_CHANGED', draw)
-        }}
-        onUnmount={draw => {
-          emitter.removeListener('GRID_CHANGED', draw)
-        }}
-      />
-      <GridLayer options={options} />
+      <GameFieldGrid options={fieldOptions}>
+        {(grid, options) => <ColonyLayer grid={grid} options={options} />}
+      </GameFieldGrid>
+      <GridLayer options={fieldOptions} />
       <PreviewLayer options={previewOptions} />
     </DrawingWrapper>
   )

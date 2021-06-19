@@ -8,17 +8,11 @@ import type { OptionsMap } from '../../../core/options'
 import type { WithClass } from '../common/types'
 
 type Props = {
+  grid: Grid
   options: OptionsMap
-  onLayerReady: (callback: (grid: Grid) => void) => void
-  onUnmount?: (callback: (grid: Grid) => void) => void
 } & WithClass
 
-const ColonyLayer: FC<Props> = ({
-  options,
-  onLayerReady,
-  onUnmount,
-  className = '',
-}) => {
+const ColonyLayer: FC<Props> = ({ grid, options, className = '' }) => {
   const { ref, layer } = useLayer(options)
 
   useEffect(() => {
@@ -29,10 +23,8 @@ const ColonyLayer: FC<Props> = ({
       drawColony(grid, layer)
     }
 
-    onLayerReady(draw)
-
-    return () => onUnmount?.(draw)
-  }, [layer])
+    draw(grid)
+  }, [grid, layer, options.cellSize])
 
   return (
     <Layer

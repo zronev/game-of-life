@@ -49,8 +49,8 @@ const PatternsListItem: FC<Props> = ({ pattern }) => {
     >
       <RelativeWrapper>
         <ColonyLayer
+          grid={grid}
           options={options}
-          onLayerReady={draw => draw(grid)}
           className="pattern__canvas"
         />
         <GridLayer options={gridOptions} className="pattern__canvas" />
