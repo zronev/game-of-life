@@ -4,12 +4,11 @@ import { GameContext } from '../contexts/game-context'
 import { FieldSide, FIELD_SIDES, OptionsMap } from '../../../core/options'
 
 const SidesControls: FC = () => {
-  const { game, options } = useContext(GameContext)
+  const { options } = useContext(GameContext)
   const [currentSides, setCurrentSides] = useState(options.fieldSides)
 
   useEffect(() => {
     const onFieldSidesChange = ({ fieldSides }: OptionsMap) => {
-      game.changeFieldSize(fieldSides)
       setCurrentSides(fieldSides)
     }
 

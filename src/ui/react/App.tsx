@@ -21,6 +21,13 @@ const App: FC<Props> = ({ game, options }) => {
   useEffect(() => {
     game.loop.start()
     game.spawners.randomSpawn()
+
+    options.eventEmitter.addListener(
+      'FIELD_SIDES_CHANGED',
+      ({ fieldSides }) => {
+        game.changeFieldSize(fieldSides)
+      }
+    )
   }, [])
 
   useShortcuts(game, options)
@@ -32,7 +39,7 @@ const App: FC<Props> = ({ game, options }) => {
           <Info className="main__info" />
           <GameField className="main__game" />
           <PatternsList className="main__patterns" />
-          <Controls className="main__controls"/>
+          <Controls className="main__controls" />
           <Shortcuts className="main__shortcuts" />
         </PatternProvider>
       </main>
