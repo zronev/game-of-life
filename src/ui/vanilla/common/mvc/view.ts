@@ -5,7 +5,6 @@ export abstract class View<State> {
     protected _targetElement: HTMLElement,
     private _model: Model<State>
   ) {
-    this.prepareRender = this.prepareRender.bind(this)
     this.prepareRender()
   }
 
@@ -13,12 +12,7 @@ export abstract class View<State> {
     return null
   }
 
-  public destroy(): void {
-    this._targetElement.innerHTML = ''
-    this._unsubscribe()
-  }
-
-  public prepareRender(): void {
+  public prepareRender = (): void => {
     const { state } = this._model
     const render = this.render(state)
 
@@ -26,6 +20,11 @@ export abstract class View<State> {
       this._targetElement.innerHTML = ''
       this._targetElement.appendChild(render)
     }
+  }
+
+  public destroy(): void {
+    this._targetElement.innerHTML = ''
+    this._unsubscribe()
   }
 
   private _unsubscribe(): void {
